@@ -1,0 +1,45 @@
+body {
+    background-color: #EEEEEE;
+}
+
+/*=========================================================Navigation bar=============================================*/
+header > div, header > div > menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    gap: 30px;
+}
+
+header > div:first-child {
+    flex-grow: 1;
+}
+
+header > div:last-child {
+    flex-grow: 2;
+}
+
+a {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+#nav-bar {
+    position: fixed;
+    top: 0;
+    height: 54px;
+    width: 100%;
+    display: flex;
+    background-color: #FFFFFF;
+}
