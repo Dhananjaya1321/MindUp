@@ -8,127 +8,52 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
-        main {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 56px;
-            margin: auto;
-            display: flex;
-            width: 100%;
-            height: max-content;
-        }
 
-        #left-section, #right-section {
-            width: 250px;
-            display: flex;
-            position: fixed;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-
-            height: 500px;
-            background-color: black;
-        }
-
-        #left-section {
-            left: 0;
-        }
-
-        #right-section {
-            right: 0;
-        }
-
-        #profile-summary {
-            background-color: white;
-            width: 200px;
-            height: max-content;
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-            justify-content: center;
-            align-items: center;
-            border-radius: 10px;
-        }
-
-        #profile-summary-cover-photo {
-            width: 100%;
-            height: 100px;
-            background-color: #ff6800;
-            border-radius: 10px 10px 0 0;
-        }
-
-        #profile-summary-profile-photo {
-            width: 100%;
-            height: 60px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #profile-summary-profile-photo > div {
-            width: 88px;
-            height: 88px;
-            border-radius: 12px;
-            background-color: white;
-            top: -30px;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #profile-photo {
-            width: 80px;
-            height: 80px;
-            border-radius: 10px;
-            background-color: #ff6800;
-        }
-
-        #profile-summary-about {
-            width: 100%;
-            text-align: center;
-            height: max-content;
-        }
-
-        #user-name {
-            margin: 0;
-        }
 
         #about {
             padding: 0 15px 0 15px;
             font-size: 14px;
         }
+
+        #followed-pages{
+            background-color: white;
+            width: 200px;
+            height: max-content;
+            border-radius: 10px;
+        }
+        #followed-pages>h4{
+            align-self: self-start;
+            margin-left: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 <header id="nav-bar">
-    <div>
+    <div class="flex f-wrap f-row">
         <img src="fevIcon.png" width="40">
-        <div id="search-bar-div">
+        <div id="search-bar-div" class="flex f-row">
             <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
             <input id="search-bar" placeholder="Search" type="text">
         </div>
     </div><!--search section-->
-    <div></div>
-    <div>
-        <menu>
-            <a href="#">
+    <div class="flex f-wrap f-row"></div>
+    <div class="flex f-wrap f-row">
+        <menu class="flex f-wrap f-row">
+            <a href="#" class="flex f-col">
                 <i class="nav-icon fa-solid fa-house"></i>
                 <li>Home</li>
             </a>
-            <a href="#">
+            <a href="#" class="flex f-col">
                 <i class="nav-icon fa-solid fa-users"></i>
                 <li>Users</li>
             </a>
-            <a href="#">
+            <a href="#" class="flex f-col">
                 <i class="nav-icon fa-solid fa-bell"></i>
                 <li>Notifications</li>
             </a>
-            <a href="#">
+            <a href="#" class="flex f-col">
                 <i class="nav-icon fa-solid fa-user"></i>
                 <li>Profile</li>
             </a>
@@ -136,11 +61,11 @@
     </div><!--Navigation section-->
 </header>
 <main>
-    <section id="left-section">
-        <section id="profile-summary">
+    <section id="left-section" class="flex f-wrap f-col">
+        <section id="profile-summary" class="flex f-col">
             <div id="profile-summary-cover-photo"></div><!--cover photo-->
-            <div id="profile-summary-profile-photo">
-                <div>
+            <div id="profile-summary-profile-photo" class="flex">
+                <div class="flex">
                     <div id="profile-photo"></div>
                 </div>
             </div><!--profile photo-->
@@ -152,9 +77,12 @@
                 </p>
             </div><!--about-->
         </section><!--user profile summary-->
+        <section id="followed-pages" class="flex f-col">
+            <h4>Pages I follow</h4>
+        </section><!--pages I follow-->
     </section><!--left side section-->
     <section id="center-section"></section><!--center section-->
-    <section id="right-section"></section><!--right side section-->
+    <section id="right-section" class="flex f-wrap f-col"></section><!--right side section-->
 </main>
 </body>
 </html>

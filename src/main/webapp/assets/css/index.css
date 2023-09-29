@@ -2,14 +2,26 @@ body {
     background-color: #EEEEEE;
 }
 
-/*=========================================================Navigation bar=============================================*/
-header > div, header > div > menu {
+.flex{
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
-    flex-wrap: wrap;
+}
+
+.f-col{
+    flex-direction: column;
+}
+
+.f-row{
     flex-direction: row;
+}
+
+.f-wrap{
+    flex-wrap: wrap;
+}
+/*=========================================================Navigation bar=============================================*/
+header > div, header > div > menu {
     padding: 0;
     margin: 0;
     gap: 30px;
@@ -21,20 +33,8 @@ header>div{
     flex-grow: 1;
 }
 
-/*header > div:first-child {
-    flex-grow: 1;
-}
-
-header > div:last-child {
-    flex-grow: 2;
-}*/
-
 a {
     text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     color: #7D7D7D;
 }
 
@@ -68,14 +68,86 @@ li {
 }
 #search-bar-div{
     position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
 }
 #search-bar-div>i{
     color: #000000;
     position: absolute;
     left: 10px;
+}
+
+/*================================================== left section =====================================================*/
+
+/*================================================== profile summery =====================================================*/
+main {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 56px;
+    margin: auto;
+    display: flex;
+    width: 100%;
+    height: max-content;
+}
+
+#left-section, #right-section {
+    width: 250px;
+    position: fixed;
+
+    height: 500px;
+    background-color: black;
+}
+
+#left-section {
+    left: 0;
+    gap: 30px;
+}
+
+#right-section {
+    right: 0;
+}
+
+#profile-summary {
+    background-color: white;
+    width: 200px;
+    height: max-content;
+    border-radius: 10px;
+}
+
+#profile-summary-cover-photo {
+    width: 100%;
+    height: 100px;
+    background-color: #ff6800;
+    border-radius: 10px 10px 0 0;
+}
+
+#profile-summary-profile-photo {
+    width: 100%;
+    height: 60px;
+    position: relative;
+}
+
+#profile-summary-profile-photo > div {
+    width: 88px;
+    height: 88px;
+    border-radius: 12px;
+    background-color: white;
+    top: -30px;
+    position: relative;
+}
+
+#profile-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: #ff6800;
+}
+
+#profile-summary-about {
+    width: 100%;
+    text-align: center;
+    height: max-content;
+}
+
+#user-name {
+    margin: 0;
 }
