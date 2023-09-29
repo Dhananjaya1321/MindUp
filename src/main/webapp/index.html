@@ -3,40 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="icon" href="fevIcon.png">
     <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
-
+        #search-bar{
+            border: none;
+            box-shadow: 0 0 3px -2px black;
+            border-radius: 5px;
+            height: 32px;
+            width: 250px;
+            background-color: #EEEEEE;
+            padding-left: 35px;
+        }
+        #search-bar-div{
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        #search-bar-div>i{
+            color: #000000;
+            position: absolute;
+            left: 10px;
+        }
     </style>
 </head>
 <body>
 <header id="nav-bar">
     <div>
-        <img src="#">
-        <input type="text">
+        <img src="fevIcon.png" width="40">
+        <div id="search-bar-div">
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+            <input id="search-bar" placeholder="Search" type="text">
+        </div>
     </div><!--search section-->
+    <div></div>
     <div>
         <menu>
             <a href="#">
-                <i class="fa-solid fa-house"></i>
+                <i class="nav-icon fa-solid fa-house"></i>
                 <li>Home</li>
             </a>
             <a href="#">
-                <i class="fa-solid fa-users"></i>
+                <i class="nav-icon fa-solid fa-users"></i>
                 <li>Users</li>
             </a>
             <a href="#">
-                <i class="fa-solid fa-bell"></i>
+                <i class="nav-icon fa-solid fa-bell"></i>
                 <li>Notifications</li>
             </a>
             <a href="#">
-                <i class="fa-solid fa-user"></i>
+                <i class="nav-icon fa-solid fa-user"></i>
                 <li>Profile</li>
             </a>
         </menu>
     </div><!--Navigation section-->
-
-
 </header>
 </body>
 </html>

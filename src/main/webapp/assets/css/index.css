@@ -14,14 +14,20 @@ header > div, header > div > menu {
     margin: 0;
     gap: 30px;
 }
+header>div:nth-child(2){
+    width: 10px;
+}
+header>div{
+    flex-grow: 1;
+}
 
-header > div:first-child {
+/*header > div:first-child {
     flex-grow: 1;
 }
 
 header > div:last-child {
     flex-grow: 2;
-}
+}*/
 
 a {
     text-decoration: none;
@@ -29,6 +35,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #7D7D7D;
 }
 
 li {
@@ -42,4 +49,10 @@ li {
     width: 100%;
     display: flex;
     background-color: #FFFFFF;
+    box-shadow: 0 1px 10px -7px black;
+}
+
+.nav-icon{
+    font-size: 22px;
+    margin-bottom: 2px;
 }
