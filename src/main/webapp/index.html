@@ -8,27 +8,99 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
-        #search-bar{
-            border: none;
-            box-shadow: 0 0 3px -2px black;
-            border-radius: 5px;
-            height: 32px;
-            width: 250px;
-            background-color: #EEEEEE;
-            padding-left: 35px;
+        main {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 56px;
+            margin: auto;
+            display: flex;
+            width: 100%;
+            height: max-content;
         }
-        #search-bar-div{
+
+        #left-section, #right-section {
+            width: 250px;
+            display: flex;
+            position: fixed;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+
+            height: 500px;
+            background-color: black;
+        }
+
+        #left-section {
+            left: 0;
+        }
+
+        #right-section {
+            right: 0;
+        }
+
+        #profile-summary {
+            background-color: white;
+            width: 200px;
+            height: max-content;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        #profile-summary-cover-photo {
+            width: 100%;
+            height: 100px;
+            background-color: #ff6800;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #profile-summary-profile-photo {
+            width: 100%;
+            height: 60px;
             position: relative;
             display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #profile-summary-profile-photo > div {
+            width: 88px;
+            height: 88px;
+            border-radius: 12px;
+            background-color: white;
+            top: -30px;
+            position: relative;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
-        #search-bar-div>i{
-            color: #000000;
-            position: absolute;
-            left: 10px;
+
+        #profile-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            background-color: #ff6800;
+        }
+
+        #profile-summary-about {
+            width: 100%;
+            text-align: center;
+            height: max-content;
+        }
+
+        #user-name {
+            margin: 0;
+        }
+
+        #about {
+            padding: 0 15px 0 15px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -63,5 +135,26 @@
         </menu>
     </div><!--Navigation section-->
 </header>
+<main>
+    <section id="left-section">
+        <section id="profile-summary">
+            <div id="profile-summary-cover-photo"></div><!--cover photo-->
+            <div id="profile-summary-profile-photo">
+                <div>
+                    <div id="profile-photo"></div>
+                </div>
+            </div><!--profile photo-->
+            <div id="profile-summary-about">
+                <h4 id="user-name">User Name</h4>
+                <p id="about">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur placeat?
+                    Amet
+                </p>
+            </div><!--about-->
+        </section><!--user profile summary-->
+    </section><!--left side section-->
+    <section id="center-section"></section><!--center section-->
+    <section id="right-section"></section><!--right side section-->
+</main>
 </body>
 </html>

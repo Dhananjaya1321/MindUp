@@ -56,3 +56,26 @@ li {
     font-size: 22px;
     margin-bottom: 2px;
 }
+
+#search-bar{
+    border: none;
+    box-shadow: 0 0 3px -2px black;
+    border-radius: 5px;
+    height: 32px;
+    width: 250px;
+    background-color: #EEEEEE;
+    padding-left: 35px;
+}
+#search-bar-div{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+#search-bar-div>i{
+    color: #000000;
+    position: absolute;
+    left: 10px;
+}
