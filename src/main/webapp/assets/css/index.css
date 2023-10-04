@@ -2,34 +2,37 @@ body {
     background-color: #EEEEEE;
 }
 
-.flex{
+.flex {
     display: flex;
     align-items: center;
     justify-content: center;
     align-content: center;
 }
 
-.f-col{
+.f-col {
     flex-direction: column;
 }
 
-.f-row{
+.f-row {
     flex-direction: row;
 }
 
-.f-wrap{
+.f-wrap {
     flex-wrap: wrap;
 }
+
 /*=========================================================Navigation bar=============================================*/
 header > div, header > div > menu {
     padding: 0;
     margin: 0;
     gap: 30px;
 }
-header>div:nth-child(2){
+
+header > div:nth-child(2) {
     width: 10px;
 }
-header>div{
+
+header > div {
     flex-grow: 1;
 }
 
@@ -45,6 +48,7 @@ li {
 #nav-bar {
     position: fixed;
     top: 0;
+    z-index: 1;
     height: 54px;
     width: 100%;
     display: flex;
@@ -52,12 +56,12 @@ li {
     box-shadow: 0 1px 10px -7px black;
 }
 
-.nav-icon{
+.nav-icon {
     font-size: 22px;
     margin-bottom: 2px;
 }
 
-#search-bar{
+#search-bar {
     border: none;
     box-shadow: 0 0 3px -2px black;
     border-radius: 5px;
@@ -66,10 +70,12 @@ li {
     background-color: #EEEEEE;
     padding-left: 35px;
 }
-#search-bar-div{
+
+#search-bar-div {
     position: relative;
 }
-#search-bar-div>i{
+
+#search-bar-div > i {
     color: #000000;
     position: absolute;
     left: 10px;
@@ -114,11 +120,12 @@ main {
     border-radius: 10px;
     position: fixed;
     top: 75px;
+    box-shadow: 0 0 12px -9px black;
 }
 
 #profile-summary-cover-photo {
     width: 100%;
-    height: 100px;
+    height: 75px;
     background-color: #ff6800;
     border-radius: 10px 10px 0 0;
 }
@@ -139,8 +146,8 @@ main {
 }
 
 #profile-photo {
-    width: 80px;
-    height: 80px;
+    width: 84px;
+    height: 84px;
     border-radius: 10px;
     background-color: #ff6800;
 }
@@ -153,4 +160,63 @@ main {
 
 #user-name {
     margin: 0;
+}
+
+#about {
+    padding: 0 15px 0 15px;
+    font-size: 14px;
+    color: #808080;
+}
+
+/*==================================================== followed pages section ========================================*/
+#followed-pages {
+    box-shadow: 0 0 12px -9px black;
+    background-color: white;
+    width: 200px;
+    height: max-content;
+    border-radius: 10px;
+    position: fixed;
+    top: 345px;
+}
+
+#followed-pages > h4 {
+    align-self: self-start;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#page-section {
+    width: 100%;
+}
+
+.page {
+    gap: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    height: 45px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.page-image {
+    width: 40px;
+    height: 40px;
+    background-color: wheat;
+    border-radius: 5px;
+}
+
+.page-details {
+    display: flex;
+    align-items: flex-start;
+}
+
+.page-details > h4, .page-details > p {
+    margin: 0;
+    align-self: self-start;
+}
+.page-details > p {
+    font-size: 13px;
+    color: #808080;
 }
