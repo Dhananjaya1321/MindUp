@@ -100,6 +100,7 @@ main {
 #left-section {
     left: 0;
     gap: 30px;
+    height: max-content;
 }
 
 #right-section {
@@ -111,6 +112,8 @@ main {
     width: 200px;
     height: max-content;
     border-radius: 10px;
+    position: fixed;
+    top: 75px;
 }
 
 #profile-summary-cover-photo {
