@@ -96,14 +96,11 @@ main {
 }
 
 #left-section, #right-section {
-    width: 250px;
     position: fixed;
-
-    height: 500px;
-    background-color: black;
 }
 
 #left-section {
+    width: 250px;
     left: 0;
     gap: 30px;
     height: max-content;
@@ -111,6 +108,7 @@ main {
 
 #right-section {
     right: 0;
+    width: 270px;
 }
 
 #profile-summary {
@@ -212,11 +210,100 @@ main {
     align-items: flex-start;
 }
 
-.page-details > h4, .page-details > p {
+.page-details > h4, .page-details > p{
     margin: 0;
     align-self: self-start;
 }
 .page-details > p {
     font-size: 13px;
     color: #808080;
+}
+
+/*================================================ right section =====================================================*/
+
+/*========================================= recommended pages and profiles  ==========================================*/
+#recommended-to-follow {
+    box-shadow: 0 0 12px -9px black;
+    width: 220px;
+    height: max-content;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: fixed;
+    top: 75px;
+}
+
+#recommended-pagesOrProfiles-section {
+    width: 80%;
+    align-items: flex-start;
+}
+
+#recommended-to-follow > h4 {
+    margin-top: 10px;
+    font-size: small;
+    margin-bottom: 10px;
+    align-self: flex-start;
+    position: relative;
+    left: 10px;
+}
+
+.horizontal-line {
+    background-color: #e5e5e5;
+    width: 100%;
+    height: 1px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+#recommended-pagesOrProfiles-section > h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#recommended-pagesOrProfiles-section > a > h6 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.recommended-pagesOrProfiles {
+    gap: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    height: 65px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+
+.recommended-pagesOrProfiles-image {
+    width: 50px;
+    height: 50px;
+    background-color: wheat;
+    border-radius: 5px;
+    align-self: flex-start;
+}
+
+.recommended-pagesOrProfiles-details {
+    align-self: flex-start;
+    gap: 2px;
+    align-items: flex-start;
+}
+
+.recommended-pagesOrProfiles-details > h4, .recommended-pagesOrProfiles-details > p {
+    margin: 0;
+}
+
+.recommended-pagesOrProfiles-details > p {
+    font-size: 12px;
+    color: #808080;
+}
+
+.follow-btn {
+    border: 1px black solid;
+    border-radius: 5px;
+    padding-left: 7px;
+    padding-right: 8px;
+    background-color: white;
+    height: 28px;
+    font-size: 15px;
+    gap: 5px;
 }
