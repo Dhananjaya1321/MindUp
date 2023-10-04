@@ -42,7 +42,7 @@
         </menu>
     </div><!--Navigation section-->
 </header>
-<main>
+<main class="flex">
     <section id="left-section" class="flex f-col">
         <section id="profile-summary" class="flex f-col">
             <div id="profile-summary-cover-photo"></div><!--cover photo-->
@@ -86,7 +86,19 @@
             </section><!--pages-->
         </section><!--pages I follow-->
     </section><!--left side section-->
-    <section id="center-section"></section><!--center section-->
+    <section id="center-section" class="flex f-col">
+        <section id="create-post-section" class="flex f-col">
+            <div id="write-post-div" class="flex f-row">
+                <div id="profile-photo-of-create-post-section"></div><!--profile photo-->
+                <button id="write-post-btn">Write post</button><!--text field-->
+            </div><!--write post-->
+            <div id="media-or-event-div" class="flex f-row">
+                <button class="flex f-row"><img src="assets/images/media.png" width="50">Media</button><!--media-->
+                <div class="vertical-line"></div>
+                <button class="flex f-row"><img src="assets/images/event.png" width="50">Event</button><!--event-->
+            </div><!--media and events-->
+        </section><!--create post section-->
+    </section><!--center section-->
     <section id="right-section" class="flex f-wrap f-col">
         <section id="recommended-to-follow" class="flex f-col">
             <h4>Recommended to follow your</h4>
@@ -130,7 +142,7 @@
                 </div><!--recommended peoples-->
                 <div class="horizontal-line"></div>
                 <a href="#">
-                    <h6>View all recommendations</h6>
+                    <h6>View all recommendations <i class="fa-solid fa-arrow-right"></i></h6>
                 </a>
             </section><!--pages-->
         </section><!--pages I follow-->
