@@ -312,12 +312,14 @@ main {
 /*=========================================== create post section ==================================================*/
 #center-section{
     width: 540px;
-    height: 500px;
-    background-color: black;
+    /*height: 500px;*/
+    position: relative;
+    /* background-color: black; */
+    top: 20px;
 }
 #create-post-section{
-    position: absolute;
-    top: 20px;
+   /* position: absolute;
+    top: 20px;*/
     width: 520px;
     height: max-content;
     background-color: white;
