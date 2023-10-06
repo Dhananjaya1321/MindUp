@@ -12,9 +12,16 @@
         .post {
             width: 520px;
             height: max-content;
-            background-color: #7D7D7D;
+            background-color: white;
             border-radius: 10px;
             margin-bottom: 20px;
+        }
+
+        .posted-account-details {
+            position: relative;
+            left: 0;
+            display: flex;
+            align-self: flex-start;
         }
 
         #separate-line-post-section-and-create-post {
@@ -29,9 +36,9 @@
             height: 60px;
             border-radius: 8px;
             background-color: #ff6800;
-            margin: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin: 15px;
+            /*margin-top: 20px;*/
+            /*margin-bottom: 20px;*/
         }
 
         .user-or-page-details > h3, .user-or-page-details > p {
@@ -46,14 +53,58 @@
         }
 
         .post-content > p {
-            margin: 0 30px 5px 30px;
+            margin: 0 15px 5px 15px;
             font-size: 15px;
         }
 
-        .post-media{
+        .post-media {
             width: 520px;
             height: 320px;
             background-color: #ff6800;
+        }
+
+        .post-reaction-bar {
+            display: flex;
+            height: 45px;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: row;
+            align-self: flex-start;
+            position: relative;
+            left: 15px;
+        }
+
+        .heart-react {
+            width: fit-content;
+            height: 40px;
+            font-size: 32px;
+            background-color: white;
+            border: none;
+        }
+
+        .first-reacted-user, .second-reacted-user {
+            width: 25px;
+            height: 25px;
+            border-radius: 100%;
+            background: center;
+            border: 1px #000000 solid;
+            background-size: cover;
+            background-color: #ff6800;
+        }
+
+        .second-reacted-user {
+            position: absolute;
+            left: 15px;
+        }
+
+        .other-reacted-users {
+            position: relative;
+            left: 20px;
+            font-size: 18px;
+        }
+
+        .other-reacted-users > small > a {
+            color: black;
         }
     </style>
 </head>
@@ -147,7 +198,7 @@
         <div id="separate-line-post-section-and-create-post"></div>
         <section>
             <div class="post flex f-col">
-                <div class="flex f-row">
+                <div class="posted-account-details f-row">
                     <div class="user-or-page-dp"></div><!--user or page DP-->
                     <div class="user-or-page-details">
                         <h3>User or Page Name</h3>
@@ -162,8 +213,20 @@
                         unde vel!</p>
                 </div><!--post content-->
                 <div class="post-media"></div><!--image or video content of post-->
-                <div></div>
-                <div></div>
+                <div class="post-reaction-bar">
+                    <div class="first-reacted-user"></div><!--first reacted user-->
+                    <div class="second-reacted-user"></div><!--second reacted user-->
+                    <div class="other-reacted-users">
+                        <small>
+                            <span class="first-reacted-user-name">first userName</span>
+                            <span class="second-reacted-user-name">second userName</span>
+                            and others <a href="#"><span class="other-reaction-count">5</span></a>
+                        </small>
+                    </div>
+                </div><!--who are the react this post-->
+                <div class="post-reaction-bar">
+                    <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                </div><!--heart reaction button here-->
             </div>
         </section><!--post section-->
 
