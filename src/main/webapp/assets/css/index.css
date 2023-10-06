@@ -368,3 +368,106 @@ main {
     width: 2px;
     height: 50px;
 }
+
+/*============================================= post =====================================================*/
+
+.post {
+    width: 520px;
+    height: max-content;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.posted-account-details {
+    position: relative;
+    left: 0;
+    display: flex;
+    align-self: flex-start;
+}
+
+#separate-line-post-section-and-create-post {
+    margin: 20px 0 20px 0;
+    width: 520px;
+    height: 2px;
+    background-color: #B3B3B3;
+}
+
+.user-or-page-dp {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: #ff6800;
+    margin: 15px;
+    /*margin-top: 20px;*/
+    /*margin-bottom: 20px;*/
+}
+
+.user-or-page-details > h3, .user-or-page-details > p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.post-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.post-content > p {
+    margin: 0 15px 5px 15px;
+    font-size: 15px;
+}
+
+.post-media {
+    width: 520px;
+    height: 320px;
+    background-color: #ff6800;
+}
+
+.post-reaction-bar {
+    display: flex;
+    height: 45px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    align-self: flex-start;
+    position: relative;
+    left: 15px;
+}
+
+.heart-react {
+    width: fit-content;
+    height: 40px;
+    font-size: 32px;
+    background-color: white;
+    border: none;
+}
+
+.first-reacted-user, .second-reacted-user {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background: center;
+    border: 1px #000000 solid;
+    background-size: cover;
+    background-color: #ff6800;
+}
+
+.second-reacted-user {
+    position: absolute;
+    left: 15px;
+}
+
+.other-reacted-users {
+    position: relative;
+    left: 20px;
+    font-size: 18px;
+}
+
+.other-reacted-users > small > a {
+    color: black;
+}
+.post>.horizontal-line{
+    margin: 0;
+}
