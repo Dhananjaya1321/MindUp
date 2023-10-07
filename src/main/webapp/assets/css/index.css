@@ -95,18 +95,18 @@ main {
     height: max-content;
 }
 
-#left-section, #right-section {
+#followed-page-section, #recommendation-section {
     position: fixed;
 }
 
-#left-section {
+#followed-page-section {
     width: 250px;
     left: 0;
     gap: 30px;
     height: max-content;
 }
 
-#right-section {
+#recommendation-section {
     right: 0;
     width: 270px;
 }
@@ -310,7 +310,7 @@ main {
 
 /*============================================= center section =====================================================*/
 /*=========================================== create post section ==================================================*/
-#center-section{
+#posts-shared-section{
     width: 540px;
     /*height: 500px;*/
     position: relative;

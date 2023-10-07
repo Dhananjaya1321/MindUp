@@ -8,8 +8,94 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
+        #user-section {
+            display: flex;
+            width: 800px;
+            top: 20px;
+            position: relative;
+            height: 900px;
+            background-color: white;
+            left: 120px;
+            border-radius: 10px;
+        }
 
+        #mutual-followers-section {
+            height: max-content;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
 
+        #mutual-followers-section > section {
+            gap: 30px;
+        }
+
+        #mutual-followers-section > h2 {
+            margin: 20px;
+            align-self: flex-start;
+        }
+
+        .user {
+            background-color: white;
+            width: 200px;
+            height: max-content;
+            box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+        }
+
+        .user-dp {
+            width: 100%;
+            height: 50px;
+        }
+
+        .user-dp > div {
+            position: relative;
+            top: -25px;
+            width: 86px;
+            height: 86px;
+            border-radius: 12px;
+            background-color: #ffffff;
+        }
+
+        .user-cover-photo {
+            top: 0;
+            position: relative;
+            width: 100%;
+            height: 75px;
+            background-color: #ff6800;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .profile-photo {
+            width: 80px;
+            border-radius: 10px;
+            height: 80px;
+            background-color: #ff6800;
+        }
+
+        .user-name {
+            margin: 0;
+        }
+
+        .user-about {
+            font-size: 14px;
+            padding: 0 10px 0 10px;
+            text-align: center;
+            margin: 5px 0 10px 0;
+        }
+
+        .user-follow-btn-div {
+            width: 100%;
+        }
+
+        .user-follow-btn-div > button {
+            margin-bottom: 15px;
+            border: 2px solid #808080;
+            border-radius: 5px;
+            width: 100px;
+            height: 32px;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -45,7 +131,7 @@
 </header>
 <main class="flex">
     <section id="home-section" class="flex">
-        <section id="left-section" class="flex f-col">
+        <section id="followed-page-section" class="flex f-col">
             <section id="profile-summary" class="flex f-col">
                 <div id="profile-summary-cover-photo"></div><!--cover photo-->
                 <div id="profile-summary-profile-photo" class="flex">
@@ -88,8 +174,8 @@
                     </div>
                 </section><!--pages-->
             </section><!--pages I follow-->
-        </section><!--left side section-->
-        <section id="center-section" class="flex f-col">
+        </section><!--left side followed page section-->
+        <section id="posts-shared-section" class="flex f-col">
             <section id="create-post-section" class="flex f-col">
                 <div id="write-post-div" class="flex f-row">
                     <div id="profile-photo-of-create-post-section"></div><!--profile photo-->
@@ -270,8 +356,8 @@
                 </div>
             </section><!--post section-->
 
-        </section><!--center section-->
-        <section id="right-section" class="flex f-wrap f-col">
+        </section><!--center posts shared section-->
+        <section id="recommendation-section" class="flex f-wrap f-col">
             <section id="recommended-to-follow" class="flex f-col">
                 <h4>Recommended to follow your</h4>
                 <section id="recommended-pagesOrProfiles-section" class="flex f-col">
@@ -318,22 +404,151 @@
                     </a>
                 </section><!--pages-->
             </section><!--pages I follow-->
-        </section><!--right side section-->
+        </section><!--right side recommendations section-->
     </section><!--home section-->
-    <section id="user-section"></section>
+    <section id="user-section" class="flex f-col">
+        <section id="mutual-followers-section" class="flex f-col">
+            <h2>Mutual followers</h2>
+            <section class="flex f-row f-wrap">
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+            </section>
+            <a href="#"><h4>See more</h4></a>
+        </section><!--Mutual followers section-->
+        <section></section><!--Popular peoples to follow section-->
+        <section></section><!--Groups section-->
+    </section>
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script>
-    $("#home-section").css("display", "flex");
+    $("#followed-page-section").css("display", "flex");
+    $("#posts-shared-section").css("display", "flex");
+    $("#recommendation-section").css("display", "flex");
     $("#user-section").css("display", "none");
 
     $("#nav-home").click(function () {
-        $("#home-section").css("display", "flex");
+        $("#followed-page-section").css("display", "flex");
+        $("#posts-shared-section").css("display", "flex");
+        $("#recommendation-section").css("display", "flex");
         $("#user-section").css("display", "none");
     });
     $("#nav-users").click(function () {
-        $("#home-section").css("display", "none");
+        $("#followed-page-section").css("display", "flex");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "flex");
     });
 </script>
