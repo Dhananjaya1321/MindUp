@@ -403,6 +403,11 @@ main {
     /*margin-bottom: 20px;*/
 }
 
+.user-or-page-details  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .user-or-page-details > h3, .user-or-page-details > p {
     margin-top: 2px;
     margin-bottom: 2px;
