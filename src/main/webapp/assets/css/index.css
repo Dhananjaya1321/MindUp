@@ -476,3 +476,92 @@ main {
 .post>.horizontal-line{
     margin: 0;
 }
+
+/*============================================= Users section =====================================================*/
+
+#user-section {
+    display: flex;
+    width: 800px;
+    top: 20px;
+    position: relative;
+    height: max-content;
+    background-color: white;
+    left: 120px;
+    border-radius: 10px;
+}
+
+#mutual-followers-section,#popular-peoples-section,#pages-section {
+    height: max-content;
+    width: 100%;
+}
+
+#mutual-followers-section > section,#popular-peoples-section>section,#pages-section>section {
+    gap: 30px;
+}
+
+#mutual-followers-section > h2,#popular-peoples-section>h2,#pages-section>h2 {
+    margin: 20px;
+    align-self: flex-start;
+}
+
+.user {
+    background-color: white;
+    width: 200px;
+    height: max-content;
+    box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.user-dp {
+    width: 100%;
+    height: 50px;
+}
+
+.user-dp > div {
+    position: relative;
+    top: -25px;
+    width: 86px;
+    height: 86px;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.user-cover-photo {
+    top: 0;
+    position: relative;
+    width: 100%;
+    height: 75px;
+    background-color: #ff6800;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-photo {
+    width: 80px;
+    border-radius: 10px;
+    height: 80px;
+    background-color: #ff6800;
+}
+
+.user-name {
+    margin: 0;
+}
+
+.user-about {
+    font-size: 14px;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    margin: 5px 0 10px 0;
+}
+
+.user-follow-btn-div {
+    width: 100%;
+}
+
+.user-follow-btn-div > button {
+    margin-bottom: 15px;
+    border: 2px solid #808080;
+    border-radius: 5px;
+    width: 100px;
+    height: 32px;
+    background-color: white;
+}
