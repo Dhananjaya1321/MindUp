@@ -8,7 +8,27 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
-
+        #notifications-section{
+            display: flex;
+            width: 800px;
+            top: 20px;
+            position: relative;
+            height: max-content;
+            background-color: white;
+            left: 120px;
+            border-radius: 10px;
+        }
+        #notifications-btn-bar{
+            display: flex;
+            align-self: flex-start;
+            gap: 10px;
+            margin: 15px;
+        }
+        #notifications-btn-bar>button{
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -682,7 +702,11 @@
         </section><!--Page section-->
     </section><!--users section-->
     <section id="notifications-section" class="flex f-col">
-
+        <div id="notifications-btn-bar" class="flex f-row">
+            <button>All</button>
+            <button>Followers</button>
+            <button>Reactions</button>
+        </div>
     </section><!--notifications section-->
 </main>
 
