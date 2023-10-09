@@ -65,30 +65,29 @@
                 margin-bottom: 5px;
             }
 
-            .notification-post-detail>small{
+            .notification-post-detail > small {
                 font-size: 65%;
             }
         }
+
         @media all and (max-width: 550px) {
             #notifications-section {
-                width: 500px;
+                width: 100%;
+                border-radius: 0;
             }
 
-            .notification {
-                width: 450px;
+            #notifications-section > section, .notification, .notification-detail > div {
+                width: 100%;
             }
 
-            .notification-detail > div {
-                width: 360px;
+            .notification-detail {
+                width: 80%;
             }
+        }
 
-            .notification-post-detail > p {
-                margin-top: 5px;
-                margin-bottom: 5px;
-            }
-
-            .notification-post-detail>small{
-                font-size: 65%;
+        @media all and (max-width: 425px) {
+            .notification-detail {
+                width: 80%;
             }
         }
     </style>
@@ -780,8 +779,7 @@
                         <div class="notification-post-image"></div><!--post image of notification-->
                         <div class="flex f-col notification-post-detail">
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
-                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
-                                nisi</p>
+                                aut dolor eveniet,</p>
                             <small><span class="post-reaction-count-notification">15</span> Reactions | <span
                                     class="post-comment-count-notification">1</span> Comments</small>
                         </div>
