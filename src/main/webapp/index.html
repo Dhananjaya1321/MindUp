@@ -48,6 +48,29 @@
         }
 
         @media all and (max-width: 740px) {
+            header > div:nth-child(2) {
+                display: none;
+            }
+
+            header > div:last-child {
+                width: 100%;
+                padding-top: 10px;
+                position: fixed;
+                bottom: 0;
+                background-color: white;
+                box-shadow: 1px 0 5px -2px black;
+            }
+
+            header > div:last-child > menu {
+                width: 100%;
+                gap: 0;
+                font-size: 12px;
+            }
+
+            header > div:last-child > menu > a {
+                flex-grow: 1;
+            }
+
             #notifications-section {
                 width: 500px;
             }
@@ -74,6 +97,7 @@
             #notifications-section {
                 width: 100%;
                 border-radius: 0;
+                top: 0;
             }
 
             #notifications-section > section, .notification, .notification-detail > div {
@@ -86,8 +110,16 @@
         }
 
         @media all and (max-width: 425px) {
+            header > div {
+                gap: 15px;
+            }
+
+            #search-bar {
+                width: 200px;
+            }
+
             .notification-detail {
-                width: 80%;
+                width: 70%;
             }
         }
     </style>
@@ -778,8 +810,7 @@
                     <div class="flex f-row">
                         <div class="notification-post-image"></div><!--post image of notification-->
                         <div class="flex f-col notification-post-detail">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
-                                aut dolor eveniet,</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur </p>
                             <small><span class="post-reaction-count-notification">15</span> Reactions | <span
                                     class="post-comment-count-notification">1</span> Comments</small>
                         </div>
