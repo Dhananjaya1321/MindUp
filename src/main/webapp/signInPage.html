@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign In</title>
+    <title>Login Page</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="LoginCSS.css">
+    <link rel="stylesheet" href="assets/css/signInPage.css">
 </head>
 <body>
 <section id="box">
     <h1 id="txtSignIn">Sign In</h1>
-    <div id="email" style="display: flex;flex-direction: row">
+    <!--  <div id="email">-->
 
-        <label for="email">Enter your Mail</label>
-        <input  type="email" placeholder="Enter Your Email">
+    <!--    <label for="email">Enter your Mail</label>-->
+    <input id="email"  class="typEmail" type="email"  placeholder="Enter Your Email">
+    <!--  </div>-->
+    <div >
+        <input  id="password" class="typEmail" type="password" placeholder="Password" >
+
+        <!--&lt;!&ndash;    <div id="show">show</div>&ndash;&gt;-->
+        <!--    <label>show</label>-->
     </div>
-    <div id="password">Password
-        <div id="show">show</div>
-    </div>
-    <button id="btnsignIn">Sign In</button>
-    <div class="continueGoogle"></div>
-    <div id="Google" ><img src="/assests/img/Google.png"></div>
-    <div id="Facebook"><img src="/assests/img/Facebook.png"></div>
+    <button id="btnsignIn"><data id="btnTxtSignIn">Sign In</data></button>
+    <!--  <div class="continueGoogle"></div>-->
+    <button  id="Google" ><img id="pngGoogle" src="assets/img/Google.png"><h1 id="txtGogle" >Continue Google</h1></button>
+    <button  id="Facebook"><img id="pngFb" src="assets/img/Facebook.png"><h1 id="txtfb" >Continue Facebook</h1></button>
 </section>
 </body>
 </html>
