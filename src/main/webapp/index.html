@@ -24,7 +24,8 @@
                 padding: 5px;
             }
 
-            #notifications-section {
+            #notifications-section,
+            #user-section{
                 width: 700px;
             }
 
@@ -45,6 +46,7 @@
                 padding: 0 10px 0 0;
                 font-size: 12px;
             }
+
         }
 
         @media all and (max-width: 740px) {
@@ -71,7 +73,8 @@
                 flex-grow: 1;
             }
 
-            #notifications-section {
+            #notifications-section,
+            #user-section {
                 width: 500px;
             }
 
@@ -91,9 +94,14 @@
             .notification-post-detail > small {
                 font-size: 65%;
             }
+
+            #mutual-followers-section > section {
+                gap: 15px;
+            }
         }
 
         @media all and (max-width: 550px) {
+            #user-section,
             #notifications-section {
                 width: 100%;
                 border-radius: 0;
