@@ -340,6 +340,8 @@ main {
     color: #808080;
     display: flex;
     align-items: center;
+    font-size: 18px;
+    padding-left: 15px;
 }
 
 #profile-photo-of-create-post-section{
@@ -658,4 +660,220 @@ main {
     margin-top: 10px;
     padding: 0;
     font-size: 12px;
+}
+
+@media all and (max-width: 1077px) {
+    #followed-page-section,
+    #recommended-to-follow {
+        display: none !important;
+    }
+
+    #notifications-section, #user-section {
+        left: unset;
+    }
+}
+
+@media all and (max-width: 840px) {
+    #notifications-btn-bar > button {
+        padding: 5px;
+    }
+
+    #notifications-section,
+    #user-section {
+        width: 700px;
+    }
+
+    .notification {
+        width: 650px;
+    }
+
+    .notification-detail > div {
+        width: 500px;
+    }
+
+    .notification-post-image {
+        height: 80px;
+    }
+
+    .notification-post-detail > p {
+        margin-top: 10px;
+        padding: 0 10px 0 0;
+        font-size: 12px;
+    }
+
+}
+
+@media all and (max-width: 740px) {
+    header > div:nth-child(2) {
+        display: none;
+    }
+
+    header > div:last-child {
+        width: 100%;
+        padding-top: 10px;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        box-shadow: 1px 0 5px -2px black;
+    }
+
+    header > div:last-child > menu {
+        width: 100%;
+        gap: 0;
+        font-size: 12px;
+    }
+
+    header > div:last-child > menu > a {
+        flex-grow: 1;
+    }
+
+    #notifications-section,
+    #user-section {
+        width: 500px;
+    }
+
+    .notification {
+        width: 450px;
+    }
+
+    .notification-detail > div {
+        width: 360px;
+    }
+
+    .notification-post-detail > p {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .notification-post-detail > small {
+        font-size: 65%;
+    }
+
+    #mutual-followers-section > section {
+        gap: 15px;
+    }
+}
+
+@media all and (max-width: 550px) {
+    #user-section,
+    #notifications-section {
+        width: 100%;
+        border-radius: 0;
+        top: 0;
+    }
+
+    #notifications-section > section, .notification, .notification-detail > div {
+        width: 100%;
+    }
+
+    .notification-detail {
+        width: 80%;
+    }
+
+    .post,
+    .post-media,
+    #posts-shared-section {
+        width: 100%;
+    }
+
+    #posts-shared-section > section {
+        width: 90%;
+    }
+
+    .user-or-page-details {
+        width: 82%;
+    }
+
+    .user-or-page-dp {
+        width: 50px;
+        height: 50px;
+    }
+
+    .user-or-page-details > h3 {
+        font-size: 16px;
+    }
+
+    .user-or-page-details > p {
+        font-size: 12px;
+    }
+
+    .user-or-page-details > small {
+        font-size: 65%;
+    }
+
+    .post-content > p {
+        font-size: 12px;
+    }
+
+    #separate-line-post-section-and-create-post {
+        width: 90%;
+    }
+
+    #write-post-btn {
+        width: 74%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 55px;
+    }
+
+    #media-or-event-div > button {
+        font-size: 17px;
+    }
+
+    #media-or-event-div > button > img {
+        width: 40px;
+    }
+
+    #profile-photo-of-create-post-section {
+        width: 55px;
+        height: 55px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .vertical-line {
+        height: 40px;
+    }
+}
+
+@media all and (max-width: 425px) {
+    header > div {
+        gap: 15px;
+    }
+
+    #search-bar {
+        width: 200px;
+    }
+
+    .notification-detail {
+        width: 70%;
+    }
+
+    #write-post-btn {
+        height: 45px;
+    }
+
+    #posts-shared-section > section {
+        width: 95%;
+    }
+
+    .post {
+        margin-bottom: 10px;
+    }
+
+    #separate-line-post-section-and-create-post {
+        margin: 10px 0 10px 0;
+    }
+
+    .post-media {
+        height: 280px;
+    }
+
+    .other-reacted-users > small {
+        font-size: 70%;
+    }
+
+    .heart-react {
+        font-size: 30px;
+    }
 }
