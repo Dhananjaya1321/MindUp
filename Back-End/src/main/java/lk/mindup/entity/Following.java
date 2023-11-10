@@ -13,9 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Data
 @ToString
-public class Login {
+public class Following {
     @Id
-    private String email;
-    private String username;
-    private String password;
+    private String following_id;
 }
