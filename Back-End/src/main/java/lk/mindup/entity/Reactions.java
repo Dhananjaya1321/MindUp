@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @NoArgsConstructor
@@ -16,4 +17,10 @@ import javax.persistence.Id;
 public class Reactions {
     @Id
     private String reaction_id;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Post post;
 }

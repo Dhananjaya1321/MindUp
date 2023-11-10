@@ -5,10 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -19,6 +17,25 @@ public class User {
     @Id
     private String user_id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    Login login;
+
+    @ManyToOne
+    private Page page;
+
+    @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private Login login;
+
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Positions> positions;
+
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Post> posts;
+
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Follower> followers;
+
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Following> followings;
+
+    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    private List<Reactions> reactions;
 }

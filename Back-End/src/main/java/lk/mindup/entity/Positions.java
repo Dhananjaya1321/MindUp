@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @NoArgsConstructor
@@ -16,4 +17,7 @@ import javax.persistence.Id;
 public class Positions {
     @Id
     private String position_id;
+
+    @ManyToOne
+    private User user;
 }
