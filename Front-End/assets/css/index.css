@@ -674,6 +674,131 @@ main {
 }
 
 
+#profile-details-section,
+#profile-pined-post-section,
+#profile-positions-section,
+#profile-activity-section {
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+    justify-content: flex-start; /*-------------------------*/
+}
+
+#profile-cover-photo {
+    height: 200px;
+    background-color: #ff6800;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+#profile-profile-photo {
+    height: 70px;
+    width: 100%;
+}
+
+#dp {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+}
+
+#dp > div {
+    width: 175px;
+    height: 175px;
+    background-color: white;
+    position: relative;
+    top: -106px;
+    left: 60px;
+    border-radius: 15px;
+}
+
+#dp > div > div {
+    width: 165px;
+    height: 165px;
+    background-color: #ff6800;
+    border-radius: 12px;
+}
+
+#page-btn {
+    width: 30%;
+}
+
+#page-btn > button {
+    border: none;
+    width: 200px;
+    gap: 10px;
+    height: 54px;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px -8px #0000006b;
+    border-radius: 10px;
+    flex-direction: row;
+    position: relative;
+    background-color: white;
+    right: -10px;
+}
+
+#page-btn-img {
+    width: 44px;
+    display: flex;
+    height: 44px;
+    background-color: brown;
+    justify-content: flex-start;
+    position: absolute;
+    left: 5px;
+    border-radius: 5px;
+}
+
+#profile-details {
+    width: 90%;
+    gap: 8px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#name,
+#location,
+#headline,
+#youtube-link,
+#followers-count > h3,
+#following-count > h3,
+#post-count > h3 {
+    margin: 0;
+}
+
+#location {
+    margin-left: 10px;
+}
+
+#youtube-link > a {
+    color: #FF8100;
+}
+
+.profile-details-vertical-line {
+    margin: 0 15px;
+    background-color: #00000033;
+    width: 1px;
+    height:30px;
+}
+
+#profile-details>div:last-child{
+    gap: inherit;
+}
+#edit-details-btn,
+#user-view-btn,
+#follow-btn,
+#unfollow-btn,
+#more-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #ff6800;
+    background-color: white;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
 @media all and (max-width: 1077px) {
     #followed-page-section,
