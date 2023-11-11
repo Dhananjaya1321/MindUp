@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
+        #user-section,
+        #notifications-section,
+        #profile-section,
+        #follow-btn,
+        #unfollow-btn,
+        #more-btn{
+            display: none;
+        }
 
     </style>
 </head>
@@ -917,22 +925,104 @@
             </div><!--notification-->
         </section><!--notifications-->
     </section><!--notifications section-->
+    <section id="profile-section" class="flex f-col">
+        <section id="profile-details-section" class="flex f-col">
+            <div id="profile-cover-photo">
+                <div id="cover-img"></div>
+                <div id="upload-cover-img">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="profile-profile-photo" class="flex f-row">
+                <div id="dp">
+                    <div class="flex">
+                        <div>
+                            <div id="dp-img"></div>
+                            <div id="upload-dp-img">
+                                <button>
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="page-btn" class="flex">
+                    <button class="flex f-col">
+                        <div id="page-btn-img"></div>
+                        Create Page
+                    </button>
+                </div>
+            </div>
+            <div id="profile-details" class="flex f-col">
+                <div class="flex f-row">
+                    <h3 id="name">Isuru Dhananjaya (<span id="username">dhananjaya</span>)</h3>
+                    <img id="verify-img" src="assets/images/Verify_mark.png">
+                </div>
+                <div class="flex f-row">
+                    <img id="location-img" src="assets/images/location.png">
+                    <h3 id="location">Galle, Sri Lanka</h3>
+                </div>
+                <div class="flex f-row">
+                    <p id="headline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita illo nemo
+                        obcaecati perferendis reiciendis sed. Aliquid aut, distinctio dolorem ex facere iusto laboriosam
+                        modi non officia possimus quaerat ratione unde?</p>
+                </div>
+                <div class="flex f-row">
+                    <p id="youtube-link"><a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a></p>
+                </div>
+                <div class="flex f-row">
+                    <div id="post-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Post</h3>
+                    </div>
+                    <div class="profile-details-vertical-line vertical-line"></div>
+                    <div id="followers-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Followers</h3>
+                    </div>
+                    <div class="profile-details-vertical-line vertical-line"></div>
+                    <div id="following-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Following</h3>
+                    </div>
+                </div>
+                <div class="flex f-row">
+                    <div id="edit-details-btn-div">
+                        <button id="edit-details-btn">Edit details</button>
+                    </div>
+                    <div id="user-view-btn-div">
+                        <button id="user-view-btn" style="background-color: #ff6800;">User view</button>
+                    </div>
+                    <div id="follow-btn-div">
+                        <button id="follow-btn" style="background-color: #ff6800">Follow</button>
+                    </div>
+                    <div id="unfollow-btn-div">
+                        <button id="unfollow-btn">Following</button>
+                    </div>
+                    <div id="more-btn-div">
+                        <button id="more-btn">More</button>
+                    </div>
+                </div>
+            </div>
+        </section><!--profile details section-->
+        <section id="profile-pined-post-section" class="flex f-col"></section><!--profile pined post section-->
+        <section id="profile-positions-section" class="flex f-col"></section><!--profile positions section-->
+        <section id="profile-activity-section" class="flex f-col"></section><!--profile activity section-->
+    </section><!--profile section-->
+
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script>
-    $("#followed-page-section").css("display", "flex");
-    $("#posts-shared-section").css("display", "flex");
-    $("#recommendation-section").css("display", "flex");
-    $("#user-section").css("display", "none");
-    $("#notifications-section").css("display", "none");
-
     $("#nav-home").click(function () {
         $("#followed-page-section").css("display", "flex");
         $("#posts-shared-section").css("display", "flex");
         $("#recommendation-section").css("display", "flex");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
     });
     $("#nav-users").click(function () {
         $("#followed-page-section").css("display", "flex");
@@ -940,6 +1030,7 @@
         $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "flex");
         $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
     });
     $("#nav-notification").click(function () {
         $("#followed-page-section").css("display", "flex");
@@ -947,7 +1038,42 @@
         $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "flex");
+        $("#profile-section").css("display", "none");
     });
+    $("#nav-profile").click(function () {
+        $("#profile-section").css("display", "flex");
+        $("#followed-page-section").css("display", "none");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
+    });
+
+    $("#user-view-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#more-btn-div").css("display", "block")
+        $("#user-view-btn-div").css("display", "none")
+        $("#edit-details-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#more-btn").css("display", "block")
+        $("#user-view-btn").css("display", "none")
+        $("#edit-details-btn").css("display", "none")
+    });
+
+    $("#follow-btn").click(function () {
+        $("#follow-btn-div").css("display", "none")
+        $("#unfollow-btn-div").css("display", "block")
+        $("#follow-btn").css("display", "none")
+        $("#unfollow-btn").css("display", "block")
+    });
+    $("#unfollow-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#unfollow-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#unfollow-btn").css("display", "none")
+    });
+
+
 </script>
 </body>
 </html>
