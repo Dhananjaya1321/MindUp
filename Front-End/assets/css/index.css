@@ -715,7 +715,7 @@ main {
     position: absolute;
     right: 5px;
     bottom: 5px;
-    z-index: 1;
+    /*z-index: 1;*/
 }
 
 #upload-cover-img > button {
@@ -858,6 +858,32 @@ main {
     background-color: white;
     margin-bottom: 10px;
     font-weight: bold;
+}
+
+.topics {
+    align-self: flex-start;
+    position: relative;
+    flex-grow: 1;
+}
+
+#profile-pined-post-section>div:first-child,
+#profile-positions-section>div:first-child,
+#profile-activity-section>div:first-child{
+    width: 90%;
+}
+
+#pined-post-edit-btn>button,
+#positions-edit-btn>button,
+#activity-edit-btn>button{
+    border-radius: 100%;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff6800;
+    color: #ff6800;
 }
 
 @media all and (max-width: 1077px) {
