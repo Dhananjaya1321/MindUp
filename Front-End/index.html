@@ -18,14 +18,78 @@
         #profile-details-section,
         #profile-pined-post-section,
         #profile-positions-section,
-        #profile-activity-section{
+        #profile-activity-section {
             width: 100%;
             height: 500px;
-            background-color: #0d6efd;
+            background-color: white;
             margin-bottom: 20px;
             border-radius: 10px;
+            box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+            justify-content: flex-start; /*-------------------------*/
         }
 
+        #profile-cover-photo {
+            height: 200px;
+            background-color: #ff6800;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
+        }
+
+        #profile-profile-photo {
+            height: 70px;
+            width: 100%;
+        }
+
+        #dp {
+            width: 70%;
+            height: 100%;
+            background-color: white;
+        }
+
+        #dp > div {
+            width: 175px;
+            height: 175px;
+            background-color: white;
+            position: relative;
+            top: -106px;
+            left: 60px;
+            border-radius: 15px;
+        }
+
+        #dp > div > div {
+            width: 165px;
+            height: 165px;
+            background-color: #ff6800;
+            border-radius: 12px;
+        }
+
+        #page-btn {
+            width: 30%;
+        }
+
+        #page-btn > button {
+            border: none;
+            width: 200px;
+            gap: 10px;
+            height: 54px;
+            flex-shrink: 0;
+            box-shadow: 0 0 20px -8px #0000006b;
+            border-radius: 10px;
+            flex-direction: row;
+            position: relative;
+            background-color: white;
+            right: -10px;
+        }
+        #page-btn-img{
+            width: 44px;
+            display: flex;
+            height: 44px;
+            background-color: brown;
+            justify-content: flex-start;
+            position: absolute;
+            left: 5px;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -934,7 +998,24 @@
         </section><!--notifications-->
     </section><!--notifications section-->
     <section id="profile-section" class="flex f-col">
-        <section id="profile-details-section" class="flex f-col"></section><!--profile details section-->
+        <section id="profile-details-section" class="flex f-col">
+            <div id="profile-cover-photo"></div>
+            <div id="profile-profile-photo" class="flex f-row">
+                <div id="dp">
+                    <div class="flex">
+                        <div></div>
+                    </div>
+                </div>
+                <div id="page-btn" class="flex">
+                    <button class="flex f-col">
+                        <div id="page-btn-img"></div>
+                        Create Page
+                    </button>
+                </div>
+            </div>
+            <div id="profile-details"></div>
+            <div id="profile-followers-following"></div>
+        </section><!--profile details section-->
         <section id="profile-pined-post-section" class="flex f-col"></section><!--profile pined post section-->
         <section id="profile-positions-section" class="flex f-col"></section><!--profile positions section-->
         <section id="profile-activity-section" class="flex f-col"></section><!--profile activity section-->

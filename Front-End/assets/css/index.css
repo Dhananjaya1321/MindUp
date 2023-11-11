@@ -667,7 +667,7 @@ main {
     top: 20px;
     position: relative;
     height: max-content;
-    background-color: white;
+    /*background-color: white;*/
     left: -120px;
     border-radius: 10px;
     display: flex;
@@ -682,6 +682,10 @@ main {
     }
 
     #notifications-section, #user-section {
+        left: unset;
+    }
+
+    #profile-section{
         left: unset;
     }
 }
