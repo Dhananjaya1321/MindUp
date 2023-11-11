@@ -9,6 +9,22 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <style>
+        #user-section,
+        #notifications-section,
+        #profile-section {
+            display: none;
+        }
+
+        #profile-details-section,
+        #profile-pined-post-section,
+        #profile-positions-section,
+        #profile-activity-section{
+            width: 100%;
+            height: 500px;
+            background-color: #0d6efd;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
 
     </style>
 </head>
@@ -917,22 +933,24 @@
             </div><!--notification-->
         </section><!--notifications-->
     </section><!--notifications section-->
+    <section id="profile-section" class="flex f-col">
+        <section id="profile-details-section" class="flex f-col"></section><!--profile details section-->
+        <section id="profile-pined-post-section" class="flex f-col"></section><!--profile pined post section-->
+        <section id="profile-positions-section" class="flex f-col"></section><!--profile positions section-->
+        <section id="profile-activity-section" class="flex f-col"></section><!--profile activity section-->
+    </section><!--profile section-->
+
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script>
-    $("#followed-page-section").css("display", "flex");
-    $("#posts-shared-section").css("display", "flex");
-    $("#recommendation-section").css("display", "flex");
-    $("#user-section").css("display", "none");
-    $("#notifications-section").css("display", "none");
-
     $("#nav-home").click(function () {
         $("#followed-page-section").css("display", "flex");
         $("#posts-shared-section").css("display", "flex");
         $("#recommendation-section").css("display", "flex");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
     });
     $("#nav-users").click(function () {
         $("#followed-page-section").css("display", "flex");
@@ -940,6 +958,7 @@
         $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "flex");
         $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
     });
     $("#nav-notification").click(function () {
         $("#followed-page-section").css("display", "flex");
@@ -947,6 +966,15 @@
         $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "flex");
+        $("#profile-section").css("display", "none");
+    });
+    $("#nav-profile").click(function () {
+        $("#profile-section").css("display", "flex");
+        $("#followed-page-section").css("display", "none");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
     });
 </script>
 </body>

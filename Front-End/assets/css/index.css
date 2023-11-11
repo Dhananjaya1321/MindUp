@@ -661,6 +661,19 @@ main {
     padding: 0;
     font-size: 12px;
 }
+/*======================================================= profile section ============================================*/
+#profile-section{
+    width: 800px;
+    top: 20px;
+    position: relative;
+    height: max-content;
+    background-color: white;
+    left: -120px;
+    border-radius: 10px;
+    display: flex;
+}
+
+
 
 @media all and (max-width: 1077px) {
     #followed-page-section,
