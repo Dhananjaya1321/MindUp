@@ -11,7 +11,10 @@
     <style>
         #user-section,
         #notifications-section,
-        #profile-section {
+        #profile-section,
+        #follow-btn,
+        #unfollow-btn,
+        #more-btn{
             display: none;
         }
 
@@ -924,11 +927,25 @@
     </section><!--notifications section-->
     <section id="profile-section" class="flex f-col">
         <section id="profile-details-section" class="flex f-col">
-            <div id="profile-cover-photo"></div>
+            <div id="profile-cover-photo">
+                <div id="cover-img"></div>
+                <div id="upload-cover-img">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
             <div id="profile-profile-photo" class="flex f-row">
                 <div id="dp">
                     <div class="flex">
-                        <div></div>
+                        <div>
+                            <div id="dp-img"></div>
+                            <div id="upload-dp-img">
+                                <button>
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="page-btn" class="flex">
@@ -972,24 +989,23 @@
                     </div>
                 </div>
                 <div class="flex f-row">
-                    <div>
+                    <div id="edit-details-btn-div">
                         <button id="edit-details-btn">Edit details</button>
                     </div>
-                    <div>
+                    <div id="user-view-btn-div">
                         <button id="user-view-btn" style="background-color: #ff6800;">User view</button>
                     </div>
-                    <div>
+                    <div id="follow-btn-div">
                         <button id="follow-btn" style="background-color: #ff6800">Follow</button>
                     </div>
-                    <div>
+                    <div id="unfollow-btn-div">
                         <button id="unfollow-btn">Following</button>
                     </div>
-                    <div>
+                    <div id="more-btn-div">
                         <button id="more-btn">More</button>
                     </div>
                 </div>
             </div>
-            <div id="profile-followers-following"></div>
         </section><!--profile details section-->
         <section id="profile-pined-post-section" class="flex f-col"></section><!--profile pined post section-->
         <section id="profile-positions-section" class="flex f-col"></section><!--profile positions section-->
@@ -1032,6 +1048,32 @@
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "none");
     });
+
+    $("#user-view-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#more-btn-div").css("display", "block")
+        $("#user-view-btn-div").css("display", "none")
+        $("#edit-details-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#more-btn").css("display", "block")
+        $("#user-view-btn").css("display", "none")
+        $("#edit-details-btn").css("display", "none")
+    });
+
+    $("#follow-btn").click(function () {
+        $("#follow-btn-div").css("display", "none")
+        $("#unfollow-btn-div").css("display", "block")
+        $("#follow-btn").css("display", "none")
+        $("#unfollow-btn").css("display", "block")
+    });
+    $("#unfollow-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#unfollow-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#unfollow-btn").css("display", "none")
+    });
+
+
 </script>
 </body>
 </html>
