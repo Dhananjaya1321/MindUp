@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="icon" href="fevicon.png">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
+    <style>
+        #user-section,
+        #notifications-section,
+        #profile-section,
+        #follow-btn,
+        #unfollow-btn,
+        #more-btn {
+            display: none;
+        }
+
+
+
+    </style>
+</head>
+<body>
+<header id="nav-bar">
+    <div class="flex f-wrap f-row">
+        <img src="fevIcon.png" width="40">
+        <div id="search-bar-div" class="flex f-row">
+            <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
+            <input id="search-bar" placeholder="Search" type="text">
+        </div>
+    </div><!--search section-->
+    <div class="flex f-wrap f-row"></div>
+    <div class="flex f-wrap f-row">
+        <menu class="flex f-wrap f-row">
+            <a href="#" id="nav-home" class="flex f-col">
+                <i class="nav-icon fa-solid fa-house"></i>
+                <li>Home</li>
+            </a>
+            <a href="#" id="nav-users" class="flex f-col">
+                <i class="nav-icon fa-solid fa-users"></i>
+                <li>Users</li>
+            </a>
+            <a href="#" id="nav-notification" class="flex f-col">
+                <i class="nav-icon fa-solid fa-bell"></i>
+                <li>Notifications</li>
+            </a>
+            <a href="#" id="nav-profile" class="flex f-col">
+                <i class="nav-icon fa-solid fa-user"></i>
+                <li>Profile</li>
+            </a>
+        </menu>
+    </div><!--Navigation section-->
+</header>
+<main class="flex">
+    <section id="home-section" class="flex f-col">
+        <section id="followed-page-section" class="flex f-col">
+            <section id="profile-summary" class="flex f-col">
+                <div id="profile-summary-cover-photo"></div><!--cover photo-->
+                <div id="profile-summary-profile-photo" class="flex">
+                    <div class="flex">
+                        <div id="profile-photo"></div>
+                    </div>
+                </div><!--profile photo-->
+                <div id="profile-summary-about">
+                    <h4 id="user-name">User Name</h4>
+                    <p id="about">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                        placeat?
+                        Amet
+                    </p>
+                </div><!--about-->
+            </section><!--user profile summary-->
+            <section id="followed-pages" class="flex f-col">
+                <h4>Pages I follow</h4>
+                <section id="page-section" class="flex f-col">
+                    <div class="page flex f-row">
+                        <div class="page-image"></div>
+                        <div class="page-details flex f-col">
+                            <h4>Page Name</h4>
+                            <p><span>11K</span> followers</p>
+                        </div>
+                    </div>
+                    <div class="page flex f-row">
+                        <div class="page-image"></div>
+                        <div class="page-details flex f-col">
+                            <h4>Page Name</h4>
+                            <p><span>11K</span> followers</p>
+                        </div>
+                    </div>
+                    <div class="page flex f-row">
+                        <div class="page-image"></div>
+                        <div class="page-details flex f-col">
+                            <h4>Page Name</h4>
+                            <p><span>11K</span> followers</p>
+                        </div>
+                    </div>
+                </section><!--pages-->
+            </section><!--pages I follow-->
+        </section><!--left side followed page section-->
+        <section id="posts-shared-section" class="flex f-col">
+            <section id="create-post-section" class="flex f-col">
+                <div id="write-post-div" class="flex f-row">
+                    <div id="profile-photo-of-create-post-section"></div><!--profile photo-->
+                    <button id="write-post-btn">Write post</button><!--text field-->
+                </div><!--write post-->
+                <div id="media-or-event-div" class="flex f-row">
+                    <button class="flex f-row"><img src="assets/images/media.png" width="50">Media</button><!--media-->
+                    <div class="vertical-line"></div>
+                    <button class="flex f-row"><img src="assets/images/event.png" width="50">Event</button><!--event-->
+                </div><!--media and events-->
+            </section><!--create post section-->
+            <div id="separate-line-post-section-and-create-post"></div>
+            <section>
+                <div class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+            </section><!--post section-->
+        </section><!--center posts shared section-->
+        <section id="recommendation-section" class="flex f-wrap f-col">
+            <section id="recommended-to-follow" class="flex f-col">
+                <h4>Recommended to follow your</h4>
+                <section id="recommended-pagesOrProfiles-section" class="flex f-col">
+                    <h4>Pages</h4>
+                    <div class="horizontal-line"></div>
+                    <div class="recommended-pagesOrProfiles flex f-row">
+                        <div class="recommended-pagesOrProfiles-image"></div>
+                        <div class="recommended-pagesOrProfiles-details flex f-col">
+                            <h4>Page Name</h4>
+                            <p><span>11K</span> followers</p>
+                            <button class="follow-btn flex f-row"><i class="fa-solid fa-plus"></i> Follow</button>
+                        </div>
+                    </div><!--recommended pages-->
+                    <div class="recommended-pagesOrProfiles flex f-row">
+                        <div class="recommended-pagesOrProfiles-image"></div>
+                        <div class="recommended-pagesOrProfiles-details flex f-col">
+                            <h4>Page Name</h4>
+                            <p><span>11K</span> followers</p>
+                            <button class="follow-btn flex f-row"><i class="fa-solid fa-plus"></i> Follow</button>
+                        </div>
+                    </div><!--recommended pages-->
+
+                    <h4>Peoples</h4>
+                    <div class="horizontal-line"></div>
+                    <div class="recommended-pagesOrProfiles flex f-row">
+                        <div class="recommended-pagesOrProfiles-image"></div>
+                        <div class="recommended-pagesOrProfiles-details flex f-col">
+                            <h4>People Name</h4>
+                            <p><span>11K</span> followers</p>
+                            <button class="follow-btn flex f-row"><i class="fa-solid fa-plus"></i> Follow</button>
+                        </div>
+                    </div><!--recommended peoples-->
+                    <div class="recommended-pagesOrProfiles flex f-row">
+                        <div class="recommended-pagesOrProfiles-image"></div>
+                        <div class="recommended-pagesOrProfiles-details flex f-col">
+                            <h4>People Name</h4>
+                            <p><span>11K</span> followers</p>
+                            <button class="follow-btn flex f-row"><i class="fa-solid fa-plus"></i> Follow</button>
+                        </div>
+                    </div><!--recommended peoples-->
+                    <div class="horizontal-line"></div>
+                    <a href="#">
+                        <h6>View all recommendations <i class="fa-solid fa-arrow-right"></i></h6>
+                    </a>
+                </section><!--pages-->
+            </section><!--pages I follow-->
+        </section><!--right side recommendations section-->
+        <div class="bottom-space"></div>
+    </section><!--home section-->
+    <section id="user-section" class="flex f-col">
+        <section id="mutual-followers-section" class="flex f-col">
+            <h2>Mutual followers</h2>
+            <section class="flex f-row f-wrap">
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+            </section>
+            <a href="#"><h4>See more</h4></a>
+        </section><!--Mutual followers section-->
+        <section id="popular-peoples-section" class="flex f-col">
+            <h2>Popular peoples to follow</h2>
+            <section class="flex f-row f-wrap">
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--user-->
+            </section>
+            <a href="#"><h4>See more</h4></a>
+        </section><!--Popular peoples to follow section-->
+        <section id="pages-section" class="flex f-col">
+            <h2>Groups you may be interested in</h2>
+            <section class="flex f-row f-wrap">
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--page-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--page-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--page-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--page-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--page-->
+                <div class="user flex f-col">
+                    <div class="user-cover-photo"></div><!--cover photo-->
+                    <div class="user-dp flex">
+                        <div class="flex">
+                            <div class="profile-photo"></div>
+                        </div>
+                    </div><!--profile photo-->
+                    <div class="user-summary flex f-col">
+                        <h4 class="user-name">User Name</h4>
+                        <p class="user-about">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nisi non obcaecati pariatur
+                            placeat?
+                            Amet
+                        </p>
+                    </div><!--about-->
+                    <div class="flex user-follow-btn-div">
+                        <button>Follow</button>
+                    </div><!--follow button-->
+                </div><!--page-->
+            </section>
+            <a href="#"><h4>See more</h4></a>
+        </section><!--Page section-->
+        <div class="bottom-space"></div>
+    </section><!--users section-->
+    <section id="notifications-section" class="flex f-col">
+        <div id="notifications-btn-bar" class="flex f-row">
+            <button>All</button>
+            <button>Followers</button>
+            <button>Reactions</button>
+        </div><!--button section-->
+        <section class="flex f-col">
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur </p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+            <div class="flex f-row notification">
+                <div class="reacted-user-dp"></div><!--dp-->
+                <div class="flex f-col notification-detail">
+                    <p><span class="posted-user-name-of-notification"><b>User Name</b></span> <span
+                            class="react-or-comment">react</span>
+                        to your post</p>
+                    <div class="flex f-row">
+                        <div class="notification-post-image"></div><!--post image of notification-->
+                        <div class="flex f-col notification-post-detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid aspernatur assumenda
+                                aut dolor eveniet, excepturi exercitationem facere fuga inventore ipsum iste laboriosam
+                                nisi</p>
+                            <small><span class="post-reaction-count-notification">15</span> Reactions | <span
+                                    class="post-comment-count-notification">1</span> Comments</small>
+                        </div>
+                    </div>
+                </div><!--notification detail-->
+                <div></div><!--time and options-->
+            </div><!--notification-->
+        </section><!--notifications-->
+        <div class="bottom-space"></div>
+    </section><!--notifications section-->
+    <section id="profile-section" class="flex f-col">
+        <section id="profile-details-section" class="flex f-col">
+            <div id="profile-cover-photo">
+                <div id="cover-img"></div>
+                <div id="upload-cover-img">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="profile-profile-photo" class="flex f-row">
+                <div id="dp">
+                    <div class="flex">
+                        <div>
+                            <div id="dp-img"></div>
+                            <div id="upload-dp-img">
+                                <button>
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="page-btn" class="flex">
+                    <button class="flex f-col">
+                        <div id="page-btn-img"></div>
+                        Create Page
+                    </button>
+                </div>
+            </div>
+            <div id="profile-details" class="flex f-col">
+                <div class="flex f-row">
+                    <h3 id="name">Isuru Dhananjaya (<span id="username">dhananjaya</span>)</h3>
+                    <img id="verify-img" src="assets/images/Verify_mark.png">
+                </div>
+                <div class="flex f-row">
+                    <img id="location-img" src="assets/images/location.png">
+                    <h3 id="location">Galle, Sri Lanka</h3>
+                </div>
+                <div class="flex f-row">
+                    <p id="headline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita illo nemo
+                        obcaecati perferendis reiciendis sed. Aliquid aut, distinctio dolorem ex facere iusto laboriosam
+                        modi non officia possimus quaerat ratione unde?</p>
+                </div>
+                <div class="flex f-row">
+                    <p id="youtube-link"><a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a></p>
+                </div>
+                <div class="flex f-row">
+                    <div id="post-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Post</h3>
+                    </div>
+                    <div class="profile-details-vertical-line vertical-line"></div>
+                    <div id="followers-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Followers</h3>
+                    </div>
+                    <div class="profile-details-vertical-line vertical-line"></div>
+                    <div id="following-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Following</h3>
+                    </div>
+                </div>
+                <div class="flex f-row">
+                    <div id="edit-details-btn-div">
+                        <button id="edit-details-btn">Edit details</button>
+                    </div>
+                    <div id="user-view-btn-div">
+                        <button id="user-view-btn" style="background-color: #ff6800;">User view</button>
+                    </div>
+                    <div id="follow-btn-div">
+                        <button id="follow-btn" style="background-color: #ff6800">Follow</button>
+                    </div>
+                    <div id="unfollow-btn-div">
+                        <button id="unfollow-btn">Following</button>
+                    </div>
+                    <div id="more-btn-div">
+                        <button id="more-btn">More</button>
+                    </div>
+                </div>
+            </div>
+        </section><!--profile details section-->
+        <section id="profile-pined-post-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Pined Post</h2>
+                <div id="pined-post-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div><!--topic and edit button-->
+            <section class="flex f-row" style="gap: 10px;">
+                <div class="post flex f-col" style="width: 350px; border: #00000033 solid 1px;">
+                    <div class="post-content">
+                        <p style="margin: 10px; font-size: 12px;">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!
+                        </p>
+                    </div><!--post content-->
+                    <div class="post-media" style="width: 100%; height: 250px;"></div>
+                    <!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                </div><!--pinned post-->
+                <div class="post flex f-col" style="width: 350px; border: #00000033 solid 1px;">
+                    <div class="post-content">
+                        <p style="margin: 10px; font-size: 12px;">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!
+                        </p>
+                    </div><!--post content-->
+                    <div class="post-media" style="width: 100%; height: 250px;"></div>
+                    <!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                </div><!--pinned post-->
+            </section>
+            <!--
+            @Samudi senevirathne
+            me pinned post section eka athule display karanne post 2i device eke width eka 740px hari ita wada adu wenawanam
+            hari display karanna one eka post ekai anith post balaganna puluwan wenne see all post button eka click karat passe
+            -->
+            <div style="margin: 10px">
+                <button style="border: none; background-color: white;">See all posts <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section><!--profile pinned post section-->
+        <section id="profile-positions-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Positions</h2>
+                <div id="positions-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <section class="flex f-col">
+                <div class="position flex f-col">
+                    <div class="flex f-row">
+                        <div class="position-page-img"></div>
+                        <div class="position-details flex f-col">
+                            <h3>Future Eye Academy</h3><!--organisation name-->
+                            <h4>CEO</h4><!--position-->
+                            <p>2022-present</p><!--time period-->
+                        </div>
+                    </div>
+                    <div class="flex f-row">
+<!--                        <div class="vertical-line"></div>-->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores dignissimos
+                            doloremque, laboriosam quibusdam quo vero voluptates. Ad incidunt iste necessitatibus. Ad
+                            amet aut esse ex fuga id ipsam odio!</p>
+                    </div><!--description-->
+                </div>
+            </section>
+        </section><!--profile positions section-->
+        <section id="profile-activity-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Activity</h2>
+                <div id="activity-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <section>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+            </section>
+            <div>
+                <button id="refresh-btn" class="flex"><i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+            <div class="bottom-space"></div>
+        </section><!--profile activity section-->
+    </section><!--profile section-->
+
+</main>
+
+<script src="assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    $("#nav-home").click(function () {
+        $("#followed-page-section").css("display", "flex");
+        $("#posts-shared-section").css("display", "flex");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
+    });
+    $("#nav-users").click(function () {
+        $("#followed-page-section").css("display", "flex");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "none");
+        $("#user-section").css("display", "flex");
+        $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
+    });
+    $("#nav-notification").click(function () {
+        $("#followed-page-section").css("display", "flex");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "none");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "flex");
+        $("#profile-section").css("display", "none");
+    });
+    $("#nav-profile").click(function () {
+        $("#profile-section").css("display", "flex");
+        $("#followed-page-section").css("display", "none");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
+    });
+
+    $("#user-view-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#more-btn-div").css("display", "block")
+        $("#user-view-btn-div").css("display", "none")
+        $("#edit-details-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#more-btn").css("display", "block")
+        $("#user-view-btn").css("display", "none")
+        $("#edit-details-btn").css("display", "none")
+    });
+
+    $("#follow-btn").click(function () {
+        $("#follow-btn-div").css("display", "none")
+        $("#unfollow-btn-div").css("display", "block")
+        $("#follow-btn").css("display", "none")
+        $("#unfollow-btn").css("display", "block")
+    });
+    $("#unfollow-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#unfollow-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#unfollow-btn").css("display", "none")
+    });
+
+
+</script>
+</body>
+</html>
