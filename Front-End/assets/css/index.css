@@ -899,6 +899,33 @@ main {
     background: white;
     color: #ff6800;
 }
+#profile-positions-section > section {
+    width: 90%;
+}
+
+.position > div {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.position > div:last-child >p{
+    padding-left: 35px;
+}
+
+.position-page-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #ff6800;
+}
+
+.position-details > h3,
+.position-details > h4,
+.position-details > p {
+    margin: 0 5px;
+    align-self: flex-start;
+}
 
 @media all and (max-width: 1077px) {
     #followed-page-section,
