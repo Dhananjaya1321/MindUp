@@ -1493,11 +1493,11 @@
         <section id="page-tab-section">
             <div class="container">
                 <div class="tabs">
-                    <input type="radio" id="radio-1" name="tabs" checked="">
+                    <input type="radio" value="home" id="radio-1" name="tabs" checked="">
                     <label class="tab" for="radio-1">Home</label>
-                    <input type="radio" id="radio-2" name="tabs">
+                    <input type="radio" value="about" id="radio-2" name="tabs">
                     <label class="tab" for="radio-2">About</label>
-                    <input type="radio" id="radio-3" name="tabs">
+                    <input type="radio" value="event" id="radio-3" name="tabs">
                     <label class="tab" for="radio-3">Event</label>
                     <span class="glider"></span>
                 </div>
@@ -1684,13 +1684,60 @@
             </div>
             <div class="bottom-space"></div>
         </section><!--page activity section-->
+        <section id="page-about-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">About</h2>
+                <div id="page-about-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <section>
+
+            </section>
+            <div class="bottom-space"></div>
+        </section><!--page about section-->
+        <section id="page-event-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Event</h2>
+                <div id="page-event-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <section>
+
+            </section>
+            <div class="bottom-space"></div>
+        </section><!--page event section-->
     </section><!--page section-->
 
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script>
+
+    $("#radio-1").click(function () {
+        $("#page-activity-section").css("display", "flex");
+        $("#page-about-section").css("display", "none");
+        $("#page-event-section").css("display", "none");
+    });
+    $("#radio-2").click(function () {
+        $("#page-activity-section").css("display", "none");
+        $("#page-about-section").css("display", "flex");
+        $("#page-event-section").css("display", "none");
+    });
+    $("#radio-3").click(function () {
+        $("#page-activity-section").css("display", "none");
+        $("#page-about-section").css("display", "none");
+        $("#page-event-section").css("display", "flex");
+    });
+
+
     $("#nav-home").click(function () {
+        $("#page-section").css("display", "none");
         $("#followed-page-section").css("display", "flex");
         $("#posts-shared-section").css("display", "flex");
         $("#recommendation-section").css("display", "flex");
@@ -1700,6 +1747,7 @@
     });
 
     $("#nav-users").click(function () {
+        $("#page-section").css("display", "none");
         $("#followed-page-section").css("display", "flex");
         $("#posts-shared-section").css("display", "none");
         $("#recommendation-section").css("display", "none");
@@ -1709,6 +1757,7 @@
     });
 
     $("#nav-notification").click(function () {
+        $("#page-section").css("display", "none");
         $("#followed-page-section").css("display", "flex");
         $("#posts-shared-section").css("display", "none");
         $("#recommendation-section").css("display", "none");
