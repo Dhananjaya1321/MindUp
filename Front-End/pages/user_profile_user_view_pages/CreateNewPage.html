@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create New Page</title>
+    <link rel="stylesheet" href="../../assets/css/CreateNewPage.css">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 <body>
+<div class="container">
+    <h1 class="title">Create New Page</h1>
+    <form id="create-page-form" action="#">
+        <div class="pageDetails">
+            <div class="input-box">
+                <span class="details">Upload Nic Image Or Licence Image</span>
+                <div id="showImg">
+                    <span id="uploadIcon" onclick="triggerUpload()"><i class="fa-solid fa-camera"></i></span>
+                </div>
+                <input type="file" id="inputField" style="display: none;" onchange="displayImage(this)">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Id </span>
+                <Input class="input" type="text" id="customerIdInput" placeholder="Enter Id Like 'C001'">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Nic </span>
+                <Input class="input" type="text" id="nicInput" placeholder="Enter Your Nic">
+            </div>
+            <h3>Location Of religious Place</h3>
+            <div class="input-box">
+                <span class="details">Customer Name </span>
+                <Input class="input" type="text" id="nameInput" placeholder="Enter Your Full Name ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Address </span>
+                <Input class="input" type="text" id="addressInput" placeholder="Enter Your Address ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Contact </span>
+                <Input class="input" type="text" id="contactInput" placeholder="Enter Your Contact number ">
+            </div>
+            <div class="button">
+                <input class="input" type="submit" value="Register">
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    function triggerUpload() {
+        document.getElementById('inputField').click();
+    }
 
+    function displayImage(input) {
+        const file = input.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imgContainer = document.getElementById('showImg');
+                imgContainer.innerHTML = `<img src="${e.target.result}" alt="Uploaded Image">`;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+s
 </body>
 </html>

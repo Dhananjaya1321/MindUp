@@ -110,9 +110,9 @@
 
             <div class="buttonPanelAdjust">
                 <button class="button">Brightness</button>
-                <button class="button">Brightness</button>
-                <button class="button">Brightness</button>
-                <button class="button">Brightness</button>
+                <button class="button">Contrast</button>
+                <button class="button">Saturation</button>
+                <button class="button">Vignette</button>
 
 
             </div>
@@ -129,11 +129,9 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </div>
 <script>
-    // Initialize the crop section as active
     document.getElementById('cropSection').style.display = 'block';
 
     function toggleSection(sectionId, clickedButton) {
-        // Get all section elements
         const sections = document.querySelectorAll('.cropSection, .filterSection, .adjustSection');
 
         // Hide all sections
