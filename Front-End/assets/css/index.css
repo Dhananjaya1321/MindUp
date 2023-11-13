@@ -1013,7 +1013,14 @@ main {
     width: 100%;
 }
 
-
+#page-about-section>section>div{
+    width: 100%;
+}
+#page-about-section>section>div>h3,
+#page-about-section>section>div>p{
+    margin: 0;
+    margin-bottom: 5px;
+}
 
 @media all and (max-width: 1077px) {
     #followed-page-section,
