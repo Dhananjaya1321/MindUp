@@ -49,7 +49,7 @@ li {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 500;
     height: 54px;
     width: 100%;
     display: flex;
@@ -700,7 +700,7 @@ main {
     background-color: white;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
     justify-content: flex-start; /*-------------------------*/
 }
 
@@ -975,6 +975,39 @@ main {
     margin: 0 5px;
     align-self: flex-start;
 }
+#employees-display-div {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.verified-employee {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 5px;
+    background-color: #ff6800;
+}
+
+#company-img-div {
+    gap: 5px;
+    width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.company-img {
+    width: 150px;
+    height: 150px;
+    background-color: #ff6800;
+    border-radius: 10px;
+}
+
+
+#page-tab-section {
+    width: 100%;
+}
+
+
 
 @media all and (max-width: 1077px) {
     #followed-page-section,

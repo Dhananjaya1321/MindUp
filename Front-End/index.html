@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/tab-bar.css">
     <style>
         #user-section,
         #notifications-section,
@@ -22,18 +23,7 @@
             display: none;
         }
 
-        #employees-display-div {
-            width: 100%;
-            justify-content: flex-start;
-        }
 
-        .verified-employee {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            margin-right: 5px;
-            background-color: #ff6800;
-        }
     </style>
 </head>
 <body>
@@ -1389,8 +1379,20 @@
                         <div class="verified-employee"></div>
                     </div>
                 </div>
+                <div class="flex f-col">
+                    <div id="company-img-div" class="flex f-row f-wrap">
+                        <div id="company-img-1" class="company-img"></div>
+                        <div id="company-img-2" class="company-img"></div>
+                        <div id="company-img-3" class="company-img"></div>
+                        <div id="company-img-4" class="company-img"></div>
+                        <div id="company-img-5" class="company-img"></div>
+                        <div id="company-img-6" class="company-img"></div>
+                        <div id="company-img-7" class="company-img"></div>
+                        <div id="company-img-8" class="company-img"></div>
+                    </div>
+                </div>
             </div>
-        </section><!--profile details section-->
+        </section><!--page details section-->
         <section id="page-pined-post-section" class="flex f-col">
             <div class="flex f-row">
                 <h2 class="topics">Pined Post</h2>
@@ -1459,7 +1461,7 @@
                 <button style="border: none; background-color: white;">See all posts <i
                         class="fa-solid fa-arrow-right"></i></button>
             </div>
-        </section><!--profile pinned post section-->
+        </section><!--page pinned post section-->
         <!-- <section id="page-positions-section" class="flex f-col">
              <div class="flex f-row">
                  <h2 class="topics">Positions</h2>
@@ -1488,6 +1490,19 @@
                  </div>
              </section>
          </section>profile positions section-->
+        <section id="page-tab-section">
+            <div class="container">
+                <div class="tabs">
+                    <input type="radio" id="radio-1" name="tabs" checked="">
+                    <label class="tab" for="radio-1">Home</label>
+                    <input type="radio" id="radio-2" name="tabs">
+                    <label class="tab" for="radio-2">About</label>
+                    <input type="radio" id="radio-3" name="tabs">
+                    <label class="tab" for="radio-3">Event</label>
+                    <span class="glider"></span>
+                </div>
+            </div>
+        </section><!--tab section-->
         <section id="page-activity-section" class="flex f-col">
             <div class="flex f-row">
                 <h2 class="topics">Activity</h2>
@@ -1668,7 +1683,7 @@
                 <button id="page-refresh-btn" class="flex"><i class="fa-solid fa-rotate-right"></i></button>
             </div>
             <div class="bottom-space"></div>
-        </section><!--profile activity section-->
+        </section><!--page activity section-->
     </section><!--page section-->
 
 </main>
