@@ -694,6 +694,8 @@ main {
 #page-details-section,
 #page-pined-post-section,
 #page-positions-section,
+#page-about-section,
+#page-event-section,
 #page-activity-section {
     width: 100%;
     height: max-content;
@@ -908,6 +910,8 @@ main {
 }
 
 #page-pined-post-section > div:first-child,
+#page-about-section > div:first-child,
+#page-event-section > div:first-child,
 #page-positions-section > div:first-child,
 #page-activity-section > div:first-child,
 #profile-pined-post-section > div:first-child,
@@ -916,6 +920,8 @@ main {
     width: 90%;
 }
 
+#page-about-edit-btn > button,
+#page-event-edit-btn > button,
 #page-pined-post-edit-btn > button,
 #page-positions-edit-btn > button,
 #page-activity-edit-btn > button,
@@ -991,7 +997,7 @@ main {
 #company-img-div {
     gap: 5px;
     width: 100%;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
     margin-bottom: 10px;
 }
 
