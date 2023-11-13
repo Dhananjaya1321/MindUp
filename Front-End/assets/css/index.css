@@ -1,5 +1,5 @@
 body {
-    background-color: #EEEEEE;
+    background-color: #EEEEEE !important;
 }
 
 .flex {
@@ -210,10 +210,11 @@ main {
     align-items: flex-start;
 }
 
-.page-details > h4, .page-details > p{
+.page-details > h4, .page-details > p {
     margin: 0;
     align-self: self-start;
 }
+
 .page-details > p {
     font-size: 13px;
     color: #808080;
@@ -310,25 +311,28 @@ main {
 
 /*============================================= center section =====================================================*/
 /*=========================================== create post section ==================================================*/
-#posts-shared-section{
+#posts-shared-section {
     width: 540px;
     /*height: 500px;*/
     position: relative;
     /* background-color: black; */
     top: 20px;
 }
-#create-post-section{
-   /* position: absolute;
-    top: 20px;*/
+
+#create-post-section {
+    /* position: absolute;
+     top: 20px;*/
     width: 520px;
     height: max-content;
     background-color: white;
     border-radius: 10px;
 }
-#write-post-div{
+
+#write-post-div {
     width: 100%;
 }
-#write-post-btn{
+
+#write-post-btn {
     margin: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -344,7 +348,7 @@ main {
     padding-left: 15px;
 }
 
-#profile-photo-of-create-post-section{
+#profile-photo-of-create-post-section {
     width: 60px;
     height: 60px;
     border-radius: 8px;
@@ -353,10 +357,12 @@ main {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#media-or-event-div{
+
+#media-or-event-div {
     width: 100%;
 }
-#media-or-event-div>button{
+
+#media-or-event-div > button {
     gap: 15px;
     font-size: 22px;
     border: none;
@@ -365,7 +371,8 @@ main {
     border-radius: 10px;
     margin-bottom: 10px;
 }
-.vertical-line{
+
+.vertical-line {
     background-color: #EEEEEE;
     width: 2px;
     height: 50px;
@@ -405,11 +412,12 @@ main {
     /*margin-bottom: 20px;*/
 }
 
-.user-or-page-details  {
+.user-or-page-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .user-or-page-details > h3, .user-or-page-details > p {
     margin-top: 2px;
     margin-bottom: 2px;
@@ -475,7 +483,8 @@ main {
 .other-reacted-users > small > a {
     color: black;
 }
-.post>.horizontal-line{
+
+.post > .horizontal-line {
     margin: 0;
 }
 
@@ -492,16 +501,16 @@ main {
     border-radius: 10px;
 }
 
-#mutual-followers-section,#popular-peoples-section,#pages-section {
+#mutual-followers-section, #popular-peoples-section, #pages-section {
     height: max-content;
     width: 100%;
 }
 
-#mutual-followers-section > section,#popular-peoples-section>section,#pages-section>section {
+#mutual-followers-section > section, #popular-peoples-section > section, #pages-section > section {
     gap: 30px;
 }
 
-#mutual-followers-section > h2,#popular-peoples-section>h2,#pages-section>h2 {
+#mutual-followers-section > h2, #popular-peoples-section > h2, #pages-section > h2 {
     margin: 20px;
     align-self: flex-start;
 }
@@ -567,6 +576,7 @@ main {
     height: 32px;
     background-color: white;
 }
+
 /*============================================= Notification section =====================================================*/
 
 #notifications-section {
@@ -662,6 +672,261 @@ main {
     font-size: 12px;
 }
 
+/*======================================================= profile section ============================================*/
+#profile-section {
+    width: 800px;
+    top: 20px;
+    position: relative;
+    height: max-content;
+    /*background-color: white;*/
+    left: -120px;
+    border-radius: 10px;
+    display: flex;
+}
+
+
+#profile-details-section,
+#profile-pined-post-section,
+#profile-positions-section,
+#profile-activity-section {
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+    justify-content: flex-start; /*-------------------------*/
+}
+
+#profile-cover-photo {
+    position: relative;
+    height: 200px;
+    background-color: #ff6800;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+#cover-img {
+    width: 100%;
+    height: 100%;
+}
+
+#upload-cover-img {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    /*z-index: 1;*/
+}
+
+#upload-cover-img > button {
+    border-radius: 100%;
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff6800;
+    color: #ff6800;
+}
+
+#profile-profile-photo {
+    height: 70px;
+    width: 100%;
+}
+
+#dp {
+    width: 70%;
+    height: 100%;
+    background-color: white;
+}
+
+#dp > div {
+    width: 175px;
+    height: 175px;
+    background-color: white;
+    position: relative;
+    top: -106px;
+    left: 60px;
+    border-radius: 15px;
+}
+
+#dp > div > div {
+    width: 165px;
+    height: 165px;
+    background-color: #ff6800;
+    border-radius: 12px;
+}
+
+#dp-img {
+    width: 100%;
+    height: 100%;
+}
+
+#upload-dp-img {
+    position: absolute;
+    bottom: -7px;
+    right: -7px;
+}
+
+#upload-dp-img > button {
+    border-radius: 100%;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff6800;
+    color: #ff6800;
+}
+
+#page-btn {
+    width: 30%;
+}
+
+#page-btn > button {
+    border: none;
+    width: 200px;
+    gap: 10px;
+    height: 54px;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px -8px #0000006b;
+    border-radius: 10px;
+    flex-direction: row;
+    position: relative;
+    background-color: white;
+    right: -10px;
+}
+
+#page-btn-img {
+    width: 44px;
+    display: flex;
+    height: 44px;
+    background-color: brown;
+    justify-content: flex-start;
+    position: absolute;
+    left: 5px;
+    border-radius: 5px;
+}
+
+#profile-details {
+    width: 90%;
+    gap: 8px;
+    display: flex;
+    align-items: flex-start;
+}
+
+#name,
+#location,
+#headline,
+#youtube-link,
+#followers-count > h3,
+#following-count > h3,
+#post-count > h3 {
+    margin: 0;
+}
+
+#location {
+    margin-left: 10px;
+}
+
+#youtube-link > a {
+    color: #FF8100;
+}
+
+.profile-details-vertical-line {
+    margin: 0 15px;
+    background-color: #00000033;
+    width: 1px;
+    height: 30px;
+}
+
+#profile-details > div:last-child > div {
+    margin-right: 10px;
+}
+
+#edit-details-btn,
+#user-view-btn,
+#follow-btn,
+#unfollow-btn,
+#more-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #ff6800;
+    background-color: white;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.topics {
+    align-self: flex-start;
+    position: relative;
+    flex-grow: 1;
+}
+
+#profile-pined-post-section>div:first-child,
+#profile-positions-section>div:first-child,
+#profile-activity-section>div:first-child{
+    width: 90%;
+}
+
+#pined-post-edit-btn>button,
+#positions-edit-btn>button,
+#activity-edit-btn>button{
+    border-radius: 100%;
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff6800;
+    color: #ff6800;
+}
+
+.bottom-space {
+    width: 100%;
+    height: 60px;
+}
+
+#refresh-btn {
+    border: 1px solid #ff6800;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: #ff6800;
+}
+#profile-positions-section > section {
+    width: 90%;
+}
+
+.position > div {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.position > div:last-child >p{
+    padding-left: 35px;
+}
+
+.position-page-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #ff6800;
+}
+
+.position-details > h3,
+.position-details > h4,
+.position-details > p {
+    margin: 0 5px;
+    align-self: flex-start;
+}
+
 @media all and (max-width: 1077px) {
     #followed-page-section,
     #recommended-to-follow {
@@ -669,6 +934,10 @@ main {
     }
 
     #notifications-section, #user-section {
+        left: unset;
+    }
+
+    #profile-section {
         left: unset;
     }
 }
@@ -679,7 +948,8 @@ main {
     }
 
     #notifications-section,
-    #user-section {
+    #user-section,
+    #profile-section {
         width: 700px;
     }
 
@@ -701,6 +971,13 @@ main {
         font-size: 12px;
     }
 
+    #dp {
+        width: 65%;
+    }
+
+    #page-btn {
+        width: 35%;
+    }
 }
 
 @media all and (max-width: 740px) {
@@ -728,7 +1005,8 @@ main {
     }
 
     #notifications-section,
-    #user-section {
+    #user-section,
+    #profile-section {
         width: 500px;
     }
 
@@ -752,11 +1030,54 @@ main {
     #mutual-followers-section > section {
         gap: 15px;
     }
+
+    #dp {
+        width: 50%;
+    }
+
+    #page-btn {
+        width: 50%;
+    }
+
+    #profile-activity-section>section>div{
+        width: 480px;
+    }
+
+    #profile-activity-section>section>div>.post-media{
+        width: 100%;
+    }
+
 }
 
 @media all and (max-width: 550px) {
     #user-section,
     #notifications-section {
+        width: 100%;
+        border-radius: 0;
+        top: 0;
+    }
+
+    #profile-cover-photo {
+        border-radius: 0;
+    }
+
+    #dp > div {
+        width: 130px;
+        height: 130px;
+        top: -65px;
+        left: 60px;
+    }
+
+    #profile-cover-photo {
+        height: 120px;
+    }
+
+    #dp > div > div {
+        width: 125px;
+        height: 125px;
+    }
+
+    #profile-section {
         width: 100%;
         border-radius: 0;
         top: 0;
@@ -773,10 +1094,13 @@ main {
     .post,
     .post-media,
     #posts-shared-section {
-        width: 100%;
+        width: 100% !important;
     }
 
-    #posts-shared-section > section {
+    #posts-shared-section > section ,
+    #profile-activity-section>section,
+    #profile-pined-post-section>section
+    {
         width: 90%;
     }
 
@@ -834,6 +1158,11 @@ main {
     .vertical-line {
         height: 40px;
     }
+
+    #page-btn > button {
+        width: 177px;
+        padding-left: 25px;
+    }
 }
 
 @media all and (max-width: 425px) {
@@ -876,4 +1205,38 @@ main {
     .heart-react {
         font-size: 30px;
     }
+
+    #page-btn > button {
+        width: 130px;
+        padding-left: 49px;
+    }
+
+    #dp > div {
+        left: 30px;
+    }
+
+    #profile-details > div:nth-child(5),
+    #profile-details > div:nth-child(6) {
+        align-self: center;
+    }
+
+    #unfollow-btn-div,
+    #follow-btn-div,
+    #more-btn-div {
+        display: none;
+    }
+}
+
+/*=========================================================Create Page=============================================*/
+#addBtn{
+    position: relative;
+    right: 0;
+    left: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    color: white;
+    width:32%;
+    height:50%;
+    background: orange;
 }

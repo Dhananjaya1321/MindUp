@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="icon" href="fevIcon.png">
+    <link rel="icon" href="fevicon.png">
     <meta name="viewport" content="width=device-width initial-scale=1">
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/boostrap/bootstrap.min.css">
+
     <style>
+        #user-section,
+        #notifications-section,
+        #profile-section,
+        #follow-btn,
+        #unfollow-btn,
+        #more-btn {
+            display: none;
+        }
+
+
 
     </style>
 </head>
@@ -44,7 +56,7 @@
     </div><!--Navigation section-->
 </header>
 <main class="flex">
-    <section id="home-section" class="flex">
+    <section id="home-section" class="flex f-col">
         <section id="followed-page-section" class="flex f-col">
             <section id="profile-summary" class="flex f-col">
                 <div id="profile-summary-cover-photo"></div><!--cover photo-->
@@ -269,7 +281,6 @@
                     </div><!--heart reaction button here-->
                 </div>
             </section><!--post section-->
-
         </section><!--center posts shared section-->
         <section id="recommendation-section" class="flex f-wrap f-col">
             <section id="recommended-to-follow" class="flex f-col">
@@ -319,6 +330,7 @@
                 </section><!--pages-->
             </section><!--pages I follow-->
         </section><!--right side recommendations section-->
+        <div class="bottom-space"></div>
     </section><!--home section-->
     <section id="user-section" class="flex f-col">
         <section id="mutual-followers-section" class="flex f-col">
@@ -681,6 +693,7 @@
             </section>
             <a href="#"><h4>See more</h4></a>
         </section><!--Page section-->
+        <div class="bottom-space"></div>
     </section><!--users section-->
     <section id="notifications-section" class="flex f-col">
         <div id="notifications-btn-bar" class="flex f-row">
@@ -916,23 +929,438 @@
                 <div></div><!--time and options-->
             </div><!--notification-->
         </section><!--notifications-->
+        <div class="bottom-space"></div>
     </section><!--notifications section-->
+    <section id="profile-section" class="flex f-col">
+        <section id="profile-details-section" class="flex f-col">
+            <div id="profile-cover-photo">
+                <div id="cover-img"></div>
+                <div id="upload-cover-img">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="profile-profile-photo" class="flex f-row">
+                <div id="dp">
+                    <div class="flex">
+                        <div>
+                            <div id="dp-img"></div>
+                            <div id="upload-dp-img">
+                                <button>
+                                    <i class="fa-solid fa-pen"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="page-btn" class="flex">
+                    <button class="flex f-col" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div id="page-btn-img"></div>
+                        Create Page
+                    </button>
+                </div>
+            </div>
+
+                    <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg form">
+                            <div class="modal-content form">
+                                <div class="modal-header form">
+                                    <h3 class="modal-title form" id="exampleModalLabel" style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto">Create New Page</h3>
+                                    <button type="button" class="btn-close form" data-bs-dismiss="modal" aria-label="Close" style="margin: 0 0 0 0"></button>
+                                </div>
+                                <div class="modal-body form">
+                                    <section class="container form">
+
+                                        <div class="input-group mb-3 form" style="height: 150px;border: 1px solid lightgray;border-radius: 10px">
+                                            <input type="file" class="form-control form" id="inputGroupFile" style="display: none;width: 10px">
+                                            <label class="input-group-text form" for="inputGroupFile" style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto; background: white;border-color: #FFFFFF;color: orange;padding: 0 0 0 0 ">Upload Image</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3 form" style= "height:150px; border: 1px solid lightgray;border-radius: 10px">
+                                           <img class="input-group mb-3 form" src="" id="Page_Image_Show" alt="Selected Image" style= "height:150px;width:100%;padding: 0 0 0 0 ">
+                                        </div>
+
+                                        <div class="form-floating mb-3 form">
+                                            <input type="text" class="form-control form" id="religiousPlaceName" placeholder="">
+                                            <label class="form" for="religiousPlaceName">Religious Place Name</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3 form">
+                                            <input type="tel" class="form-control form" id="contactNumber" placeholder="">
+                                            <label class="form" for="contactNumber">Contact Number</label>
+                                        </div>
+
+                                        <h4 class="form" style="width: 30%;margin-left: 35%; margin-right: 35%;">Location of religious position</h4>
+
+                                        <div class="form-floating mb-3 form">
+                                            <input type="text" class="form-control form" id="countyId" placeholder="">
+                                            <label class="form" for="countyId">County</label>
+                                        </div>
+
+                                        <div class="form-floating mb-3 form">
+                                            <input type="text" class="form-control form" id="provinceId" placeholder="">
+                                            <label class="form" for="provinceId">Province</label>
+                                        </div>
+
+                                        <div class="mb-3 form">
+                                            <label for="descriptionId" class="col-form-label form">Description</label>
+                                            <textarea class="form-control form" id="descriptionId"></textarea>
+                                        </div>
+
+                                    </section>
+                                </div>
+                                <div class="modal-footer form">
+                                    <button id="addBtn" type="button" class="btn form">Create page</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            <div id="profile-details" class="flex f-col">
+                <div class="flex f-row">
+                    <h3 id="name">Isuru Dhananjaya (<span id="username">dhananjaya</span>)</h3>
+                    <img id="verify-img" src="assets/images/Verify_mark.png">
+                </div>
+                <div class="flex f-row">
+                    <img id="location-img" src="assets/images/location.png">
+                    <h3 id="location">Galle, Sri Lanka</h3>
+                </div>
+                <div class="flex f-row">
+                    <p id="headline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita illo nemo
+                        obcaecati perferendis reiciendis sed. Aliquid aut, distinctio dolorem ex facere iusto laboriosam
+                        modi non officia possimus quaerat ratione unde?</p>
+                </div>
+                <div class="flex f-row">
+                    <p id="youtube-link"><a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a></p>
+                </div>
+                <div class="flex f-row">
+                    <div id="post-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Post</h3>
+                    </div>
+                    <div class="profile-details-vertical-line vertical-line"></div>
+                    <div id="followers-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Followers</h3>
+                    </div>
+                    <div class="profile-details-vertical-line vertical-line"></div>
+                    <div id="following-count" class="flex f-col">
+                        <h3>100</h3>
+                        <h3>Following</h3>
+                    </div>
+                </div>
+                <div class="flex f-row">
+                    <div id="edit-details-btn-div">
+                        <button id="edit-details-btn">Edit details</button>
+                    </div>
+                    <div id="user-view-btn-div">
+                        <button id="user-view-btn" style="background-color: #ff6800;">User view</button>
+                    </div>
+                    <div id="follow-btn-div">
+                        <button id="follow-btn" style="background-color: #ff6800">Follow</button>
+                    </div>
+                    <div id="unfollow-btn-div">
+                        <button id="unfollow-btn">Following</button>
+                    </div>
+                    <div id="more-btn-div">
+                        <button id="more-btn">More</button>
+                    </div>
+                </div>
+            </div>
+        </section><!--profile details section-->
+        <section id="profile-pined-post-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Pined Post</h2>
+                <div id="pined-post-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div><!--topic and edit button-->
+            <section class="flex f-row" style="gap: 10px;">
+                <div class="post flex f-col" style="width: 350px; border: #00000033 solid 1px;">
+                    <div class="post-content">
+                        <p style="margin: 10px; font-size: 12px;">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!
+                        </p>
+                    </div><!--post content-->
+                    <div class="post-media" style="width: 100%; height: 250px;"></div>
+                    <!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                </div><!--pinned post-->
+                <div class="post flex f-col" style="width: 350px; border: #00000033 solid 1px;">
+                    <div class="post-content">
+                        <p style="margin: 10px; font-size: 12px;">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!
+                        </p>
+                    </div><!--post content-->
+                    <div class="post-media" style="width: 100%; height: 250px;"></div>
+                    <!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                </div><!--pinned post-->
+            </section>
+            <!--
+            @Samudi senevirathne
+            me pinned post section eka athule display karanne post 2i device eke width eka 740px hari ita wada adu wenawanam
+            hari display karanna one eka post ekai anith post balaganna puluwan wenne see all post button eka click karat passe
+            -->
+            <div style="margin: 10px">
+                <button style="border: none; background-color: white;">See all posts <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section><!--profile pinned post section-->
+        <section id="profile-positions-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Positions</h2>
+                <div id="positions-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <section class="flex f-col">
+                <div class="position flex f-col">
+                    <div class="flex f-row">
+                        <div class="position-page-img"></div>
+                        <div class="position-details flex f-col">
+                            <h3>Future Eye Academy</h3><!--organisation name-->
+                            <h4>CEO</h4><!--position-->
+                            <p>2022-present</p><!--time period-->
+                        </div>
+                    </div>
+                    <div class="flex f-row">
+<!--                        <div class="vertical-line"></div>-->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores dignissimos
+                            doloremque, laboriosam quibusdam quo vero voluptates. Ad incidunt iste necessitatibus. Ad
+                            amet aut esse ex fuga id ipsam odio!</p>
+                    </div><!--description-->
+                </div>
+            </section>
+        </section><!--profile positions section-->
+        <section id="profile-activity-section" class="flex f-col">
+            <div class="flex f-row">
+                <h2 class="topics">Activity</h2>
+                <div id="activity-edit-btn">
+                    <button>
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                </div>
+            </div>
+            <section>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+                <div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+                </div>
+            </section>
+            <div>
+                <button id="refresh-btn" class="flex"><i class="fa-solid fa-rotate-right"></i></button>
+            </div>
+            <div class="bottom-space"></div>
+        </section><!--profile activity section-->
+    </section><!--profile section-->
+
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
+<script src="assets/js/boostrap/bootstrap.min.js"></script>
 <script>
-    $("#followed-page-section").css("display", "flex");
-    $("#posts-shared-section").css("display", "flex");
-    $("#recommendation-section").css("display", "flex");
-    $("#user-section").css("display", "none");
-    $("#notifications-section").css("display", "none");
-
     $("#nav-home").click(function () {
         $("#followed-page-section").css("display", "flex");
         $("#posts-shared-section").css("display", "flex");
         $("#recommendation-section").css("display", "flex");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
     });
     $("#nav-users").click(function () {
         $("#followed-page-section").css("display", "flex");
@@ -940,6 +1368,7 @@
         $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "flex");
         $("#notifications-section").css("display", "none");
+        $("#profile-section").css("display", "none");
     });
     $("#nav-notification").click(function () {
         $("#followed-page-section").css("display", "flex");
@@ -947,7 +1376,56 @@
         $("#recommendation-section").css("display", "none");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "flex");
+        $("#profile-section").css("display", "none");
     });
+    $("#nav-profile").click(function () {
+        $("#profile-section").css("display", "flex");
+        $("#followed-page-section").css("display", "none");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
+    });
+
+    $("#user-view-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#more-btn-div").css("display", "block")
+        $("#user-view-btn-div").css("display", "none")
+        $("#edit-details-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#more-btn").css("display", "block")
+        $("#user-view-btn").css("display", "none")
+        $("#edit-details-btn").css("display", "none")
+    });
+
+    $("#follow-btn").click(function () {
+        $("#follow-btn-div").css("display", "none")
+        $("#unfollow-btn-div").css("display", "block")
+        $("#follow-btn").css("display", "none")
+        $("#unfollow-btn").css("display", "block")
+    });
+    $("#unfollow-btn").click(function () {
+        $("#follow-btn-div").css("display", "block")
+        $("#unfollow-btn-div").css("display", "none")
+        $("#follow-btn").css("display", "block")
+        $("#unfollow-btn").css("display", "none")
+    });
+
+    /*================Create Page Image Show Part=================*/
+    PageImageShow();
+    function PageImageShow() {
+        $(document).ready(function () {
+            $("#inputGroupFile").on("change", function () {
+                const files = this.files;
+                if (files.length > 0) {
+                    $("#Page_Image_Show").attr("src", URL.createObjectURL(files[0]));
+                }
+            });
+        });
+    }
+
+
+
 </script>
 </body>
 </html>
