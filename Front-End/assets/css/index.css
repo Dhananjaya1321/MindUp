@@ -1,5 +1,5 @@
 body {
-    background-color: #EEEEEE;
+    background-color: #EEEEEE !important;
 }
 
 .flex {
@@ -1225,4 +1225,18 @@ main {
     #more-btn-div {
         display: none;
     }
+}
+
+/*=========================================================Create Page=============================================*/
+#addBtn{
+    position: relative;
+    right: 0;
+    left: 0;
+    top:0;
+    bottom: 0;
+    margin: auto;
+    color: white;
+    width:32%;
+    height:50%;
+    background: orange;
 }
