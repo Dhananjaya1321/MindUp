@@ -48,7 +48,8 @@ li {
 #nav-bar {
     position: fixed;
     top: 0;
-    z-index: 1;
+    left: 0;
+    z-index: 500;
     height: 54px;
     width: 100%;
     display: flex;
@@ -184,7 +185,7 @@ main {
     margin-bottom: 10px;
 }
 
-#page-section {
+#home-page-section {
     width: 100%;
 }
 
@@ -673,7 +674,8 @@ main {
 }
 
 /*======================================================= profile section ============================================*/
-#profile-section {
+#profile-section,
+#page-section {
     width: 800px;
     top: 20px;
     position: relative;
@@ -688,17 +690,24 @@ main {
 #profile-details-section,
 #profile-pined-post-section,
 #profile-positions-section,
-#profile-activity-section {
+#profile-activity-section,
+#page-details-section,
+#page-pined-post-section,
+#page-positions-section,
+#page-about-section,
+#page-event-section,
+#page-activity-section {
     width: 100%;
     height: max-content;
     background-color: white;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
     justify-content: flex-start; /*-------------------------*/
 }
 
-#profile-cover-photo {
+#profile-cover-photo,
+#page-cover-photo {
     position: relative;
     height: 200px;
     background-color: #ff6800;
@@ -706,19 +715,22 @@ main {
     border-radius: 10px 10px 0 0;
 }
 
-#cover-img {
+#cover-img,
+#page-cover-img {
     width: 100%;
     height: 100%;
 }
 
-#upload-cover-img {
+#upload-cover-img,
+#page-upload-cover-img {
     position: absolute;
     right: 5px;
     bottom: 5px;
     /*z-index: 1;*/
 }
 
-#upload-cover-img > button {
+#upload-cover-img > button,
+#page-upload-cover-img > button {
     border-radius: 100%;
     background-color: white;
     width: 40px;
@@ -730,18 +742,20 @@ main {
     color: #ff6800;
 }
 
-#profile-profile-photo {
+#profile-profile-photo,
+#page-profile-photo {
     height: 70px;
     width: 100%;
 }
 
-#dp {
+#dp, #page-dp {
     width: 70%;
     height: 100%;
     background-color: white;
 }
 
-#dp > div {
+#dp > div,
+#page-dp > div {
     width: 175px;
     height: 175px;
     background-color: white;
@@ -751,24 +765,26 @@ main {
     border-radius: 15px;
 }
 
-#dp > div > div {
+#dp > div > div,
+#page-dp > div > div {
     width: 165px;
     height: 165px;
     background-color: #ff6800;
     border-radius: 12px;
 }
 
-#dp-img {
+#dp-img, #page-dp-img {
     width: 100%;
     height: 100%;
 }
 
-#upload-dp-img {
+#upload-dp-img, #page-upload-dp-img {
     position: absolute;
     bottom: -7px;
     right: -7px;
 }
 
+#page-upload-dp-img > button,
 #upload-dp-img > button {
     border-radius: 100%;
     background-color: white;
@@ -781,7 +797,7 @@ main {
     color: #ff6800;
 }
 
-#page-btn {
+#page-btn, #page-dp-left-div {
     width: 30%;
 }
 
@@ -810,28 +826,43 @@ main {
     border-radius: 5px;
 }
 
-#profile-details {
+#profile-details,
+#page-details {
     width: 90%;
     gap: 8px;
     display: flex;
     align-items: flex-start;
 }
 
+#page-name,
 #name,
 #location,
+#page-location,
 #headline,
+#page-headline,
 #youtube-link,
+#page-youtube-link,
 #followers-count > h3,
+#page-followers-count > h3,
 #following-count > h3,
-#post-count > h3 {
+#page-following-count > h3,
+#post-count > h3,
+#page-employees-count > h3 {
     margin: 0;
 }
 
+#page-details>div:nth-child(7)>h4{
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+#page-location,
 #location {
     margin-left: 10px;
 }
 
-#youtube-link > a {
+#youtube-link > a,
+#page-youtube-link > a {
     color: #FF8100;
 }
 
@@ -842,14 +873,20 @@ main {
     height: 30px;
 }
 
+#page-details > div:nth-child(6) > div,
 #profile-details > div:last-child > div {
     margin-right: 10px;
 }
 
 #edit-details-btn,
+#page-edit-details-btn,
 #user-view-btn,
+#page-to-profile-btn,
 #follow-btn,
+#page-follow-btn,
 #unfollow-btn,
+#page-unfollow-btn,
+#page-more-btn,
 #more-btn {
     width: 100px;
     height: 40px;
@@ -859,22 +896,38 @@ main {
     margin-bottom: 10px;
     font-weight: bold;
 }
-
+#page-to-profile-btn,
+#page-edit-details-btn,
+#page-unfollow-btn,
+#page-more-btn,
+#page-follow-btn{
+    margin-bottom: 0;
+}
 .topics {
     align-self: flex-start;
     position: relative;
     flex-grow: 1;
 }
 
-#profile-pined-post-section>div:first-child,
-#profile-positions-section>div:first-child,
-#profile-activity-section>div:first-child{
+#page-pined-post-section > div:first-child,
+#page-about-section > div:first-child,
+#page-event-section > div:first-child,
+#page-positions-section > div:first-child,
+#page-activity-section > div:first-child,
+#profile-pined-post-section > div:first-child,
+#profile-positions-section > div:first-child,
+#profile-activity-section > div:first-child {
     width: 90%;
 }
 
-#pined-post-edit-btn>button,
-#positions-edit-btn>button,
-#activity-edit-btn>button{
+#page-about-edit-btn > button,
+#page-event-edit-btn > button,
+#page-pined-post-edit-btn > button,
+#page-positions-edit-btn > button,
+#page-activity-edit-btn > button,
+#pined-post-edit-btn > button,
+#positions-edit-btn > button,
+#activity-edit-btn > button {
     border-radius: 100%;
     background-color: white;
     width: 35px;
@@ -891,7 +944,7 @@ main {
     height: 60px;
 }
 
-#refresh-btn {
+#refresh-btn, #page-refresh-btn {
     border: 1px solid #ff6800;
     border-radius: 100%;
     width: 40px;
@@ -899,6 +952,7 @@ main {
     background: white;
     color: #ff6800;
 }
+
 #profile-positions-section > section {
     width: 90%;
 }
@@ -909,7 +963,8 @@ main {
     display: flex;
     justify-content: flex-start;
 }
-.position > div:last-child >p{
+
+.position > div:last-child > p {
     padding-left: 35px;
 }
 
@@ -926,6 +981,46 @@ main {
     margin: 0 5px;
     align-self: flex-start;
 }
+#employees-display-div {
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.verified-employee {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 5px;
+    background-color: #ff6800;
+}
+
+#company-img-div {
+    gap: 5px;
+    width: 100%;
+    /*justify-content: flex-start;*/
+    margin-bottom: 10px;
+}
+
+.company-img {
+    width: 150px;
+    height: 150px;
+    background-color: #ff6800;
+    border-radius: 10px;
+}
+
+
+#page-tab-section {
+    width: 100%;
+}
+
+#page-about-section>section>div{
+    width: 100%;
+}
+#page-about-section>section>div>h3,
+#page-about-section>section>div>p{
+    margin: 0;
+    margin-bottom: 5px;
+}
 
 @media all and (max-width: 1077px) {
     #followed-page-section,
@@ -937,7 +1032,8 @@ main {
         left: unset;
     }
 
-    #profile-section {
+    #profile-section,
+    #page-section {
         left: unset;
     }
 }
@@ -949,7 +1045,8 @@ main {
 
     #notifications-section,
     #user-section,
-    #profile-section {
+    #profile-section,
+    #page-section {
         width: 700px;
     }
 
@@ -971,11 +1068,11 @@ main {
         font-size: 12px;
     }
 
-    #dp {
+    #dp, #page-dp {
         width: 65%;
     }
 
-    #page-btn {
+    #page-btn, #page-dp-left-div {
         width: 35%;
     }
 }
@@ -1006,7 +1103,8 @@ main {
 
     #notifications-section,
     #user-section,
-    #profile-section {
+    #profile-section,
+    #page-section {
         width: 500px;
     }
 
@@ -1031,19 +1129,21 @@ main {
         gap: 15px;
     }
 
-    #dp {
+    #dp, #page-dp {
         width: 50%;
     }
 
-    #page-btn {
+    #page-btn, #page-dp-left-div {
         width: 50%;
     }
 
-    #profile-activity-section>section>div{
+    #page-activity-section > section > div,
+    #profile-activity-section > section > div {
         width: 480px;
     }
 
-    #profile-activity-section>section>div>.post-media{
+    #page-activity-section > section > div > .post-media,
+    #profile-activity-section > section > div > .post-media {
         width: 100%;
     }
 
@@ -1057,7 +1157,8 @@ main {
         top: 0;
     }
 
-    #profile-cover-photo {
+    #profile-cover-photo,
+    #page-cover-photo {
         border-radius: 0;
     }
 
@@ -1068,7 +1169,8 @@ main {
         left: 60px;
     }
 
-    #profile-cover-photo {
+    #profile-cover-photo,
+    #page-cover-photo {
         height: 120px;
     }
 
@@ -1077,7 +1179,8 @@ main {
         height: 125px;
     }
 
-    #profile-section {
+    #profile-section,
+    #page-section {
         width: 100%;
         border-radius: 0;
         top: 0;
@@ -1097,10 +1200,11 @@ main {
         width: 100% !important;
     }
 
-    #posts-shared-section > section ,
-    #profile-activity-section>section,
-    #profile-pined-post-section>section
-    {
+    #posts-shared-section > section,
+    #page-activity-section > section,
+    #profile-activity-section > section,
+    #page-pined-post-section > section,
+    #profile-pined-post-section > section {
         width: 90%;
     }
 
@@ -1215,14 +1319,19 @@ main {
         left: 30px;
     }
 
+    #page-details > div:nth-child(4),
+    #page-details > div:nth-child(5),
     #profile-details > div:nth-child(5),
     #profile-details > div:nth-child(6) {
         align-self: center;
     }
 
     #unfollow-btn-div,
+    #page-unfollow-btn-div,
     #follow-btn-div,
-    #more-btn-div {
+    #page-follow-btn-div,
+    #more-btn-div,
+    #page-more-btn-div {
         display: none;
     }
 }
