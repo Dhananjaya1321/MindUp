@@ -1337,9 +1337,9 @@
                     <p id="page-youtube-link"><a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a></p>
                 </div>
                 <div class="flex f-row">
-                    <div id="page-post-count" class="flex f-col">
+                    <div id="page-employees-count" class="flex f-col">
                         <h3>100</h3>
-                        <h3>Post</h3>
+                        <h3>Employees</h3>
                     </div>
                     <div class="profile-details-vertical-line vertical-line"></div>
                     <div id="page-followers-count" class="flex f-col">
@@ -1356,8 +1356,8 @@
                     <div id="page-edit-details-btn-div">
                         <button id="page-edit-details-btn">Edit details</button>
                     </div>
-                    <div id="page-user-view-btn-div">
-                        <button id="page-user-view-btn" style="background-color: #ff6800;">User view</button>
+                    <div id="page-to-profile-btn-div">
+                        <button id="page-to-profile-btn" style="background-color: #ff6800;">Go Back</button>
                     </div>
                     <div id="page-follow-btn-div">
                         <button id="page-follow-btn" style="background-color: #ff6800">Follow</button>
@@ -1680,14 +1680,26 @@
         $("#profile-section").css("display", "none");
     });
     $("#nav-profile").click(function () {
-        $("#page-section").css("display", "flex");
-        // $("#profile-section").css("display", "flex");
+        $("#page-section").css("display", "none");
+        $("#profile-section").css("display", "flex");
         $("#followed-page-section").css("display", "none");
         $("#posts-shared-section").css("display", "none");
         $("#recommendation-section").css("display", "flex");
         $("#user-section").css("display", "none");
         $("#notifications-section").css("display", "none");
     });
+
+     $("#page-btn>button").click(function () {
+        $("#page-section").css("display", "flex");
+        $("#profile-section").css("display", "none");
+        $("#followed-page-section").css("display", "none");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
+    });
+
+
 
     $("#user-view-btn").click(function () {
         $("#follow-btn-div").css("display", "block")
@@ -1711,6 +1723,16 @@
         $("#unfollow-btn-div").css("display", "none")
         $("#follow-btn").css("display", "block")
         $("#unfollow-btn").css("display", "none")
+    });
+
+    $("#page-to-profile-btn").click(function () {
+        $("#page-section").css("display", "none");
+        $("#profile-section").css("display", "flex");
+        $("#followed-page-section").css("display", "none");
+        $("#posts-shared-section").css("display", "none");
+        $("#recommendation-section").css("display", "flex");
+        $("#user-section").css("display", "none");
+        $("#notifications-section").css("display", "none");
     });
 
 

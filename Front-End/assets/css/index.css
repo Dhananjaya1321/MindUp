@@ -843,7 +843,7 @@ main {
 #following-count > h3,
 #page-following-count > h3,
 #post-count > h3,
-#page-post-count > h3 {
+#page-employees-count> h3 {
     margin: 0;
 }
 
@@ -871,7 +871,7 @@ main {
 #edit-details-btn,
 #page-edit-details-btn,
 #user-view-btn,
-#page-user-view-btn,
+#page-to-profile-btn,
 #follow-btn,
 #page-follow-btn,
 #unfollow-btn,
