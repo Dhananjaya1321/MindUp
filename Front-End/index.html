@@ -965,63 +965,6 @@
                     </button>
                 </div>
             </div>
-
-                         <!--==============   Add creat Form (samudi)  =============-->
-                    <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg form">
-                            <div class="modal-content form">
-                                <div class="modal-header form">
-                                    <h3 class="modal-title form" id="exampleModalLabel" style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto">Create New Page</h3>
-                                    <button type="button" class="btn-close form" data-bs-dismiss="modal" aria-label="Close" style="margin: 0 0 0 0"></button>
-                                </div>
-                                <div class="modal-body form">
-                                    <section class="container form">
-
-                                        <div class="input-group mb-3 form" style="height: 150px;border: 1px solid lightgray;border-radius: 10px">
-                                            <input type="file" class="form-control form" id="inputGroupFile" style="display: none;width: 10px">
-                                            <label class="input-group-text form" for="inputGroupFile" style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto; background: white;border-color: #FFFFFF;color: orange;padding: 0 0 0 0 ">Upload Image</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3 form" style= "height:150px; border: 1px solid lightgray;border-radius: 10px">
-                                           <img class="input-group mb-3 form" src="" id="Page_Image_Show" alt="Selected Image" style= "height:150px;width:100%;padding: 0 0 0 0 ">
-                                        </div>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="text" class="form-control form" id="religiousPlaceName" placeholder="">
-                                            <label class="form" for="religiousPlaceName">Religious Place Name</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="tel" class="form-control form" id="contactNumber" placeholder="">
-                                            <label class="form" for="contactNumber">Contact Number</label>
-                                        </div>
-
-                                        <h4 class="form" style="width: 30%;margin-left: 35%; margin-right: 35%;">Location of religious position</h4>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="text" class="form-control form" id="countyId" placeholder="">
-                                            <label class="form" for="countyId">County</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="text" class="form-control form" id="provinceId" placeholder="">
-                                            <label class="form" for="provinceId">Province</label>
-                                        </div>
-
-                                        <div class="mb-3 form">
-                                            <label for="descriptionId" class="col-form-label form">Description</label>
-                                            <textarea class="form-control form" id="descriptionId"></textarea>
-                                        </div>
-
-                                    </section>
-                                </div>
-                                <div class="modal-footer form">
-                                    <button id="addBtn" type="button" class="btn form">Create page</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
             <div id="profile-details" class="flex f-col">
                 <div class="flex f-row">
                     <h3 id="name">Isuru Dhananjaya (<span id="username">dhananjaya</span>)</h3>
@@ -1755,7 +1698,9 @@
             <section class="flex f-col" style="width: 90%; height: max-content; gap: 10px;">
                 <div>
                     <h3>Description</h3>
-                    <p id="page-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur ea eum id labore magnam perspiciatis placeat sed voluptate. Autem commodi cumque incidunt magnam omnis quasi qui quidem ratione voluptates.</p>
+                    <p id="page-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
+                        consectetur ea eum id labore magnam perspiciatis placeat sed voluptate. Autem commodi cumque
+                        incidunt magnam omnis quasi qui quidem ratione voluptates.</p>
                 </div>
                 <div>
                     <h3>Website</h3>
@@ -1788,6 +1733,81 @@
         </section><!--page event section-->
     </section><!--page section-->
 
+    <!--Please create all forms within this forms section-->
+    <section>
+        <!--==============   Add creat Form (samudi)  =============-->
+        <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg form">
+                <div class="modal-content form">
+                    <div class="modal-header form">
+                        <h3 class="modal-title form" id="exampleModalLabel"
+                            style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto">Create New Page</h3>
+                        <button type="button" class="btn-close form" data-bs-dismiss="modal" aria-label="Close"
+                                style="margin: 0 0 0 0"></button>
+                    </div>
+                    <div class="modal-body form">
+                        <section class="container form">
+
+                            <div class="input-group mb-3 form"
+                                 style="height: 150px;border: 1px solid lightgray;border-radius: 10px">
+                                <input type="file" class="form-control form" id="inputGroupFile"
+                                       style="display: none;width: 10px">
+                                <label class="input-group-text form" for="inputGroupFile"
+                                       style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto; background: white;border-color: #FFFFFF;color: orange;padding: 0 0 0 0 ">Upload
+                                    Image</label>
+                            </div>
+
+                            <div class="form-floating mb-3 form"
+                                 style="height:150px; border: 1px solid lightgray;border-radius: 10px">
+                                <div class="input-group mb-3 form" id="Page_Image_Show"
+                                     style="
+                                     height:150px;
+                                     width:100%;
+                                     padding: 0 0 0 0;
+                                     border-radius: 10px;">
+
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3 form">
+                                <input type="text" class="form-control form" id="religiousPlaceName" placeholder="">
+                                <label class="form" for="religiousPlaceName">Religious Place Name</label>
+                            </div>
+
+                            <div class="form-floating mb-3 form">
+                                <input type="tel" class="form-control form" id="contactNumber" placeholder="">
+                                <label class="form" for="contactNumber">Contact Number</label>
+                            </div>
+
+                            <h4 class="form" style="width: 30%;margin-left: 35%; margin-right: 35%;">Location of
+                                religious position</h4>
+
+                            <div class="form-floating mb-3 form">
+                                <input type="text" class="form-control form" id="countyId" placeholder="">
+                                <label class="form" for="countyId">County</label>
+                            </div>
+
+                            <div class="form-floating mb-3 form">
+                                <input type="text" class="form-control form" id="provinceId" placeholder="">
+                                <label class="form" for="provinceId">Province</label>
+                            </div>
+
+                            <div class="mb-3 form">
+                                <label for="descriptionId" class="col-form-label form">Description</label>
+                                <textarea class="form-control form" id="descriptionId"></textarea>
+                            </div>
+
+                        </section>
+                    </div>
+                    <div class="modal-footer form">
+                        <button id="addBtn" type="button" class="btn form">Create page</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!--forms-->
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
@@ -1900,12 +1920,15 @@
 
     /*================Create Page Image Show Part=================*/
     PageImageShow();
+
     function PageImageShow() {
         $(document).ready(function () {
             $("#inputGroupFile").on("change", function () {
                 const files = this.files;
                 if (files.length > 0) {
-                    $("#Page_Image_Show").attr("src", URL.createObjectURL(files[0]));
+                    $("#Page_Image_Show").css("background", `url(${URL.createObjectURL(files[0])})`);
+                    $("#Page_Image_Show").css("backgroundPosition", "center");
+                    $("#Page_Image_Show").css("backgroundSize", "cover");
                 }
             });
         });
