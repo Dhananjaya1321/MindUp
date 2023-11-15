@@ -1021,7 +1021,9 @@ main {
     margin: 0;
     margin-bottom: 5px;
 }
-
+#Page_Image_Show{
+    height: 200px;
+}
 @media all and (max-width: 1077px) {
     #followed-page-section,
     #recommended-to-follow {
@@ -1266,6 +1268,10 @@ main {
     #page-btn > button {
         width: 177px;
         padding-left: 25px;
+    }
+
+    #Page_Image_Show{
+        height: 120px;
     }
 }
 
