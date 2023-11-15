@@ -137,12 +137,18 @@
             <section id="create-post-section" class="flex f-col">
                 <div id="write-post-div" class="flex f-row">
                     <div id="profile-photo-of-create-post-section"></div><!--profile photo-->
-                    <button id="write-post-btn" type="button" data-bs-toggle="modal" data-bs-target="#create-post-form">Write post</button><!--text field-->
+                    <button id="write-post-btn" type="button" data-bs-toggle="modal" data-bs-target="#create-post-form">
+                        Write post
+                    </button><!--text field-->
                 </div><!--write post-->
                 <div id="media-or-event-div" class="flex f-row">
-                    <button class="flex f-row btn" type="button" data-bs-toggle="modal" data-bs-target="#create-post-form"><img src="assets/images/media.png" width="50">Media</button><!--media-->
+                    <button class="flex f-row btn" type="button" data-bs-toggle="modal"
+                            data-bs-target="#create-post-form"><img src="assets/images/media.png" width="50">Media
+                    </button><!--media-->
                     <div class="vertical-line"></div>
-                    <button class="flex f-row btn" type="button" data-bs-toggle="modal" data-bs-target="#create-post-form"><img src="assets/images/event.png" width="50">Event</button><!--event-->
+                    <button class="flex f-row btn" type="button" data-bs-toggle="modal"
+                            data-bs-target="#create-post-form"><img src="assets/images/event.png" width="50">Event
+                    </button><!--event-->
                 </div><!--media and events-->
             </section><!--create post section-->
             <div id="separate-line-post-section-and-create-post"></div>
@@ -1824,7 +1830,8 @@
                                 <label for="page-description-txt" class="text">Description</label>
                                 <textarea id="page-description-txt" type="text"
                                           placeholder="Contact number" name="input"
-                                          class="input" style="padding: 11px 10px;font-size: 16px; border-radius: 5px; border: var(--bs-border-width) solid var(--bs-border-color);"></textarea>
+                                          class="input"
+                                          style="padding: 11px 10px;font-size: 16px; border-radius: 5px; border: var(--bs-border-width) solid var(--bs-border-color);"></textarea>
                             </div>
                         </section>
                     </div>
@@ -1836,22 +1843,25 @@
         </div> <!-- Button trigger modal -->
 
         <!--==============   Create post Form (isuru)  =============-->
-        <div class="modal fade modal-fullscreen-sm-down" id="create-post-form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade modal-fullscreen-sm-down" id="create-post-form" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" style="background-color: white;">
-                    <div class="modal-header">
-                        <div class="posted-account-details f-row">
-                            <div class="user-or-page-dp"></div><!--user or page DP-->
-                            <div class="user-or-page-details">
+                    <div style="padding-bottom: 0;" class="modal-header">
+                        <div  class="posted-account-details f-row">
+                            <div style="margin: 0 15px 15px 0px;" class="user-or-page-dp"></div><!--user or page DP-->
+                            <div style="align-self: flex-start;" class="user-or-page-details">
                                 <h3>User or Page Name</h3>
-                                <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
-                                <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                                <button id="post-to-anyone-btn" type="button"
+                                        style="border: none; background-color: white; align-self: start; padding: 0">Post
+                                    to Anyone <i class="fa-solid fa-caret-down"></i></button>
                             </div><!--user or page details-->
                         </div><!--posted account or page details-->
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="align-self: flex-start;"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                style="align-self: flex-start;"></button>
                     </div>
-                    <div class="modal-body">
-                        ...
+                    <div style="padding-top: 0" class="modal-body flex">
+                        <textarea id="post-txt"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
