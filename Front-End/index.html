@@ -54,6 +54,8 @@
         .coolinput input[type=text].input:focus {
             outline: none;
         }
+
+
     </style>
 </head>
 <body>
@@ -1846,14 +1848,15 @@
         <div class="modal fade modal-fullscreen-sm-down" id="create-post-form" tabindex="-1"
              aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-                <div class="modal-content" style="background-color: white;">
+                <div class="modal-content" style="background-color: white; border-radius: 10px;">
                     <div style="padding-bottom: 0;" class="modal-header">
-                        <div  class="posted-account-details f-row">
+                        <div class="posted-account-details f-row">
                             <div style="margin: 0 15px 15px 0px;" class="user-or-page-dp"></div><!--user or page DP-->
                             <div style="align-self: flex-start;" class="user-or-page-details">
                                 <h3>User or Page Name</h3>
                                 <button id="post-to-anyone-btn" type="button"
-                                        style="border: none; background-color: white; align-self: start; padding: 0">Post
+                                        style="border: none; background-color: white; align-self: start; padding: 0">
+                                    Post
                                     to Anyone <i class="fa-solid fa-caret-down"></i></button>
                             </div><!--user or page details-->
                         </div><!--posted account or page details-->
@@ -1861,11 +1864,24 @@
                                 style="align-self: flex-start;"></button>
                     </div>
                     <div style="padding-top: 0" class="modal-body flex">
-                        <textarea id="post-txt"></textarea>
+                        <textarea id="post-txt" placeholder="Write here" style="padding: 10px;"></textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <div class="file-input-container">
+                            <label for="file-input" style="padding: 0" class="custom-file-input-label">
+                                <img src="assets/images/media.png" alt="File Icon" class="file-icon">
+                            </label>
+                            <input style="font-size: 0;cursor: pointer; opacity: 0;" type="file" id="file-input"
+                                   class="actual-file-input">
+                        </div><!--file chooser-->
+                        <button style="padding: 0;" id="post-event-btn" type="button">
+                            <img src="assets/images/event.png" width="50">
+                        </button>
+
+                        <!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                        <div class="flex" style="flex-grow: 1;justify-content: flex-end;">
+                            <button type="button" id="post-post-btn">Post</button>
+                        </div>
                     </div>
                 </div>
             </div>
