@@ -1863,15 +1863,18 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                                 style="align-self: flex-start;"></button>
                     </div>
-                    <div style="padding-top: 0" class="modal-body flex">
+                    <div style="padding-top: 0" class="modal-body flex f-col">
                         <textarea id="post-txt" placeholder="Write here" style="padding: 10px;"></textarea>
+                        <!--message box-->
+                        <div id="post-media"></div>
                     </div>
                     <div class="modal-footer">
                         <div class="file-input-container">
-                            <label for="file-input" style="padding: 0" class="custom-file-input-label">
+                            <label for="file-input-in-post-module" style="padding: 0" class="custom-file-input-label">
                                 <img src="assets/images/media.png" alt="File Icon" class="file-icon">
                             </label>
-                            <input style="font-size: 0;cursor: pointer; opacity: 0;" type="file" id="file-input"
+                            <input style="font-size: 0;cursor: pointer; opacity: 0;" type="file"
+                                   id="file-input-in-post-module"
                                    class="actual-file-input">
                         </div><!--file chooser-->
                         <button style="padding: 0;" id="post-event-btn" type="button">
@@ -1892,6 +1895,13 @@
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script src="assets/js/boostrap/bootstrap.min.js"></script>
 <script>
+
+    $("#file-input-in-post-module").click(function () {
+        $("#post-txt").css("height", "100px");
+        $("#post-txt").css("border", "none");
+        $("#post-media").css("display", "block");
+    })
+
 
     $("#radio-1").click(function () {
         $("#page-activity-section").css("display", "flex");
@@ -2002,17 +2012,27 @@
 
     function PageImageShow() {
         $(document).ready(function () {
-            $("#inputGroupFile").on("change", function () {
+            $("#inputGroupFile,#file-input-in-post-module").on("change", function () {
                 const files = this.files;
+                let id = $(this).attr("id");
+                let div_id = getDivId(id);
                 if (files.length > 0) {
-                    $("#Page_Image_Show").css("background", `url(${URL.createObjectURL(files[0])})`);
-                    $("#Page_Image_Show").css("backgroundPosition", "center");
-                    $("#Page_Image_Show").css("backgroundSize", "cover");
+                    $("#" + div_id).css("background", `url(${URL.createObjectURL(files[0])})`);
+                    $("#" + div_id).css("backgroundPosition", "center");
+                    $("#" + div_id).css("backgroundSize", "cover");
                 }
             });
         });
     }
 
+    function getDivId(id) {
+        switch (id) {
+            case "inputGroupFile":
+                return "Page_Image_Show";
+            case "file-input-in-post-module":
+                return "post-media";
+        }
+    }
 </script>
 </body>
 </html>
