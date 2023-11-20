@@ -32,18 +32,18 @@ public class User {
     @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private Login login;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Positions> positions;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Post> posts;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Follower> followers;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Following> followings;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Reactions> reactions;
 }

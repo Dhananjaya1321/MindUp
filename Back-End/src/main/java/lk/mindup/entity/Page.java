@@ -33,15 +33,15 @@ public class Page {
 
 
 
-    @OneToMany(cascade = {CascadeType.PERSIST})
+    @OneToMany(mappedBy = "page",cascade = {CascadeType.PERSIST})
     private List<User> users;
 
-    @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    @OneToMany(mappedBy = "page",cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private List<Post> posts;
 
-    @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    @OneToMany(mappedBy = "page",cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private List<Follower> followers;
 
-    @OneToMany(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    @OneToMany(mappedBy = "page",cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private List<Following> followings;
 }

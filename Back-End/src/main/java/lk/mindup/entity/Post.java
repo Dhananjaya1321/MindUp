@@ -30,6 +30,6 @@ public class Post {
     @ManyToOne
     private Page page;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "post",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Reactions> reactions;
 }
