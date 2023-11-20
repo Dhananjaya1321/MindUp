@@ -20,4 +20,7 @@ public class Following {
 
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Page page;
 }
