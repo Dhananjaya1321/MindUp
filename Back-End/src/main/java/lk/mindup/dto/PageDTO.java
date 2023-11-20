@@ -17,7 +17,17 @@ import java.util.List;
 @ToString
 public class PageDTO {
     private String page_id;
-
+    private String page_name;
+    private String contact;
+    private String county;
+    private String province;
+    private String description;
+    private String headline;
+    private String youtube_channel;
+    private String website;
+    private String verified_or_not;
+    private String profile_photo;
+    private String cover_photo;
 
 
     private List<UserDTO> users;

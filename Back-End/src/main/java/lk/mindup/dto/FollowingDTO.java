@@ -13,4 +13,5 @@ public class FollowingDTO {
     private String following_id;
 
     private UserDTO user;
+    private PageDTO page;
 }
