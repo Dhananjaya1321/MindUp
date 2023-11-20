@@ -1,7 +1,9 @@
 package lk.mindup.service.impl;
 
 import lk.mindup.dto.UserDTO;
+import lk.mindup.entity.Login;
 import lk.mindup.entity.User;
+import lk.mindup.repo.LoginRepo;
 import lk.mindup.repo.UserRepo;
 import lk.mindup.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -19,8 +21,21 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    LoginRepo loginRepo;
+
     @Override
     public void saveUser(UserDTO dto) {
+        if (loginRepo.existsById(dto.getLogin().getEmail())) {
+            throw new RuntimeException(dto.getLogin().getEmail() + " Already exists");
+        }
         userRepo.save(modelMapper.map(dto, User.class));
     }
+
+    @Override
+    public String getLastUserId() {
+        return userRepo.getLastUserId();
+    }
+
+
 }

@@ -18,4 +18,8 @@ public class UserController {
         userService.saveUser(userDTO);
         return new ResponseUtil("Ok", "Successfully Added...!", userDTO.getLogin().getEmail());
     }
+    @GetMapping(path = "/last/user/id")
+    public ResponseUtil getLastUserId() {
+        return new ResponseUtil("Ok", "Successfully Loaded...!",  userService.getLastUserId());
+    }
 }
