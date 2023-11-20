@@ -31,7 +31,7 @@ public class User {
     @ManyToOne
     private Page page;
 
-    @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.ALL})
     private Login login;
 
     @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
