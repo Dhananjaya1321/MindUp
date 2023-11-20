@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -14,7 +15,10 @@ import java.util.List;
 @ToString
 public class PostDTO {
     private String post_id;
-
+    private LocalDateTime dateTime;
+    private String post_text;
+    private String how_can_view;/*anyone or friends*/
+    private String media;/*image,video or audio*/
 
 
     private UserDTO user;
