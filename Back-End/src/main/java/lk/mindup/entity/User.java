@@ -18,6 +18,8 @@ public class User {
     private String user_id;
     private String name;
     private String address;
+    private String country;
+    private String gender;
     private String headline;
     private String youtube_channel;
     private String verified_or_not;
