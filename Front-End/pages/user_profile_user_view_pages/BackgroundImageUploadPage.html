@@ -16,7 +16,12 @@
     </div>
     <div class="uploadImageBox">
         <!--        <hr class="firstSecSeparator">-->
-        <div class="imageUpload"></div>
+<!--        <div class="imageUpload"></div>-->
+        <div class="uploadImg">
+            <span id="uploadIcon"><i class="fa-solid fa-camera"></i></span>
+            <input type="file" id="imageInput" style="display: none;" accept="image/*">
+            <img id="uploadedImage" alt="Uploaded Image">
+        </div>
         <div class="buttonPanel">
             <button class="btn active" onclick="toggleSection('cropSection', this)"><i
                     class="fa-solid fa-crop-simple"></i>Crop
@@ -155,7 +160,29 @@
         clickedButton.classList.add('active');
     }
 
+    var uploadIcon = document.getElementById('uploadIcon');
+    var imageInput = document.getElementById('imageInput');
+    var uploadedImage = document.getElementById('uploadedImage');
 
+    uploadIcon.addEventListener('click', function () {
+        imageInput.click();
+    });
+
+    imageInput.addEventListener('change', function () {
+        var file = imageInput.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // Display the uploaded image
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
+
+                // Hide the upload icon
+                uploadIcon.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
 </script>
 </body>
 </html>

@@ -2,9 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Edit Introduction Page</title>
+    <link rel="stylesheet" href="../../assets/css/IntroductionPage.css">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.4.0-web/css/all.min.css">
 </head>
 <body>
 
+<div class="container">
+<!--    <h1 class="title">Edit Introduction</h1>-->
+    <div class="firstSection">
+        <h2 class="titleH2">Edit Intro</h2>
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <form id="create-page-form" action="#">
+        <div class="pageDetails">
+            <div class="input-box">
+                <span class="details">Customer Id </span>
+                <Input class="input" type="text" id="customerIdInput" placeholder="Enter Id Like 'C001'">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Nic </span>
+                <Input class="input" type="text" id="nicInput" placeholder="Enter Your Nic">
+            </div>
+            <h3>Location Of religious Place</h3>
+            <div class="input-box">
+                <span class="details">Customer Name </span>
+                <Input class="input" type="text" id="nameInput" placeholder="Enter Your Full Name ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Address </span>
+                <Input class="input" type="text" id="addressInput" placeholder="Enter Your Address ">
+            </div>
+            <div class="input-box">
+                <span class="details">Customer Contact </span>
+                <Input class="input" type="text" id="contactInput" placeholder="Enter Your Contact number ">
+            </div>
+            <div class="button">
+                <input class="input" type="submit" value="Register">
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

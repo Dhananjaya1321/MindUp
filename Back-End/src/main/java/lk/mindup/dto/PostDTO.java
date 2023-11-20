@@ -15,8 +15,6 @@ import java.util.List;
 public class PostDTO {
     private String post_id;
 
-
-
     private UserDTO user;
 
     private List<ReactionsDTO> reactions;

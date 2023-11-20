@@ -2,9 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Profile Image Upload Page</title>
+    <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=2">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/ProfileImageUploadPage.css">
+    <link rel="stylesheet" href="../../assets/css/normalize.css">
 </head>
 <body>
+<div class="container">
+    <div class="firstSection">
+        <h2 class="titleH2">Profile Photo</h2>
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <div class="uploadImageSec">
+<!--        <div class="uploadImg" id="uploadedImage">-->
+<!--            <span id="uploadIcon" class="uploadIcon"><i class="fa-solid fa-camera"></i></span>-->
+<!--        </div>-->
+        <div class="uploadImg">
+            <span id="uploadIcon"><i class="fa-solid fa-camera"></i></span>
+            <input type="file" id="imageInput" style="display: none;" accept="image/*">
+            <img id="uploadedImage" alt="Uploaded Image">
+        </div>
+        <button class="viewAudienceSelectBtn" id="viewAudienceSelectBtn"><i class="fa-solid fa-eye"></i> AnyOne</button>
+        <div class="popUpAudienceDiv" id="popUpAudienceDiv" style="display: none">
+            <span class="close" onclick="closePopUp()"><i class="fa-solid fa-xmark"></i></span>
+            <h3>Choose Who Can See Your Profile Photo </h3>
+            <input type="radio"><span>AnyOne</span>
+            <input type="radio"> <span> My Contacts</span>
+            <input type="radio"><span>NoBody</span>
+            <button>Save</button>
+        </div>
+    </div>
+    <div class="finalSec">
+        <Button><i class="fa-solid fa-pen" id="btnEdit"></i> Edit</Button>
+        <Button><i class="fa-solid fa-camera" id="btnAddPhoto"></i>Add Photo</Button>
+        <Button><i class="fa-solid fa-trash" id="btnDelete"></i>Delete</Button>
+    </div>
+</div>
+<script>
+    var showButton = document.getElementById('viewAudienceSelectBtn');
+    var popAudienceDiv = document.getElementById('popUpAudienceDiv');
+
+    // Add click event listener to the button
+    showButton.addEventListener('click', function () {
+        // Toggle the display property of the div
+        if (popAudienceDiv.style.display === 'none') {
+            popAudienceDiv.style.display = 'block';
+        } else {
+            popAudienceDiv.style.display = 'none';
+        }
+    });
+
+    // Function to close the pop-up
+    function closePopUp() {
+        popAudienceDiv.style.display = 'none';
+    }
+    var uploadIcon = document.getElementById('uploadIcon');
+    var imageInput = document.getElementById('imageInput');
+    var uploadedImage = document.getElementById('uploadedImage');
+
+    uploadIcon.addEventListener('click', function () {
+        imageInput.click();
+    });
+
+    imageInput.addEventListener('change', function () {
+        var file = imageInput.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                // Display the uploaded image
+                uploadedImage.src = e.target.result;
+                uploadedImage.style.display = 'block';
+
+                // Hide the upload icon
+                uploadIcon.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
+
 
 </body>
 </html>
