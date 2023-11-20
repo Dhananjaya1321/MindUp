@@ -16,6 +16,14 @@ import java.util.List;
 public class User {
     @Id
     private String user_id;
+    private String name;
+    private String address;
+    private String headline;
+    private String youtube_channel;
+    private String verified_or_not;
+    private String profile_photo;
+    private String cover_photo;
+
 
 
     @ManyToOne

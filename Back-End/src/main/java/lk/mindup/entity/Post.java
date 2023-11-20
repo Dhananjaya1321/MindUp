@@ -22,6 +22,9 @@ public class Post {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Page page;
+
     @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Reactions> reactions;
 }
