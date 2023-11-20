@@ -18,6 +18,7 @@ public class PostDTO {
 
 
     private UserDTO user;
+    private PageDTO page;
 
     private List<ReactionsDTO> reactions;
 }
