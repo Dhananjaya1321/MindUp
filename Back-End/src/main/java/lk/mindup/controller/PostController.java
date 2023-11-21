@@ -19,4 +19,9 @@ public class PostController {
     public ResponseUtil getLastPostId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getLastPostId());
     }
+
+    @GetMapping(path = "/last/reaction/id")
+    public ResponseUtil getLastReactionId() {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getLastReactionId());
+    }
 }
