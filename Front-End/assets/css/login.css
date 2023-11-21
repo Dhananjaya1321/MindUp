@@ -1,85 +1,14 @@
-#home-main,
-#nav-bar,
-#sign-in-section,
-#get-details-section,
-#forgot-password-section,
-#verify-code-section,
-#change-password-section {
-    display: none;
-}
-
-#login-main {
-    background-color: white;
-    top: 0;
-    height: 100vh;
-}
-
-#sign-in-section,
-#sign-up-section
-{
-    width: 350px;
-    height: max-content;
-}
-
-#sign-in-section > small,
-#sign-up-section > small
-{
-    margin: 15px;
-    font-size: 14px;
-}
-
-#signin-to-signup-btn,
-#signup-to-signin-btn
-{
-    border: none;
-    background-color: white;
-    color: #ff6800;
-}
-
-#sign-in-section > div,
-#sign-up-section > div
-{
-    box-shadow: 0 0 9px -8px rgb(0 0 0), 0px 4px 12px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    width: 100%;
-    height: 100%;
-}
-
-#sign-in-section > div > div,
-#sign-up-section > div > div
-{
-    width: 90%;
-}
-
-#sign-in-section > div > div > h2 ,
-#sign-up-section > div > div > h2
-{
-    color: #000;
-    margin: 0;
-    align-self: flex-start;
-    font-style: normal;
-    font-weight: 600;
-    margin-top: 5px;
-    line-height: normal;
-    margin-bottom: 15px;
-}
-
-#sign-in-section > div > div > div,
-#sign-up-section > div > div > div
-{
-    margin-bottom: 20px;
-    position: relative;
-}
-
+#get-details-section > div > div > div > label,
 #sign-in-section > div > div > div > label,
-#sign-up-section > div > div > div > label
-{
+#sign-up-section > div > div > div > label {
     align-self: flex-start;
     margin-bottom: 5px;
 }
 
+#signup-get-details-full-name,
+#signup-get-details-contact,
 #sign-in-email,
-#sign-up-email{
+#sign-up-email {
     width: 250px;
     height: 35px;
     border-radius: 10px;
@@ -87,9 +16,17 @@
     padding-left: 10px;
 }
 
+#signup-get-details-country {
+    width: 264px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #00000073;
+    padding-left: 10px;
+}
+
+
 #sign-in-password,
-#sign-up-password
-{
+#sign-up-password {
     width: 200px;
     height: 35px;
     border-radius: 10px;
@@ -99,8 +36,7 @@
 }
 
 #sign-in-show-password,
-#sign-up-show-password
-{
+#sign-up-show-password {
     position: absolute;
     right: 0;
     height: 100%;
@@ -119,10 +55,10 @@
     background: none;
     border: none;
 }
-
+#signup-get-details-skip-btn,
+#signup-get-details-next-btn,
 #signin-btn,
-#signup-btn
-{
+#signup-btn {
     background: #FF8100;
     color: white;
     font-size: 18px;
@@ -132,18 +68,20 @@
     height: 40px;
     border-radius: 10px;
 }
+#signup-get-details-skip-btn{
+    background: white;
+    color: #ff6800;
+}
 
 #sign-in-section > div > div > small,
-#sign-up-section > div > div > small
-{
+#sign-up-section > div > div > small {
     margin: 10px;
 }
 
 #signin-with-google-btn,
 #signin-with-facebook-btn,
 #signup-with-google-btn,
-#signup-with-facebook-btn
-{
+#signup-with-facebook-btn {
     background: white;
     font-size: 18px;
     margin-bottom: 10px;
@@ -154,9 +92,9 @@
 }
 
 @media all and (max-width: 425px) {
+    #get-details-section > div,
     #sign-in-section > div,
-    #sign-up-section > div
-    {
+    #sign-up-section > div {
         box-shadow: none;
     }
 }
