@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BackGround Image Upload</title>
+    <meta name="viewport" content="width=device-width initial-scale=1 minimum-scale=1 maximum-scale=2">
+    <link rel="stylesheet" href="../../assets/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../../assets/css/BackGroundImageUploadPage.css">
+    <link rel="stylesheet" href="../../assets/css/normalize.css">
+</head>
+<body>
+<div class="container">
+    <div class="firstSection">
+        <h2 class="titleH2">BackGround Photo</h2>
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+    </div>
+    <div class="uploadImageBox">
+        <!--        <hr class="firstSecSeparator">-->
+        <div class="imageUpload"></div>
+        <div class="buttonPanel">
+            <button class="btn active" onclick="toggleSection('cropSection', this)"><i
+                    class="fa-solid fa-crop-simple"></i>Crop
+            </button>
+            <button class="btn" onclick="toggleSection('filterSection', this)">
+                <ion-icon name="color-filter-outline"></ion-icon>
+                </i>Filters
+            </button>
+            <button class="btn" onclick="toggleSection('adjustSection', this)"><i class="fa-solid fa-sliders"></i>Adjust
+            </button>
+        </div>
+
+        <div id="cropSection" class="cropSection">
+            <div class="buttonPanelCropSec">
+                <button class="btnRotate"><i class="fa-solid fa-rotate-right"></i></button>
+                <button class="btnRotate"><i class="fa-solid fa-rotate-left"></i></button>
+            </div>
+            <div class="subCropSec">
+                <div class="crops">
+                    <h2 class="title">Zoom</h2>
+                    <i class="fa-solid fa-minus"></i>
+                    <input class="slider_range" min="1" max="3" step="0.1" aria-valuetext="2.6"
+                           aria-labelledby="image-editor-zoom-slider-label" type="range" value="2.6">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="crops">
+                    <h2 class="title">Straighten</h2>
+                    <i class="fa-solid fa-minus"></i>
+                    <input class="slider_range" min="1" max="3" step="0.1" aria-valuetext="2.6"
+                           aria-labelledby="image-editor-zoom-slider-label" type="range" value="2.6">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div id="filterSection" class="filterSection">
+
+            <button class="imageFilter" aria-label="Original" type="button">
+                <div class="filter-container ">
+                    <!--                    <canvas height="80" width="80" class=" "-->
+                    <!--                            style="position: absolute; width: 64px; height: 64px; left: 0px; top: 0px; touch-action: none; user-select: none;"></canvas>-->
+                    <!--                    <canvas class="upper-canvas " width="80" height="80"-->
+                    <!--                            style="position: absolute; width: 64px; height: 64px; left: 0px; top: 0px; touch-action: none; user-select: none; cursor: default;"></canvas>-->
+                </div>
+
+                <span>Original</span>
+            </button>
+            <button class="imageFilter" aria-label="Original" type="button">
+                <div class="filter-container ">
+                </div>
+
+                <span>Original</span>
+            </button>
+            <button class="imageFilter" aria-label="Original" type="button">
+                <div class="filter-container ">
+                </div>
+
+                <span>Original</span>
+            </button>
+            <button class="imageFilter" aria-label="Original" type="button">
+                <div class="filter-container ">
+                </div>
+
+                <span>Original</span>
+            </button>
+            <button class="imageFilter" aria-label="Original" type="button">
+                <div class="filter-container ">
+                </div>
+
+                <span>Original</span>
+            </button>
+            <button class="imageFilter" aria-label="Original" type="button">
+                <div class="filter-container ">
+                </div>
+
+                <span>Original</span>
+            </button>
+        </div>
+        <div id="adjustSection" class="adjustSection">
+            <h3>Brightness</h3>
+            <h4>Contrast</h4>
+
+            <div class="adjust_sub_sec">
+                <i class="fa-solid fa-minus"></i>
+                <input class="slider_range" min="1" max="3" step="0.1" aria-valuetext="2.6"
+                       aria-labelledby="image-editor-zoom-slider-label" type="range" value="2.6">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+
+            <div class="buttonPanelAdjust">
+                <button class="button">Brightness</button>
+                <button class="button">Contrast</button>
+                <button class="button">Saturation</button>
+                <button class="button">Vignette</button>
+
+
+            </div>
+        </div>
+        <!--        <hr class="finalSecSeparator">-->
+    </div>
+    <div class="finalSec">
+        <button class="btn1">Delete Photo</button>
+        <button class="btn2" id="btnChangePhoto">change Photo</button>
+        <button class="btn2" id="btnSavePhoto">Save</button>
+
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</div>
+<script>
+    document.getElementById('cropSection').style.display = 'block';
+
+    function toggleSection(sectionId, clickedButton) {
+        const sections = document.querySelectorAll('.cropSection, .filterSection, .adjustSection');
+
+        // Hide all sections
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Remove 'active' class from all buttons
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Show the selected section
+        const selectedSection = document.getElementById(sectionId);
+        if (selectedSection) {
+            selectedSection.style.display = 'block';
+        }
+
+        // Add 'active' class to the clicked button
+        clickedButton.classList.add('active');
+    }
+
+
+</script>
+</body>
+</html>
