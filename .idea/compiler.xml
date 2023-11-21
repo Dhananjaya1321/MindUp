@@ -12,6 +12,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Back-End" target="8" />
       <module name="MindUp" target="8" />
     </bytecodeTargetLevel>
   </component>

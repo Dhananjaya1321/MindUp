@@ -25,6 +25,36 @@
             display: none;
         }
 
+        .coolinput {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .coolinput label.text {
+            font-size: 0.75rem;
+            color: #939393;
+            font-weight: 700;
+            position: relative;
+            top: 0.5rem;
+            margin: 0 0 0 7px;
+            padding: 0 3px;
+            background: white;
+            width: fit-content;
+        }
+
+        .coolinput input[type=text].input {
+            padding: 11px 10px;
+            font-size: 16px;
+            /*border: 2px #FF9800 solid;*/
+            border-radius: 5px;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+        }
+
+        .coolinput input[type=text].input:focus {
+            outline: none;
+        }
+
 
     </style>
 </head>
@@ -109,12 +139,18 @@
             <section id="create-post-section" class="flex f-col">
                 <div id="write-post-div" class="flex f-row">
                     <div id="profile-photo-of-create-post-section"></div><!--profile photo-->
-                    <button id="write-post-btn">Write post</button><!--text field-->
+                    <button id="write-post-btn" type="button" data-bs-toggle="modal" data-bs-target="#create-post-form">
+                        Write post
+                    </button><!--text field-->
                 </div><!--write post-->
                 <div id="media-or-event-div" class="flex f-row">
-                    <button class="flex f-row"><img src="assets/images/media.png" width="50">Media</button><!--media-->
+                    <button class="flex f-row btn" type="button" data-bs-toggle="modal"
+                            data-bs-target="#create-post-form"><img src="assets/images/media.png" width="50">Media
+                    </button><!--media-->
                     <div class="vertical-line"></div>
-                    <button class="flex f-row"><img src="assets/images/event.png" width="50">Event</button><!--event-->
+                    <button class="flex f-row btn" type="button" data-bs-toggle="modal"
+                            data-bs-target="#create-post-form"><img src="assets/images/event.png" width="50">Event
+                    </button><!--event-->
                 </div><!--media and events-->
             </section><!--create post section-->
             <div id="separate-line-post-section-and-create-post"></div>
@@ -965,63 +1001,6 @@
                     </button>
                 </div>
             </div>
-
-                         <!--==============   Add creat Form (samudi)  =============-->
-                    <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg form">
-                            <div class="modal-content form">
-                                <div class="modal-header form">
-                                    <h3 class="modal-title form" id="exampleModalLabel" style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto">Create New Page</h3>
-                                    <button type="button" class="btn-close form" data-bs-dismiss="modal" aria-label="Close" style="margin: 0 0 0 0"></button>
-                                </div>
-                                <div class="modal-body form">
-                                    <section class="container form">
-
-                                        <div class="input-group mb-3 form" style="height: 150px;border: 1px solid lightgray;border-radius: 10px">
-                                            <input type="file" class="form-control form" id="inputGroupFile" style="display: none;width: 10px">
-                                            <label class="input-group-text form" for="inputGroupFile" style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto; background: white;border-color: #FFFFFF;color: orange;padding: 0 0 0 0 ">Upload Image</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3 form" style= "height:150px; border: 1px solid lightgray;border-radius: 10px">
-                                           <img class="input-group mb-3 form" src="" id="Page_Image_Show" alt="Selected Image" style= "height:150px;width:100%;padding: 0 0 0 0 ">
-                                        </div>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="text" class="form-control form" id="religiousPlaceName" placeholder="">
-                                            <label class="form" for="religiousPlaceName">Religious Place Name</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="tel" class="form-control form" id="contactNumber" placeholder="">
-                                            <label class="form" for="contactNumber">Contact Number</label>
-                                        </div>
-
-                                        <h4 class="form" style="width: 30%;margin-left: 35%; margin-right: 35%;">Location of religious position</h4>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="text" class="form-control form" id="countyId" placeholder="">
-                                            <label class="form" for="countyId">County</label>
-                                        </div>
-
-                                        <div class="form-floating mb-3 form">
-                                            <input type="text" class="form-control form" id="provinceId" placeholder="">
-                                            <label class="form" for="provinceId">Province</label>
-                                        </div>
-
-                                        <div class="mb-3 form">
-                                            <label for="descriptionId" class="col-form-label form">Description</label>
-                                            <textarea class="form-control form" id="descriptionId"></textarea>
-                                        </div>
-
-                                    </section>
-                                </div>
-                                <div class="modal-footer form">
-                                    <button id="addBtn" type="button" class="btn form">Create page</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
             <div id="profile-details" class="flex f-col">
                 <div class="flex f-row">
                     <h3 id="name">Isuru Dhananjaya (<span id="username">dhananjaya</span>)</h3>
@@ -1755,7 +1734,9 @@
             <section class="flex f-col" style="width: 90%; height: max-content; gap: 10px;">
                 <div>
                     <h3>Description</h3>
-                    <p id="page-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur ea eum id labore magnam perspiciatis placeat sed voluptate. Autem commodi cumque incidunt magnam omnis quasi qui quidem ratione voluptates.</p>
+                    <p id="page-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
+                        consectetur ea eum id labore magnam perspiciatis placeat sed voluptate. Autem commodi cumque
+                        incidunt magnam omnis quasi qui quidem ratione voluptates.</p>
                 </div>
                 <div>
                     <h3>Website</h3>
@@ -1788,128 +1769,133 @@
         </section><!--page event section-->
     </section><!--page section-->
 
+    <!--Please create all forms within this forms section-->
+    <section>
+        <!--==============   Add creat Form (samudi)  =============-->
+        <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-lg form">
+                <div class="modal-content form">
+                    <div class="modal-header form">
+                        <h3 class="modal-title form" id="exampleModalLabel"
+                            style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto">Create New Page</h3>
+                        <button type="button" class="btn-close form" data-bs-dismiss="modal" aria-label="Close"
+                                style="margin: 0 0 0 0"></button>
+                    </div>
+                    <div class="modal-body form">
+                        <section class="container form">
+
+                            <div class="input-group mb-3 form"
+                                 style="height: 150px;border: 1px solid lightgray;border-radius: 10px">
+                                <input type="file" class="form-control form" id="inputGroupFile"
+                                       style="display: none;width: 10px">
+                                <label class="input-group-text form" for="inputGroupFile"
+                                       style="position:relative;left:0;right: 0;top:0;bottom: 0;margin: auto; background: white;border-color: #FFFFFF;color: orange;padding: 0 0 0 0 ">Upload
+                                    Image</label>
+                            </div>
+
+                            <div class="form-floating mb-3 form"
+                                 style="border: 1px solid lightgray; border-radius: 10px">
+                                <div class="input-group form" id="Page_Image_Show"
+                                     style="
+                                     width:100%;
+                                     padding: 0 0 0 0;
+                                     border-radius: 10px;">
+
+                                </div>
+                            </div>
+
+                            <div class="coolinput mb-3 col-5">
+                                <label for="page-name-txt" class="text">Page Name</label>
+                                <input id="page-name-txt" type="text" placeholder="Page name" name="input"
+                                       class="input">
+                            </div>
+
+                            <div class="coolinput mb-3 col-5">
+                                <label for="page-contact-txt" class="text">Contact Number</label>
+                                <input id="page-contact-txt" type="text" placeholder="Contact number" name="input"
+                                       class="input">
+                            </div>
+
+                            <h4 class="form">Location of religious position</h4>
+                            <div class="coolinput mb-3 col-5">
+                                <label for="page-county-txt" class="text">County</label>
+                                <input id="page-county-txt" type="text" placeholder="County" name="input"
+                                       class="input">
+                            </div>
+                            <div class="coolinput mb-3 col-5">
+                                <label for="page-province-txt" class="text">Province</label>
+                                <input id="page-province-txt" type="text" placeholder="province" name="input"
+                                       class="input">
+                            </div>
+                            <div class="coolinput mb-3 col-5">
+                                <label for="page-description-txt" class="text">Description</label>
+                                <textarea id="page-description-txt" type="text"
+                                          placeholder="Contact number" name="input"
+                                          class="input"
+                                          style="padding: 11px 10px;font-size: 16px; border-radius: 5px; border: var(--bs-border-width) solid var(--bs-border-color);"></textarea>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="modal-footer form">
+                        <button id="addBtn" type="button" class="btn form">Create page</button>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Button trigger modal -->
+
+        <!--==============   Create post Form (isuru)  =============-->
+        <div class="modal fade modal-fullscreen-sm-down" id="create-post-form" tabindex="-1"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background-color: white; border-radius: 10px;">
+                    <div style="padding-bottom: 0;" class="modal-header">
+                        <div class="posted-account-details f-row">
+                            <div style="margin: 0 15px 15px 0px;" class="user-or-page-dp"></div><!--user or page DP-->
+                            <div style="align-self: flex-start;" class="user-or-page-details">
+                                <h3>User or Page Name</h3>
+                                <button id="post-to-anyone-btn" type="button"
+                                        style="border: none; background-color: white; align-self: start; padding: 0">
+                                    Post
+                                    to Anyone <i class="fa-solid fa-caret-down"></i></button>
+                            </div><!--user or page details-->
+                        </div><!--posted account or page details-->
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                style="align-self: flex-start;"></button>
+                    </div>
+                    <div style="padding-top: 0" class="modal-body flex f-col">
+                        <textarea id="post-txt" placeholder="Write here" style="padding: 10px;"></textarea>
+                        <!--message box-->
+                        <div id="post-media"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="file-input-container">
+                            <label for="file-input-in-post-module" style="padding: 0" class="custom-file-input-label">
+                                <img src="assets/images/media.png" alt="File Icon" class="file-icon">
+                            </label>
+                            <input style="font-size: 0;cursor: pointer; opacity: 0;" type="file"
+                                   id="file-input-in-post-module"
+                                   class="actual-file-input">
+                        </div><!--file chooser-->
+                        <button style="padding: 0;" id="post-event-btn" type="button">
+                            <img src="assets/images/event.png" width="50">
+                        </button>
+
+                        <!--                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                        <div class="flex" style="flex-grow: 1;justify-content: flex-end;">
+                            <button type="button" id="post-post-btn">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--forms-->
 </main>
 
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script src="assets/js/boostrap/bootstrap.min.js"></script>
+<script src="assets/js/indexController.js"></script>
 <script>
-
-    $("#radio-1").click(function () {
-        $("#page-activity-section").css("display", "flex");
-        $("#page-about-section").css("display", "none");
-        $("#page-event-section").css("display", "none");
-    });
-    $("#radio-2").click(function () {
-        $("#page-activity-section").css("display", "none");
-        $("#page-about-section").css("display", "flex");
-        $("#page-event-section").css("display", "none");
-    });
-    $("#radio-3").click(function () {
-        $("#page-activity-section").css("display", "none");
-        $("#page-about-section").css("display", "none");
-        $("#page-event-section").css("display", "flex");
-    });
-
-
-    $("#nav-home").click(function () {
-        $("#page-section").css("display", "none");
-        $("#followed-page-section").css("display", "flex");
-        $("#posts-shared-section").css("display", "flex");
-        $("#recommendation-section").css("display", "flex");
-        $("#user-section").css("display", "none");
-        $("#notifications-section").css("display", "none");
-        $("#profile-section").css("display", "none");
-    });
-
-    $("#nav-users").click(function () {
-        $("#page-section").css("display", "none");
-        $("#followed-page-section").css("display", "flex");
-        $("#posts-shared-section").css("display", "none");
-        $("#recommendation-section").css("display", "none");
-        $("#user-section").css("display", "flex");
-        $("#notifications-section").css("display", "none");
-        $("#profile-section").css("display", "none");
-    });
-
-    $("#nav-notification").click(function () {
-        $("#page-section").css("display", "none");
-        $("#followed-page-section").css("display", "flex");
-        $("#posts-shared-section").css("display", "none");
-        $("#recommendation-section").css("display", "none");
-        $("#user-section").css("display", "none");
-        $("#notifications-section").css("display", "flex");
-        $("#profile-section").css("display", "none");
-    });
-
-    $("#nav-profile").click(function () {
-        $("#page-section").css("display", "none");
-        $("#profile-section").css("display", "flex");
-        $("#followed-page-section").css("display", "none");
-        $("#posts-shared-section").css("display", "none");
-        $("#recommendation-section").css("display", "flex");
-        $("#user-section").css("display", "none");
-        $("#notifications-section").css("display", "none");
-    });
-
-    $("#addBtn").click(function () {
-        $("#page-section").css("display", "flex");
-        $("#profile-section").css("display", "none");
-        $("#followed-page-section").css("display", "none");
-        $("#posts-shared-section").css("display", "none");
-        $("#recommendation-section").css("display", "flex");
-        $("#user-section").css("display", "none");
-        $("#notifications-section").css("display", "none");
-        $("#exampleModal").modal("hide");
-    });
-
-    $("#user-view-btn").click(function () {
-        $("#follow-btn-div").css("display", "block")
-        $("#more-btn-div").css("display", "block")
-        $("#user-view-btn-div").css("display", "none")
-        $("#edit-details-btn-div").css("display", "none")
-        $("#follow-btn").css("display", "block")
-        $("#more-btn").css("display", "block")
-        $("#user-view-btn").css("display", "none")
-        $("#edit-details-btn").css("display", "none")
-    });
-
-    $("#follow-btn").click(function () {
-        $("#follow-btn-div").css("display", "none")
-        $("#unfollow-btn-div").css("display", "block")
-        $("#follow-btn").css("display", "none")
-        $("#unfollow-btn").css("display", "block")
-    });
-
-    $("#unfollow-btn").click(function () {
-        $("#follow-btn-div").css("display", "block")
-        $("#unfollow-btn-div").css("display", "none")
-        $("#follow-btn").css("display", "block")
-        $("#unfollow-btn").css("display", "none")
-    });
-
-
-    $("#page-to-profile-btn").click(function () {
-        $("#page-section").css("display", "none");
-        $("#profile-section").css("display", "flex");
-        $("#followed-page-section").css("display", "none");
-        $("#posts-shared-section").css("display", "none");
-        $("#recommendation-section").css("display", "flex");
-        $("#user-section").css("display", "none");
-        $("#notifications-section").css("display", "none");
-    });
-
-    /*================Create Page Image Show Part=================*/
-    PageImageShow();
-    function PageImageShow() {
-        $(document).ready(function () {
-            $("#inputGroupFile").on("change", function () {
-                const files = this.files;
-                if (files.length > 0) {
-                    $("#Page_Image_Show").attr("src", URL.createObjectURL(files[0]));
-                }
-            });
-        });
-    }
 
 </script>
 </body>

@@ -17,4 +17,5 @@ public class FollowerDTO {
     private String follower_id;
 
     private UserDTO user;
+    private PageDTO page;
 }

@@ -20,4 +20,7 @@ public class Follower {
 
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Page page;
 }

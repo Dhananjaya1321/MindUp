@@ -1021,6 +1021,64 @@ main {
     margin: 0;
     margin-bottom: 5px;
 }
+#Page_Image_Show{
+    height: 200px;
+}
+
+
+
+
+/*=============================== post form ==========================*/
+#post-txt{
+    width: 96%;
+    border-radius: 10px;
+    border-color: #9e9e9e;
+    height: 250px;
+}
+
+.file-input-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.custom-file-input-label {
+    display: inline-block;
+    padding: 10px 15px;
+    /*background-color: #3498db;*/
+    color: #fff;
+    cursor: pointer;
+}
+
+.file-icon {
+    width: 50px;
+}
+
+.actual-file-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#post-event-btn{
+    border: none;
+    background-color: white;
+}
+
+#post-post-btn{
+    width: 70px;
+    background-color: #ff6800;
+    border: none ;
+    height: 40px;
+    border-radius: 10px;
+}
+
+#post-media{
+    width: 100%;
+    border-radius: 10px;
+    height: 360px;
+    display: none;
+}
 
 @media all and (max-width: 1077px) {
     #followed-page-section,
@@ -1266,6 +1324,10 @@ main {
     #page-btn > button {
         width: 177px;
         padding-left: 25px;
+    }
+
+    #Page_Image_Show{
+        height: 120px;
     }
 }
 

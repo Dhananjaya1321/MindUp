@@ -1,0 +1,100 @@
+#get-details-section > div > div > div > label,
+#sign-in-section > div > div > div > label,
+#sign-up-section > div > div > div > label {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+#signup-get-details-full-name,
+#signup-get-details-contact,
+#sign-in-email,
+#sign-up-email {
+    width: 250px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid #00000073;
+    padding-left: 10px;
+}
+
+#signup-get-details-country {
+    width: 264px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #00000073;
+    padding-left: 10px;
+}
+
+
+#sign-in-password,
+#sign-up-password {
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid #00000073;
+    padding-left: 10px;
+    padding-right: 50px;
+}
+
+#sign-in-show-password,
+#sign-up-show-password {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    background: none;
+    border: none;
+    padding-right: 10px;
+    color: #FF8100;
+    font-weight: bold;
+}
+
+#forgot-password {
+    margin: 5px;
+    color: #FF8100;
+    align-self: flex-start;
+    font-size: 14px;
+    background: none;
+    border: none;
+}
+#signup-get-details-skip-btn,
+#signup-get-details-next-btn,
+#signin-btn,
+#signup-btn {
+    background: #FF8100;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    width: 260px;
+    height: 40px;
+    border-radius: 10px;
+}
+#signup-get-details-skip-btn{
+    background: white;
+    color: #ff6800;
+}
+
+#sign-in-section > div > div > small,
+#sign-up-section > div > div > small {
+    margin: 10px;
+}
+
+#signin-with-google-btn,
+#signin-with-facebook-btn,
+#signup-with-google-btn,
+#signup-with-facebook-btn {
+    background: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border: 1px solid #00000033;
+    width: 260px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+@media all and (max-width: 425px) {
+    #get-details-section > div,
+    #sign-in-section > div,
+    #sign-up-section > div {
+        box-shadow: none;
+    }
+}
