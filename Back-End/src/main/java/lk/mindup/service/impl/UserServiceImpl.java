@@ -3,10 +3,7 @@ package lk.mindup.service.impl;
 import lk.mindup.dto.UserDTO;
 import lk.mindup.entity.Login;
 import lk.mindup.entity.User;
-import lk.mindup.repo.FollowerRepo;
-import lk.mindup.repo.FollowingRepo;
-import lk.mindup.repo.LoginRepo;
-import lk.mindup.repo.UserRepo;
+import lk.mindup.repo.*;
 import lk.mindup.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +29,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     FollowingRepo followingRepo;
 
+    @Autowired
+    PositionsRepo positionsRepo;
+
     @Override
     public void saveUser(UserDTO dto) {
         if (loginRepo.existsById(dto.getLogin().getEmail())) {
@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getLastFollowingId() {
         return followingRepo.getLastFollowingId();
+    }
+
+    @Override
+    public String getLastPositionId() {
+        return positionsRepo.getLastPositionId();
     }
 
 

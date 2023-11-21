@@ -33,4 +33,9 @@ public class UserController {
     public ResponseUtil getLastFollowingId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastFollowingId());
     }
+
+    @GetMapping(path = "/last/position/id")
+    public ResponseUtil getLastPositionId() {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastPositionId());
+    }
 }

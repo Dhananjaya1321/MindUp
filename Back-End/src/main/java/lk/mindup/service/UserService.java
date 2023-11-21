@@ -10,4 +10,6 @@ public interface UserService {
     String getLastFollowerId();
 
     String getLastFollowingId();
+
+    String getLastPositionId();
 }
