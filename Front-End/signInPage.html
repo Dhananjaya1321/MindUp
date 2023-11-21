@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+<main id="login-main" class="flex">
+    <section id="sign-in-section" class="flex f-col">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <h2>SignIn</h2>
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email address" id="sign-in-email">
+                </div>
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <div class="flex f-row">
+                        <input type="email" placeholder="Email address" id="sign-in-password">
+                        <button id="sign-in-show-password">Show</button>
+                    </div>
+                    <button id="forgot-password">Forgot password</button>
+                </div>
+                <button id="signin-btn">Sign in</button>
+                <small>Or</small>
+                <button id="signin-with-google-btn" class="flex"><img src="assets/images/google.png" width="25"
+                                                                      style="margin-right: 5px"> Continue with Google
+                </button>
+                <button id="signin-with-facebook-btn" class="flex"><img src="assets/images/facebook.png" width="25"
+                                                                        style="margin-right: 5px"> Continue with Facebook
+                </button>
+            </div>
+        </div>
+        <small>Don’t have an account? <button id="signin-to-signup-btn">Sign up</button></small>
+    </section>
+    <section id="sign-up-section" class="flex"></section>
+    <section id="get-details-section" class="flex"></section>
+    <section id="forgot-password-section" class="flex"></section>
+    <section id="verify-code-section" class="flex"></section>
+    <section id="change-password-section" class="flex"></section>
+</main>
+</body>
+</html>
