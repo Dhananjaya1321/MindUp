@@ -23,4 +23,8 @@ public class UserController {
     public ResponseUtil getLastUserId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastUserId());
     }
+    @GetMapping(path = "/last/follower/id")
+    public ResponseUtil getLastFollowerId() {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastFollowerId());
+    }
 }

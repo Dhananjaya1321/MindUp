@@ -6,4 +6,6 @@ public interface UserService {
     void saveUser(UserDTO dto);
 
     String getLastUserId();
+
+    String getLastFollowerId();
 }

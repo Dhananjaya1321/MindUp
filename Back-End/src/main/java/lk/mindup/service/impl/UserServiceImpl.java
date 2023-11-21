@@ -3,6 +3,7 @@ package lk.mindup.service.impl;
 import lk.mindup.dto.UserDTO;
 import lk.mindup.entity.Login;
 import lk.mindup.entity.User;
+import lk.mindup.repo.FollowerRepo;
 import lk.mindup.repo.LoginRepo;
 import lk.mindup.repo.UserRepo;
 import lk.mindup.service.UserService;
@@ -23,6 +24,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     LoginRepo loginRepo;
+    @Autowired
+    FollowerRepo followerRepo;
 
     @Override
     public void saveUser(UserDTO dto) {
@@ -35,6 +38,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getLastUserId() {
         return userRepo.getLastUserId();
+    }
+
+    @Override
+    public String getLastFollowerId() {
+        return followerRepo.getLastFollowerId();
     }
 
 
