@@ -7,4 +7,5 @@ public interface LoginService {
          check whether the email and password match*/
     boolean checkUser(String email, String password);
 
+    LoginDTO findUserLogin(String email);
 }

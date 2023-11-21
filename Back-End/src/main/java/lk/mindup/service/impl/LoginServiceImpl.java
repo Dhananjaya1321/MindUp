@@ -3,6 +3,7 @@ package lk.mindup.service.impl;
 import lk.mindup.dto.LoginDTO;
 import lk.mindup.repo.LoginRepo;
 import lk.mindup.service.LoginService;
+import lk.mindup.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,20 @@ public class LoginServiceImpl implements LoginService {
      check whether the email and password match*/
     @Override
     public boolean checkUser(String email, String password){
-
+        LoginDTO userLogin = findUserLogin(email);
+        if (userLogin != null) {
+            if (userLogin.getPassword().equals(password)) {
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            throw new RuntimeException("Invalid email or password");
+        }
     }
 
+    @Override
+    public LoginDTO findUserLogin(String email){
+        return modelMapper.map(loginRepo.findById(email).get(),LoginDTO.class);
+    }
 }
