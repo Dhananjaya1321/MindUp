@@ -1,3 +1,4 @@
+let base_url="http://localhost:8080";
 
 $("#file-input-in-post-module").click(function () {
     $("#post-txt").css("height", "100px");

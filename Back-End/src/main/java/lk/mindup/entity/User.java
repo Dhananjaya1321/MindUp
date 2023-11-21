@@ -18,6 +18,8 @@ public class User {
     private String user_id;
     private String name;
     private String address;
+    private String country;
+    private String gender;
     private String headline;
     private String youtube_channel;
     private String verified_or_not;
@@ -29,21 +31,21 @@ public class User {
     @ManyToOne
     private Page page;
 
-    @OneToOne(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.ALL})
     private Login login;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Positions> positions;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Post> posts;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Follower> followers;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Following> followings;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Reactions> reactions;
 }
