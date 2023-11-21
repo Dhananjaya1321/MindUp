@@ -3,7 +3,7 @@ function getLastUserId() {
         url: base_url + "/user/last/user/id",
         method: "get",
         success: function (resp) {
-            console.log(resp.data,generateNextUserId(resp.data))
+            generateNextUserId(resp.data);
         },
         error: function (resp) {
 

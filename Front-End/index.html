@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="assets/css/boostrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/tab-bar.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 
     <style>
         #user-section,
@@ -55,6 +56,16 @@
             outline: none;
         }
 
+        /*#home-main,*/
+        #nav-bar,
+        #sign-up-section,
+        #sign-in-section,
+        #get-details-section,
+        #forgot-password-section,
+        #verify-code-section,
+        #change-password-section {
+            display: none;
+        }
 
     </style>
 </head>
@@ -89,6 +100,129 @@
         </menu>
     </div><!--Navigation section-->
 </header>
+<main id="login-main" class="flex">
+    <section id="sign-in-section" class="flex f-col">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <h2>Sign In</h2>
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email address" id="sign-in-email">
+                </div>
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <div class="flex f-row">
+                        <input type="password" placeholder="Password" id="sign-in-password">
+                        <button id="sign-in-show-password">Show</button>
+                    </div>
+                    <button id="forgot-password">Forgot password</button>
+                </div>
+                <button id="signin-btn">Sign in</button>
+                <small>Or</small>
+                <button id="signin-with-google-btn" class="flex"><img src="assets/images/google.png" width="25"
+                                                                      style="margin-right: 5px"> Continue with Google
+                </button>
+                <button id="signin-with-facebook-btn" class="flex"><img src="assets/images/facebook.png" width="25"
+                                                                        style="margin-right: 5px"> Continue with
+                    Facebook
+                </button>
+            </div>
+        </div>
+        <small>Don’t have an account?
+            <button id="signin-to-signup-btn">Sign up</button>
+        </small>
+    </section>
+    <section id="sign-up-section" class="flex f-col">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <h2>Sign Up</h2>
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email address" id="sign-up-email">
+                </div>
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <div class="flex f-row">
+                        <input type="password" placeholder="Password" id="sign-up-password">
+                        <button id="sign-up-show-password">Show</button>
+                    </div>
+                </div>
+                <button id="signup-btn">Sign up</button>
+                <small>Or</small>
+                <button id="signup-with-google-btn" class="flex"><img src="assets/images/google.png" width="25"
+                                                                      style="margin-right: 5px"> Continue with Google
+                </button>
+                <button id="signup-with-facebook-btn" class="flex"><img src="assets/images/facebook.png" width="25"
+                                                                        style="margin-right: 5px"> Continue with
+                    Facebook
+                </button>
+            </div>
+        </div>
+        <small>Already have an account?
+            <button id="signup-to-signin-btn">Sign in</button>
+        </small>
+    </section>
+    <section id="get-details-section" class="flex">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <div>
+                    <h2 style="margin-bottom: 10px;">Sign Up</h2>
+                    <p>Please fill in these details to proceed. This information can also be filled after the account is created</p>
+                </div>
+                <div class="flex f-col">
+                    <label>Full name</label>
+                    <input type="text" placeholder="Full name" id="signup-get-details-full-name">
+                </div>
+                <div class="flex f-col">
+                    <label>Country</label>
+                    <select placeholder="Country" id="signup-get-details-country"></select>
+                </div>
+                <div class="flex f-col">
+                    <label>Phone number</label>
+                    <div class="flex f-row">
+                        <input type="text" placeholder="Phone number" id="signup-get-details-contact">
+                    </div>
+                </div>
+                <h2 style="margin-bottom: 10px;">Gender</h2>
+                <div class="radio-inputs">
+                    <label>
+                        <input class="radio-input" type="radio" name="engine">
+                        <span class="radio-tile">
+     <span class="radio-icon">
+      <i class="fa-solid fa-mars"></i>
+     </span>
+     <span class="radio-label">Male</span>
+    </span>
+                    </label>
+                    <label>
+                        <input checked="" class="radio-input" type="radio" name="engine">
+                        <span class="radio-tile">
+    <span class="radio-icon">
+                  <i class="fa-solid fa-mars-and-venus"></i>
+    </span>
+    <span class="radio-label">Female</span>
+   </span>
+                    </label>
+                    <label>
+                        <input class="radio-input" type="radio" name="engine">
+                        <span class="radio-tile">
+    <span class="radio-icon">
+                    <i class="fa-solid fa-transgender"></i>
+                </span>
+    <span class="radio-label">Transgender</span>
+   </span>
+                    </label>
+                </div>
+                <button id="signup-get-details-next-btn">Next</button>
+                <button id="signup-get-details-skip-btn">Skip</button>
+            </div>
+        </div>
+
+    </section>
+    <section id="forgot-password-section" class="flex"></section>
+    <section id="verify-code-section" class="flex"></section>
+    <section id="change-password-section" class="flex"></section>
+</main>
 <main id="home-main" class="flex">
     <section id="home-section" class="flex f-col">
         <section id="followed-page-section" class="flex f-col">
