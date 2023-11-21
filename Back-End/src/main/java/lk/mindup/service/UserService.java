@@ -8,4 +8,6 @@ public interface UserService {
     String getLastUserId();
 
     String getLastFollowerId();
+
+    String getLastFollowingId();
 }
