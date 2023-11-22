@@ -16,7 +16,7 @@ function getLastPostId() {
         url: base_url + "/post/last/post/id",
         method: "get",
         success: function (resp) {
-            generateNextUserId(resp.data);
+            generateNextPostId(resp.data);
         },
         error: function (resp) {
 
