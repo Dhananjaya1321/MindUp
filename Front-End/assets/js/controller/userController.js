@@ -10,6 +10,7 @@ function getLastPositionId() {
         }
     })
 }
+
 function getLastFollowingId() {
     $.ajax({
         url: base_url + "/user/last/following/id",
@@ -22,6 +23,7 @@ function getLastFollowingId() {
         }
     })
 }
+
 function getLastFollowerId() {
     $.ajax({
         url: base_url + "/user/last/follower/id",
@@ -34,6 +36,7 @@ function getLastFollowerId() {
         }
     })
 }
+
 function getLastUserId() {
     $.ajax({
         url: base_url + "/user/last/user/id",
@@ -54,6 +57,7 @@ function generateNextPositionId(currentId) {
         return "POSN-" + (Number(currentId.slice(5)) + 1);
     }
 }
+
 function generateNextFollowingId(currentId) {
     if (currentId === null) {
         return "FWNG-1";
@@ -61,6 +65,7 @@ function generateNextFollowingId(currentId) {
         return "FWNG-" + (Number(currentId.slice(5)) + 1);
     }
 }
+
 function generateNextFollowerId(currentId) {
     if (currentId === null) {
         return "FWER-1";
@@ -68,6 +73,7 @@ function generateNextFollowerId(currentId) {
         return "FWER-" + (Number(currentId.slice(5)) + 1);
     }
 }
+
 function generateNextUserId(currentId) {
     if (currentId === null) {
         return "USER-1";
