@@ -1,3 +1,15 @@
+function getLastPositionId() {
+    $.ajax({
+        url: base_url + "/user/last/position/id",
+        method: "get",
+        success: function (resp) {
+            generateNextPositionId(resp.data);
+        },
+        error: function (resp) {
+
+        }
+    })
+}
 function getLastFollowingId() {
     $.ajax({
         url: base_url + "/user/last/following/id",
@@ -35,6 +47,13 @@ function getLastUserId() {
     })
 }
 
+function generateNextPositionId(currentId) {
+    if (currentId === null) {
+        return "POSN-1";
+    } else {
+        return "POSN-" + (Number(currentId.slice(5)) + 1);
+    }
+}
 function generateNextFollowingId(currentId) {
     if (currentId === null) {
         return "FWNG-1";
