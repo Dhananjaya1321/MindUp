@@ -1,7 +1,63 @@
+$("#signup-get-details-next-btn").click(function () {
+    let name = $("#signup-get-details-full-name").val();
+    let country = $("#signup-get-details-country").val();
+    let contact = $("#signup-get-details-contact").val();
+    let gender = $("input[name='gender']:checked").val();
+    saveUser(name, country, contact, gender);
+});
+
+$("#signup-get-details-skip-btn").click(function () {
+    saveUser();
+});
+
+function saveUser(name, country, contact, gender) {
+    let email = $("#sign-up-email").val();
+    let password = $("#sign-up-password").val();
+    let user_id = getLastUserId();
+    let data;
+    if (name !== null) {
+        data = {
+            "user_id": user_id,
+            "name": name,
+            "country": country,
+            "contact": contact,
+            "gender": gender,
+            "login": {
+                "email": email,
+                "password": password,
+            },
+        }
+    } else {
+        data = {
+            "user_id": user_id,
+            "login": {
+                "email": email,
+                "password": password,
+            },
+        }
+    }
+    console.log(JSON.stringify(data));
+
+    $.ajax({
+        url: base_url + "/user",
+        method: "post",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (resp) {
+            alert(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+
 function getLastPositionId() {
     $.ajax({
         url: base_url + "/user/last/position/id",
         method: "get",
+        async: false,
         success: function (resp) {
             generateNextPositionId(resp.data);
         },
@@ -15,6 +71,7 @@ function getLastFollowingId() {
     $.ajax({
         url: base_url + "/user/last/following/id",
         method: "get",
+        async: false,
         success: function (resp) {
             generateNextFollowingId(resp.data);
         },
@@ -28,6 +85,7 @@ function getLastFollowerId() {
     $.ajax({
         url: base_url + "/user/last/follower/id",
         method: "get",
+        async: false,
         success: function (resp) {
             generateNextFollowerId(resp.data);
         },
@@ -38,16 +96,19 @@ function getLastFollowerId() {
 }
 
 function getLastUserId() {
+    let userID;
     $.ajax({
         url: base_url + "/user/last/user/id",
         method: "get",
+        async: false,
         success: function (resp) {
-            generateNextUserId(resp.data);
+            userID = generateNextUserId(resp.data);
         },
         error: function (resp) {
 
         }
-    })
+    });
+    return userID;
 }
 
 function generateNextPositionId(currentId) {
