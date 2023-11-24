@@ -1,6 +1,42 @@
 $(window).ready(function () {
     loadAllCountries();
 })
+/*============================================= user account =============================================*/
+function getUserDetails() {
+    $.ajax({
+        url: base_url + "/user",
+        method: "get",
+        async:false,
+        success: function (resp) {
+            setDetailsForProfile(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function setDetailsForProfile(user) {
+    $("#cover-img").css("background",`url()`);
+    $("#cover-img").css("backgroundSize",`cover`);
+    $("#cover-img").css("backgroundPosition",`center`);
+
+    $("#dp-img").css("background",`url()`);
+    $("#dp-img").css("backgroundSize",`cover`);
+    $("#dp-img").css("backgroundPosition",`center`);
+
+    $("#name").text("Isuru Dhananjaya"+" ");
+    $("#username").text("("+"dhananjaya"+")");
+    $("#location").text("Galle, Sri Lanka");
+    $("#headline").text("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita illo nemo obcaecati perferendis reiciendis sed. Aliquid aut, distinctio dolorem ex facere iusto laboriosam modi non officia possimus quaerat ratione unde?");
+    $("#youtube-link").append(`<a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a>`);
+
+
+}
+
+
+
+
 
 /*=============================================== sign-in ================================================*/
 $("#signin-btn").click(function () {
