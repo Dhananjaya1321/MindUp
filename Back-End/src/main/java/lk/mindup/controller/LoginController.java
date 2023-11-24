@@ -18,6 +18,7 @@ public class LoginController {
 
     @GetMapping(params = {"email","password"})
     public ResponseUtil checkUser(String email,String password){
+        System.out.println(email+" "+password);
         return new ResponseUtil("Ok","User is alive", loginService.checkUser(email,password));
     }
 
