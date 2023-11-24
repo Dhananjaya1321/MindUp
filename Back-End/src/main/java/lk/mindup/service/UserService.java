@@ -7,6 +7,8 @@ public interface UserService {
 
     String getLastUserId();
 
+    String getUserId(String email);
+
     String getLastFollowerId();
 
     String getLastFollowingId();

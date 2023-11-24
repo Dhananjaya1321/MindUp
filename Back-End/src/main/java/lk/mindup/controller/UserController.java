@@ -19,6 +19,11 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Added...!", userDTO.getLogin().getEmail());
     }
 
+    @GetMapping(params = {"email"})
+    public ResponseUtil getUserId(String email) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getUserId(email));
+    }
+
     @GetMapping(path = "/last/user/id")
     public ResponseUtil getLastUserId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastUserId());

@@ -51,7 +51,7 @@ function searchPassword(email, password) {
         url: base_url + "/login?email=" + email + "&password=" + password,
         method: "get",
         success: function (resp) {
-
+            getUserId(email);
             if (resp.data) {
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
@@ -72,6 +72,7 @@ function getUserId(email) {
         method: "get",
         async: false,
         success: function (resp) {
+            console.log(resp.data);
             user_id=resp.data;
         },
         error: function (resp) {
