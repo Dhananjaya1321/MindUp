@@ -1,3 +1,8 @@
+$(window).ready(function () {
+    loadAllCountries();
+})
+
+/*=============================================== sign-in ================================================*/
 $("#signin-btn").click(function () {
     let email = $("#sign-in-email").val();
     let password = $("#sign-in-password").val();
@@ -24,6 +29,37 @@ function searchPassword(email, password) {
     })
 }
 
+/*=================================== load all counties for sign-up form =================================*/
+let countries = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
+    "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin",
+    "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso",
+    "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "CAR", "Chad", "Chile",
+    "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "DRC",
+    "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "Salvador", "Equatorial",
+    "Eritrea", "Estonia", "Swaziland", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany",
+    "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Holy", "Honduras", "Hungary",
+    "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan",
+    "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein",
+    "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall", "Mauritania",
+    "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
+    "Namibia", "Nauru", "Nepal", "Netherlands", "New-Zealand", "Nicaragua", "Niger", "Nigeria", "North-Korea", "North-Macedonia",
+    "Norway", "Oman", "Pakistan", "Palau", "Palestine-State", "Panama", "Papua-New-Guinea", "Paraguay", "Peru", "Philippines",
+    "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint-Lucia", "Samoa", "San Marino", "Saudi-Arabia",
+    "Senegal", "Serbia", "Seychelles", "Sierra-Leone", "Singapore", "Slovakia", "Slovenia", "Solomon-Islands", "Somalia",
+    "South-Africa", "South-Korea", "South-Sudan", "Spain", "Sri-Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+    "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga","Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+    "Uganda", "Ukraine", "UAE", "UK", "USA", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia",
+    "Zimbabwe",
+];
+
+function loadAllCountries() {
+    for (let i = 0; i < countries.length; i++) {
+        $("#signup-get-details-country").append(`<option value=${countries[i]}>${countries[i]}</option>`);
+    }
+}
+
+/*=============================================== sign-up ================================================*/
 $("#signup-get-details-next-btn").click(function () {
     let name = $("#signup-get-details-full-name").val();
     let country = $("#signup-get-details-country").val();
@@ -80,7 +116,7 @@ function saveUser(name, country, contact, gender) {
     })
 }
 
-
+/*================================== get last id's and generate next id ==================================*/
 function getLastPositionId() {
     $.ajax({
         url: base_url + "/user/last/position/id",
