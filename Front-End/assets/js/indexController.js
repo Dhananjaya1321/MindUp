@@ -1,20 +1,20 @@
 let base_url = "http://localhost:8080";
 
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
-$("#signin-btn").click(function () {
+/*$("#signin-btn").click(function () {
     $("#login-main").css("display", "none");
     $("#nav-bar, #home-main").css("display", "flex");
-});
+});*/
 
 $("#signup-btn").click(function () {
     $("#sign-up-section").css("display", "none");
     $("#get-details-section").css("display", "flex");
 });
 
-$("#signup-get-details-next-btn,#signup-get-details-skip-btn").click(function () {
+/*$("#signup-get-details-next-btn,#signup-get-details-skip-btn").click(function () {
     $("#login-main").css("display", "none");
     $("#nav-bar, #home-main").css("display", "flex");
-});
+});*/
 
 $("#signin-to-signup-btn").click(function () {
     $("#sign-in-section").css("display", "none");

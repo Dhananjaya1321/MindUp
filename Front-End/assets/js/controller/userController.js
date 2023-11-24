@@ -1,3 +1,29 @@
+$("#signin-btn").click(function () {
+    let email = $("#sign-in-email").val();
+    let password = $("#sign-in-password").val();
+    console.log(email, password)
+    searchPassword(email, password);
+});
+
+function searchPassword(email, password) {
+    $.ajax({
+        url: base_url + "/login?email=" + email + "&password=" + password,
+        method: "get",
+        success: function (resp) {
+            if (resp.data) {
+                $("#login-main").css("display", "none");
+                $("#nav-bar, #home-main").css("display", "flex");
+            } else {
+                $("#sign-in-email").val("");
+                $("#sign-in-password").val("");
+            }
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
 $("#signup-get-details-next-btn").click(function () {
     let name = $("#signup-get-details-full-name").val();
     let country = $("#signup-get-details-country").val();
@@ -44,7 +70,9 @@ function saveUser(name, country, contact, gender) {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (resp) {
-            alert(resp.data);
+            $("#login-main").css("display", "none");
+            $("#nav-bar, #home-main").css("display", "flex");
+            // alert(resp.data);
         },
         error: function (resp) {
             alert(resp.JSON.data);
