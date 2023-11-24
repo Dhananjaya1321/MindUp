@@ -1,4 +1,5 @@
 let base_url = "http://localhost:8080";
+let user_id;
 
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
 /*$("#signin-btn").click(function () {

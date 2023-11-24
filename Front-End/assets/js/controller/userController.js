@@ -1,6 +1,6 @@
 $(window).ready(function () {
     loadAllCountries();
-})
+});
 /*============================================= user account =============================================*/
 function getUserDetails() {
     $.ajax({
@@ -51,6 +51,7 @@ function searchPassword(email, password) {
         url: base_url + "/login?email=" + email + "&password=" + password,
         method: "get",
         success: function (resp) {
+
             if (resp.data) {
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
@@ -65,6 +66,19 @@ function searchPassword(email, password) {
     })
 }
 
+function getUserId(email) {
+    $.ajax({
+        url: base_url + "/user?email=" + email,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            user_id=resp.data;
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+}
 /*=================================== load all counties for sign-up form =================================*/
 let countries = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
@@ -111,11 +125,11 @@ $("#signup-get-details-skip-btn").click(function () {
 function saveUser(name, country, contact, gender) {
     let email = $("#sign-up-email").val();
     let password = $("#sign-up-password").val();
-    let user_id = getLastUserId();
+    let userid = getLastUserId();
     let data;
     if (name !== null) {
         data = {
-            "user_id": user_id,
+            "user_id": userid,
             "name": name,
             "country": country,
             "contact": contact,
@@ -127,7 +141,7 @@ function saveUser(name, country, contact, gender) {
         }
     } else {
         data = {
-            "user_id": user_id,
+            "user_id": userid,
             "login": {
                 "email": email,
                 "password": password,
@@ -142,6 +156,7 @@ function saveUser(name, country, contact, gender) {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (resp) {
+            user_id=userid;
             $("#login-main").css("display", "none");
             $("#nav-bar, #home-main").css("display", "flex");
             // alert(resp.data);
