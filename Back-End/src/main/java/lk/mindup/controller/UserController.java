@@ -35,6 +35,11 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getPostCount(user_id));
     }
 
+    @GetMapping(path = "/position", params = {"user_id"})
+    public ResponseUtil getPositions(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getPositions(user_id));
+    }
+
     @GetMapping(path = "/followers/count", params = {"user_id"})
     public ResponseUtil getFollowersCount(String user_id) {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getFollowersCount(user_id));

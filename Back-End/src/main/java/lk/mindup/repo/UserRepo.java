@@ -1,9 +1,12 @@
 package lk.mindup.repo;
 
 import lk.mindup.entity.CustomEntity;
+import lk.mindup.entity.Positions;
 import lk.mindup.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 public interface UserRepo extends JpaRepository<User, String> {
     @Query(value = "SELECT user_id FROM user ORDER BY user_id DESC LIMIT 1", nativeQuery = true)
@@ -23,4 +26,7 @@ public interface UserRepo extends JpaRepository<User, String> {
 
     @Query(value = "SELECT COUNT(following_id) FROM user JOIN following f ON user.user_id = f.user_user_id WHERE user_id=?1", nativeQuery = true)
     int getFollowingCount(String user_id);
+
+    @Query(value = "SELECT * FROM positions p WHERE p.user_user_id=?1", nativeQuery = true)
+    List<Positions> getPositions(String user_id);
 }

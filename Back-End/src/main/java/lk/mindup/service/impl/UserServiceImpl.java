@@ -1,6 +1,7 @@
 package lk.mindup.service.impl;
 
 import lk.mindup.dto.CustomDTO;
+import lk.mindup.dto.PositionsDTO;
 import lk.mindup.dto.UserDTO;
 import lk.mindup.entity.CustomEntity;
 import lk.mindup.entity.Login;
@@ -66,6 +67,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getFollowersCount(String user_id) {
         return userRepo.getFollowersCount(user_id);
+    }
+
+    @Override
+    public List<PositionsDTO> getPositions(String user_id) {
+        return modelMapper.map(userRepo.getPositions(user_id), new TypeToken<ArrayList<PositionsDTO>>() {
+        }.getType());
     }
 
     @Override

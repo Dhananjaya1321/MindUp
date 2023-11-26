@@ -1,6 +1,7 @@
 package lk.mindup.service;
 
 import lk.mindup.dto.CustomDTO;
+import lk.mindup.dto.PositionsDTO;
 import lk.mindup.dto.UserDTO;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public interface UserService {
     int getPostCount(String user_id);
 
     int getFollowersCount(String user_id);
+
+    List<PositionsDTO> getPositions(String user_id);
 
     int getFollowingCount(String user_id);
 

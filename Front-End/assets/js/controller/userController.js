@@ -3,6 +3,7 @@ $(window).ready(function () {
 });
 
 /*============================================= user account =============================================*/
+
 function getUserPostCount() {
     $.ajax({
         url: base_url + "/user/post/count?user_id=" + user_id,
