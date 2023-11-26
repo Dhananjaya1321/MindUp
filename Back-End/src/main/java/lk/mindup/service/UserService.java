@@ -16,6 +16,8 @@ public interface UserService {
 
     int getFollowersCount(String user_id);
 
+    int getFollowingCount(String user_id);
+
     String getUserId(String email);
 
     String getLastFollowerId();
