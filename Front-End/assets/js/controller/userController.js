@@ -1,14 +1,16 @@
 $(window).ready(function () {
     loadAllCountries();
 });
+
 /*============================================= user account =============================================*/
 function getUserDetails() {
     $.ajax({
-        url: base_url + "/user",
+        url: base_url + "/user/details?user_id=" + user_id,
         method: "get",
-        async:false,
+        async: false,
         success: function (resp) {
-            setDetailsForProfile(resp.data);
+            console.log(resp.data[0]);
+            setDetailsForProfile(resp.data[0]);
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -17,25 +19,55 @@ function getUserDetails() {
 }
 
 function setDetailsForProfile(user) {
-    $("#cover-img").css("background",`url()`);
-    $("#cover-img").css("backgroundSize",`cover`);
-    $("#cover-img").css("backgroundPosition",`center`);
+    // console.log(user,user.country)
+    $("#cover-img").css("background", `url(${user.cover_photo})`);
+    $("#cover-img").css("backgroundSize", `cover`);
+    $("#cover-img").css("backgroundPosition", `center`);
 
-    $("#dp-img").css("background",`url()`);
-    $("#dp-img").css("backgroundSize",`cover`);
-    $("#dp-img").css("backgroundPosition",`center`);
+    $("#dp-img").css("background", `url(${user.profile_photo})`);
+    $("#dp-img").css("backgroundSize", `cover`);
+    $("#dp-img").css("backgroundPosition", `center`);
 
-    $("#name").text("Isuru Dhananjaya"+" ");
-    $("#username").text("("+"dhananjaya"+")");
-    $("#location").text("Galle, Sri Lanka");
-    $("#headline").text("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita illo nemo obcaecati perferendis reiciendis sed. Aliquid aut, distinctio dolorem ex facere iusto laboriosam modi non officia possimus quaerat ratione unde?");
-    $("#youtube-link").append(`<a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a>`);
+    /*==================================================================*/
+    if (user.name !== null) {
+        $("#name").text(`${user.name}` + " ");
+    }
+    if (user.verified_or_not !== "verified") {
+        $("#verify-img").css("display", "none");
+    } else {
+        $("#verify-img").css("display", "block");
+    }
+    if (user.username !== null) {
+        $("#username").text("(" + `${user.username}` + ")");
+    }
+
+    /*==================================================================*/
+    if (user.address !== null) {
+        $("#location").text(`${user.address}`);
+    }
+    if (user.country !== null) {
+        $("#location").text(`${user.country}`);
+    }
+    if (user.country !== null && user.address !== null) {
+        $("#location").text(`${user.country}, ${user.address}`);
+    }
+    if (user.country === null && user.address === null) {
+        $("#location-img").css("display", "none");
+    } else {
+        $("#location-img").css("display", "block");
+    }
+
+    /*==================================================================*/
+    if (user.headline !== null) {
+        $("#headline").text(`${user.headline}`);
+    }
+    /*==================================================================*/
+    if (user.youtube_channel !== null) {
+        $("#youtube-link").append(`<a href="${user.youtube_channel}">youtube channel <img src="assets/images/youtube_.png"></a>`);
+    }
 
 
 }
-
-
-
 
 
 /*=============================================== sign-in ================================================*/
@@ -73,13 +105,15 @@ function getUserId(email) {
         async: false,
         success: function (resp) {
             console.log(resp.data);
-            user_id=resp.data;
+            user_id = resp.data;
         },
         error: function (resp) {
             alert(resp.JSON.data);
         }
     });
 }
+
+
 /*=================================== load all counties for sign-up form =================================*/
 let countries = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia",
@@ -99,7 +133,7 @@ let countries = [
     "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint-Lucia", "Samoa", "San Marino", "Saudi-Arabia",
     "Senegal", "Serbia", "Seychelles", "Sierra-Leone", "Singapore", "Slovakia", "Slovenia", "Solomon-Islands", "Somalia",
     "South-Africa", "South-Korea", "South-Sudan", "Spain", "Sri-Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
-    "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga","Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+    "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
     "Uganda", "Ukraine", "UAE", "UK", "USA", "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia",
     "Zimbabwe",
 ];
@@ -109,6 +143,7 @@ function loadAllCountries() {
         $("#signup-get-details-country").append(`<option value=${countries[i]}>${countries[i]}</option>`);
     }
 }
+
 
 /*=============================================== sign-up ================================================*/
 $("#signup-get-details-next-btn").click(function () {
@@ -157,7 +192,7 @@ function saveUser(name, country, contact, gender) {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (resp) {
-            user_id=userid;
+            user_id = userid;
             $("#login-main").css("display", "none");
             $("#nav-bar, #home-main").css("display", "flex");
             // alert(resp.data);
@@ -167,6 +202,7 @@ function saveUser(name, country, contact, gender) {
         }
     })
 }
+
 
 /*================================== get last id's and generate next id ==================================*/
 function getLastPositionId() {
