@@ -30,6 +30,11 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getUserId(email));
     }
 
+    @GetMapping(path = "/post/count",params = {"user_id"})
+    public ResponseUtil getPostCount(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getPostCount(user_id));
+    }
+
     @GetMapping(path = "/last/user/id")
     public ResponseUtil getLastUserId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastUserId());

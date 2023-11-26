@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<CustomDTO> getUserDetails(String user_id) {
-        ArrayList<CustomEntity> customEntities=new ArrayList<>();
+        ArrayList<CustomEntity> customEntities = new ArrayList<>();
         customEntities.add(userRepo.getUserDetails(user_id));
         return modelMapper.map(customEntities, new TypeToken<ArrayList<CustomEntity>>() {
         }.getType());
@@ -56,6 +56,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public String getLastUserId() {
         return userRepo.getLastUserId();
+    }
+
+    @Override
+    public int getPostCount(String user_id) {
+        return userRepo.getPostCount(user_id);
     }
 
     @Override

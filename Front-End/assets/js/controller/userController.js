@@ -19,7 +19,6 @@ function getUserDetails() {
 }
 
 function setDetailsForProfile(user) {
-    // console.log(user,user.country)
     $("#cover-img").css("background", `url(${user.cover_photo})`);
     $("#cover-img").css("backgroundSize", `cover`);
     $("#cover-img").css("backgroundPosition", `center`);
