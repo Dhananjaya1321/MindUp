@@ -17,4 +17,7 @@ public interface UserRepo extends JpaRepository<User, String> {
 
     @Query(value = "SELECT COUNT(post_id) FROM user JOIN post p ON user.user_id = p.user_user_id WHERE user_id=?1", nativeQuery = true)
     int getPostCount(String user_id);
+
+    @Query(value = "SELECT COUNT(follower_id) FROM user JOIN follower f ON user.user_id = f.user_user_id WHERE user_id=?1", nativeQuery = true)
+    int getFollowersCount(String user_id);
 }

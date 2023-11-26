@@ -64,6 +64,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int getFollowersCount(String user_id) {
+        return userRepo.getFollowersCount(user_id);
+    }
+
+    @Override
     public String getUserId(String email) {
         return userRepo.getUserId(email);
     }
