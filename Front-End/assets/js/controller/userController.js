@@ -3,6 +3,48 @@ $(window).ready(function () {
 });
 
 /*============================================= user account =============================================*/
+function getUserPostCount() {
+    $.ajax({
+        url: base_url + "/user/post/count?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            $("#post-count>h3:nth-child(1)").text(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+}
+
+function getUserFollowersCount() {
+    $.ajax({
+        url: base_url + "/user/followers/count?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            $("#followers-count>h3:nth-child(1)").text(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+}
+
+function getUserFollowingCount() {
+    $.ajax({
+        url: base_url + "/user/following/count?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            $("#following-count>h3:nth-child(1)").text(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+}
+
 function getUserDetails() {
     $.ajax({
         url: base_url + "/user/details?user_id=" + user_id,

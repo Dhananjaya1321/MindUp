@@ -69,6 +69,9 @@ $("#nav-profile").click(function () {
     $("#page-section,#followed-page-section,#posts-shared-section,#user-section,#notifications-section").css("display", "none");
     $("#profile-section,#recommendation-section").css("display", "flex");
     getUserDetails();
+    getUserPostCount();
+    getUserFollowingCount();
+    getUserFollowersCount();
 });
 
 $("#addBtn").click(function () {
