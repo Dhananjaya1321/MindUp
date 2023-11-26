@@ -3,6 +3,37 @@ $(window).ready(function () {
 });
 
 /*============================================= user account =============================================*/
+function getUserPosition() {
+    $.ajax({
+        url: base_url + "/user/position?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            for (let i in resp.data) {
+                let position =
+                    `<div class="position flex f-col">
+                        <div class="flex f-row">
+                            <div class="position-page-img"></div>
+                            <div class="position-details flex f-col">
+                                <h3>${resp.data[i].company_name}</h3><!--organisation name-->
+                                <h4>${resp.data[i].position}</h4><!--position-->
+                                <p>${resp.data[i].start_date}-${resp.data[i].end_date}</p><!--time period-->
+                            </div>
+                        </div>
+                        <div class="flex f-row">
+                            <!--                        <div class="vertical-line"></div>-->
+                            <p>${resp.data[i].description}</p>
+                        </div><!--description-->
+                    </div>`;
+
+                $("#profile-positions-section>section").append(position);
+            }
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+}
 
 function getUserPostCount() {
     $.ajax({
