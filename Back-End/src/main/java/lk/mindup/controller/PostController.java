@@ -15,6 +15,11 @@ public class PostController {
     @Autowired
     PostService postService;
 
+    @GetMapping(path = "/posts", params = {"user_id","post_count"})
+    public ResponseUtil getUserPosts(String user_id,int post_count) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getUserPosts(user_id,post_count+10));
+    }
+
     @GetMapping(path = "/last/post/id")
     public ResponseUtil getLastPostId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getLastPostId());

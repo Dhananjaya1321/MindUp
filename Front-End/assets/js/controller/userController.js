@@ -6,7 +6,7 @@ $(window).ready(function () {
 let user_post_count=[];
 function getUserPosts() {
     $.ajax({
-        url: base_url + "/user/posts?user_id=" + user_id+"&post_count="+user_post_count.length,
+        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_post_count.length,
         method: "get",
         async: false,
         success: function (resp) {
