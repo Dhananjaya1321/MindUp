@@ -102,6 +102,19 @@ function setDetailsForProfile(user) {
     $("#dp-img").css("backgroundPosition", `center`);
 
     /*==================================================================*/
+    if (user.page_id !== null) {
+        $("#page-btn>button").attr("id", "create-page");
+    } else {
+        $("#page-btn>button").remove();
+        let btn = `
+            <button id="${user.page_id}" class="flex f-col" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                 <div id="page-btn-img" style="background: url(${user.page_profile_photo}); background-size: cover; background-position: center"></div>
+                 ${user.page_name}
+            </button>`
+        $("#page-btn").append(btn);
+
+    }
+    /*==================================================================*/
     if (user.name !== null) {
         $("#name").text(`${user.name}` + " ");
     }
@@ -147,7 +160,6 @@ function setDetailsForProfile(user) {
 $("#signin-btn").click(function () {
     let email = $("#sign-in-email").val();
     let password = $("#sign-in-password").val();
-    console.log(email, password)
     searchPassword(email, password);
 });
 

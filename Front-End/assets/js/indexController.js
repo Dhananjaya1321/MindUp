@@ -72,6 +72,7 @@ $("#nav-profile").click(function () {
     getUserPostCount();
     getUserFollowingCount();
     getUserFollowersCount();
+    getUserPosition();
 });
 
 $("#addBtn").click(function () {
