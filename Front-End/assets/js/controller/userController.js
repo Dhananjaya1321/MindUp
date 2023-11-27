@@ -3,6 +3,22 @@ $(window).ready(function () {
 });
 
 /*============================================= user account =============================================*/
+let user_post_count=[];
+function getUserPosts() {
+    $.ajax({
+        url: base_url + "/user/posts?user_id=" + user_id+"&post_count="+user_post_count.length,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            user_post_count=resp.data;
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+
 function getUserPosition() {
     $.ajax({
         url: base_url + "/user/position?user_id=" + user_id,
