@@ -14,7 +14,6 @@ function getUserPosts() {
     })
 }
 
-
 function getUserPosition() {
     $.ajax({
         url: base_url + "/user/position?user_id=" + user_id,
@@ -118,8 +117,15 @@ function setDetailsForHomePage(user) {
         $("#user-name").text(`${user.name}`);
     }
     if (user.headline !== null) {
-        $("#about").text(`${user.headline}`);
+        $("#about").text(truncateParagraph(`${user.headline}`, 101));
     }
+}
+
+function truncateParagraph(paragraph, maxLength) {
+    if (paragraph.length > maxLength) {
+        return paragraph.substring(0, maxLength) + '...';
+    }
+    return paragraph;
 }
 
 function setDetailsForProfile(user) {
@@ -187,12 +193,6 @@ function setDetailsForProfile(user) {
 
 
 /*=============================================== sign-in ================================================*/
-$("#signin-btn").click(function () {
-    let email = $("#sign-in-email").val();
-    let password = $("#sign-in-password").val();
-    searchPassword(email, password);
-});
-
 function searchPassword(email, password) {
     $.ajax({
         url: base_url + "/login?email=" + email + "&password=" + password,
@@ -200,6 +200,7 @@ function searchPassword(email, password) {
         success: function (resp) {
             getUserId(email);
             if (resp.data) {
+                getUserDetails();
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
             } else {
@@ -261,18 +262,6 @@ function loadAllCountries() {
 
 
 /*=============================================== sign-up ================================================*/
-$("#signup-get-details-next-btn").click(function () {
-    let name = $("#signup-get-details-full-name").val();
-    let country = $("#signup-get-details-country").val();
-    let contact = $("#signup-get-details-contact").val();
-    let gender = $("input[name='gender']:checked").val();
-    saveUser(name, country, contact, gender);
-});
-
-$("#signup-get-details-skip-btn").click(function () {
-    saveUser();
-});
-
 function saveUser(name, country, contact, gender) {
     let email = $("#sign-up-email").val();
     let password = $("#sign-up-password").val();
@@ -308,6 +297,7 @@ function saveUser(name, country, contact, gender) {
         data: JSON.stringify(data),
         success: function (resp) {
             user_id = userid;
+            getUserDetails();
             $("#login-main").css("display", "none");
             $("#nav-bar, #home-main").css("display", "flex");
             // alert(resp.data);

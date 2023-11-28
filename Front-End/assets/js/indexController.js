@@ -1,26 +1,33 @@
 $(window).ready(function () {
     loadAllCountries();
-    getUserDetails();
 });
 
 let base_url = "http://localhost:8080";
 let user_id;
 
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
-/*$("#signin-btn").click(function () {
-    $("#login-main").css("display", "none");
-    $("#nav-bar, #home-main").css("display", "flex");
-});*/
+$("#signin-btn").click(function () {
+    let email = $("#sign-in-email").val();
+    let password = $("#sign-in-password").val();
+    searchPassword(email, password);
+});
 
 $("#signup-btn").click(function () {
     $("#sign-up-section").css("display", "none");
     $("#get-details-section").css("display", "flex");
 });
 
-/*$("#signup-get-details-next-btn,#signup-get-details-skip-btn").click(function () {
-    $("#login-main").css("display", "none");
-    $("#nav-bar, #home-main").css("display", "flex");
-});*/
+$("#signup-get-details-next-btn").click(function () {
+    let name = $("#signup-get-details-full-name").val();
+    let country = $("#signup-get-details-country").val();
+    let contact = $("#signup-get-details-contact").val();
+    let gender = $("input[name='gender']:checked").val();
+    saveUser(name, country, contact, gender);
+});
+
+$("#signup-get-details-skip-btn").click(function () {
+    saveUser();
+});
 
 $("#signin-to-signup-btn").click(function () {
     $("#sign-in-section").css("display", "none");
