@@ -2,3 +2,5 @@ Back-End/.idea
 .idea
 MindUp.iml
 Back-End/Back-End.iml
+Back-End/target
+Back-End/src/main/resources/media

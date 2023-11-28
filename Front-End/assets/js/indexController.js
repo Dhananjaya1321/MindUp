@@ -1,4 +1,5 @@
 let base_url = "http://localhost:8080";
+let user_id;
 
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
 /*$("#signin-btn").click(function () {
@@ -67,6 +68,11 @@ $("#nav-notification").click(function () {
 $("#nav-profile").click(function () {
     $("#page-section,#followed-page-section,#posts-shared-section,#user-section,#notifications-section").css("display", "none");
     $("#profile-section,#recommendation-section").css("display", "flex");
+    getUserDetails();
+    getUserPostCount();
+    getUserFollowingCount();
+    getUserFollowersCount();
+    getUserPosition();
 });
 
 $("#addBtn").click(function () {

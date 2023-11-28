@@ -19,6 +19,37 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Added...!", userDTO.getLogin().getEmail());
     }
 
+    @GetMapping(path = "/details", params = {"user_id"})
+    public ResponseUtil getUserDetails(String user_id) {
+        System.out.println("\n\n\n\n" + userService.getUserDetails(user_id));
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getUserDetails(user_id));
+    }
+
+    @GetMapping(params = {"email"})
+    public ResponseUtil getUserId(String email) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getUserId(email));
+    }
+
+    @GetMapping(path = "/post/count", params = {"user_id"})
+    public ResponseUtil getPostCount(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getPostCount(user_id));
+    }
+
+    @GetMapping(path = "/position", params = {"user_id"})
+    public ResponseUtil getPositions(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getPositions(user_id));
+    }
+
+    @GetMapping(path = "/followers/count", params = {"user_id"})
+    public ResponseUtil getFollowersCount(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getFollowersCount(user_id));
+    }
+
+    @GetMapping(path = "/following/count", params = {"user_id"})
+    public ResponseUtil getFollowingCount(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getFollowingCount(user_id));
+    }
+
     @GetMapping(path = "/last/user/id")
     public ResponseUtil getLastUserId() {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getLastUserId());

@@ -49,4 +49,8 @@ public class User {
 
     @OneToMany(mappedBy = "user",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Reactions> reactions;
+
+    public User(String user_id) {
+        this.user_id=user_id;
+    }
 }
