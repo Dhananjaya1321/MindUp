@@ -1,7 +1,3 @@
-$(window).ready(function () {
-    loadAllCountries();
-});
-
 /*============================================= user account =============================================*/
 let user_post_count=[];
 function getUserPosts() {
@@ -101,11 +97,29 @@ function getUserDetails() {
         success: function (resp) {
             console.log(resp.data[0]);
             setDetailsForProfile(resp.data[0]);
+            setDetailsForHomePage(resp.data[0]);
         },
         error: function (resp) {
             alert(resp.JSON.data);
         }
     })
+}
+
+function setDetailsForHomePage(user) {
+    $("#profile-summary-cover-photo").css("background", `url(${user.cover_photo})`);
+    $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
+    $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
+
+    $("#profile-photo").css("background", `url(${user.profile_photo})`);
+    $("#profile-photo").css("backgroundSize", `cover`);
+    $("#profile-photo").css("backgroundPosition", `center`);
+
+    if (user.name !== null) {
+        $("#user-name").text(`${user.name}`);
+    }
+    if (user.headline !== null) {
+        $("#about").text(`${user.headline}`);
+    }
 }
 
 function setDetailsForProfile(user) {

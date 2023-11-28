@@ -27,31 +27,37 @@ function saveUserPost() {
             contentType: false,
             processData: false,
             success: function (resp) {
-
+                clearPostForm();
             },
             error: function (resp) {
-
+                clearPostForm();
             }
         })
     } else {
-       if (post_text!==''){
-           $.ajax({
-               url: base_url + "/post/without/media",
-               method: "post",
-               data: JSON.stringify(data),
-               contentType: "application/json",
-               success: function (resp) {
-
-               },
-               error: function (resp) {
-
-               }
-           })
-       }
+        if (post_text !== '') {
+            $.ajax({
+                url: base_url + "/post/without/media",
+                method: "post",
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                success: function (resp) {
+                    clearPostForm();
+                },
+                error: function (resp) {
+                    clearPostForm();
+                }
+            })
+        }
     }
 
 }
 
+function clearPostForm() {
+    $("#file-input-in-post-module,#post-txt").val('');
+    $("#post-txt").css("height","250px");
+    $("#post-media").css("background",`url("")`);
+    $("#post-media").css("display","none");
+}
 
 function getLastReactionId() {
     $.ajax({

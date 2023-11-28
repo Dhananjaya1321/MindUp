@@ -1,3 +1,8 @@
+$(window).ready(function () {
+    loadAllCountries();
+    getUserDetails();
+});
+
 let base_url = "http://localhost:8080";
 let user_id;
 
