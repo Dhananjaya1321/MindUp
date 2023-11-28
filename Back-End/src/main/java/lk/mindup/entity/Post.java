@@ -22,14 +22,21 @@ public class Post {
     private String how_can_view;/*anyone or friends*/
     private String media;/*image,video or audio*/
 
-
-
     @ManyToOne
     private User user;
 
     @ManyToOne
     private Page page;
 
-    @OneToMany(cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "post",cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Reactions> reactions;
+
+    public Post(String post_id, LocalDateTime dateTime, String who_can_view, String media, String post_text, User user) {
+        this.post_id=post_id;
+        this.dateTime=dateTime;
+        this.post_text=post_text;
+        this.how_can_view=who_can_view;
+        this.media=media;
+        this.user=user;
+    }
 }

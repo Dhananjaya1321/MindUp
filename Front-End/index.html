@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/fontawesome-free-6.4.0-web/css/all.min.css">
     <link rel="stylesheet" href="assets/css/boostrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/tab-bar.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 
     <style>
         #user-section,
@@ -21,6 +22,8 @@
         #unfollow-btn,
         #page-unfollow-btn,
         #page-more-btn,
+        #verify-img,
+        #location-img,
         #more-btn {
             display: none;
         }
@@ -55,6 +58,16 @@
             outline: none;
         }
 
+        #home-main,
+        #nav-bar,
+        #sign-up-section,
+            /*#sign-in-section,*/
+        #get-details-section,
+        #forgot-password-section,
+        #verify-code-section,
+        #change-password-section {
+            display: none;
+        }
 
     </style>
 </head>
@@ -89,7 +102,129 @@
         </menu>
     </div><!--Navigation section-->
 </header>
-<main class="flex">
+<main id="login-main" class="flex">
+    <section id="sign-in-section" class="flex f-col">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <h2>Sign In</h2>
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email address" id="sign-in-email">
+                </div>
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <div class="flex f-row">
+                        <input type="password" placeholder="Password" id="sign-in-password">
+                        <button id="sign-in-show-password">Show</button>
+                    </div>
+                    <button id="forgot-password">Forgot password</button>
+                </div>
+                <button id="signin-btn">Sign in</button>
+                <small>Or</small>
+                <button id="signin-with-google-btn" class="flex"><img src="assets/images/google.png" width="25"
+                                                                      style="margin-right: 5px"> Continue with Google
+                </button>
+                <button id="signin-with-facebook-btn" class="flex"><img src="assets/images/facebook.png" width="25"
+                                                                        style="margin-right: 5px"> Continue with
+                    Facebook
+                </button>
+            </div>
+        </div>
+        <small>Don’t have an account?
+            <button id="signin-to-signup-btn">Sign up</button>
+        </small>
+    </section>
+    <section id="sign-up-section" class="flex f-col">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <h2>Sign Up</h2>
+                <div class="flex f-col">
+                    <label>Email</label>
+                    <input type="email" placeholder="Email address" id="sign-up-email">
+                </div>
+                <div class="flex f-col">
+                    <label>Password</label>
+                    <div class="flex f-row">
+                        <input type="password" placeholder="Password" id="sign-up-password">
+                        <button id="sign-up-show-password">Show</button>
+                    </div>
+                </div>
+                <button id="signup-btn">Sign up</button>
+                <small>Or</small>
+                <button id="signup-with-google-btn" class="flex"><img src="assets/images/google.png" width="25"
+                                                                      style="margin-right: 5px"> Continue with Google
+                </button>
+                <button id="signup-with-facebook-btn" class="flex"><img src="assets/images/facebook.png" width="25"
+                                                                        style="margin-right: 5px"> Continue with
+                    Facebook
+                </button>
+            </div>
+        </div>
+        <small>Already have an account?
+            <button id="signup-to-signin-btn">Sign in</button>
+        </small>
+    </section>
+    <section id="get-details-section" class="flex">
+        <div class="flex f-col">
+            <div class="flex f-col">
+                <div>
+                    <h2 style="margin-bottom: 10px;">Sign Up</h2>
+                    <p>Please fill in these details to proceed. This information can also be filled after the account is
+                        created</p>
+                </div>
+                <div class="flex f-col">
+                    <label>Full name</label>
+                    <input type="text" placeholder="Full name" id="signup-get-details-full-name">
+                </div>
+                <div class="flex f-col">
+                    <label>Country</label>
+                    <select placeholder="Country" id="signup-get-details-country"></select>
+                </div>
+                <div class="flex f-col">
+                    <label>Phone number</label>
+                    <div class="flex f-row">
+                        <input type="text" placeholder="Phone number" id="signup-get-details-contact">
+                    </div>
+                </div>
+                <h2 style="margin-bottom: 10px;">Gender</h2>
+                <div class="radio-inputs">
+                    <label>
+                        <input class="radio-input" value="male" type="radio" name="gender">
+                        <span class="radio-tile">
+                             <span class="radio-icon">
+                              <i class="fa-solid fa-mars"></i>
+                             </span>
+                             <span class="radio-label">Male</span>
+                            </span>
+                    </label>
+                    <label>
+                        <input checked="" class="radio-input" value="female" type="radio" name="gender">
+                        <span class="radio-tile">
+                        <span class="radio-icon">
+                        <i class="fa-solid fa-mars-and-venus"></i>
+                        </span>
+                        <span class="radio-label">Female</span>
+                        </span>
+                    </label>
+                    <label>
+                        <input class="radio-input" type="radio" value="transgender" name="gender">
+                        <span class="radio-tile">
+                        <span class="radio-icon">
+                        <i class="fa-solid fa-transgender"></i>
+                        </span><span class="radio-label">Transgender</span></span>
+                    </label>
+                </div>
+                <button id="signup-get-details-next-btn">Next</button>
+                <button id="signup-get-details-skip-btn">Skip</button>
+            </div>
+        </div>
+
+    </section>
+    <section id="forgot-password-section" class="flex"></section>
+    <section id="verify-code-section" class="flex"></section>
+    <section id="change-password-section" class="flex"></section>
+</main>
+<main id="home-main" class="flex">
     <section id="home-section" class="flex f-col">
         <section id="followed-page-section" class="flex f-col">
             <section id="profile-summary" class="flex f-col">
@@ -1003,34 +1138,32 @@
             </div>
             <div id="profile-details" class="flex f-col">
                 <div class="flex f-row">
-                    <h3 id="name">Isuru Dhananjaya (<span id="username">dhananjaya</span>)</h3>
+                    <h3 id="name"><span id="username"></span></h3>
                     <img id="verify-img" src="assets/images/Verify_mark.png">
                 </div>
                 <div class="flex f-row">
                     <img id="location-img" src="assets/images/location.png">
-                    <h3 id="location">Galle, Sri Lanka</h3>
+                    <h3 id="location"></h3>
                 </div>
                 <div class="flex f-row">
-                    <p id="headline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita illo nemo
-                        obcaecati perferendis reiciendis sed. Aliquid aut, distinctio dolorem ex facere iusto laboriosam
-                        modi non officia possimus quaerat ratione unde?</p>
+                    <p id="headline"></p>
                 </div>
                 <div class="flex f-row">
-                    <p id="youtube-link"><a href="#">www.youtube.com <img src="assets/images/youtube_.png"></a></p>
+                    <p id="youtube-link"></p>
                 </div>
                 <div class="flex f-row">
                     <div id="post-count" class="flex f-col">
-                        <h3>100</h3>
+                        <h3>0</h3>
                         <h3>Post</h3>
                     </div>
                     <div class="profile-details-vertical-line vertical-line"></div>
                     <div id="followers-count" class="flex f-col">
-                        <h3>100</h3>
+                        <h3>0</h3>
                         <h3>Followers</h3>
                     </div>
                     <div class="profile-details-vertical-line vertical-line"></div>
                     <div id="following-count" class="flex f-col">
-                        <h3>100</h3>
+                        <h3>0</h3>
                         <h3>Following</h3>
                     </div>
                 </div>
@@ -1132,22 +1265,7 @@
                 </div>
             </div>
             <section class="flex f-col">
-                <div class="position flex f-col">
-                    <div class="flex f-row">
-                        <div class="position-page-img"></div>
-                        <div class="position-details flex f-col">
-                            <h3>Future Eye Academy</h3><!--organisation name-->
-                            <h4>CEO</h4><!--position-->
-                            <p>2022-present</p><!--time period-->
-                        </div>
-                    </div>
-                    <div class="flex f-row">
-                        <!--                        <div class="vertical-line"></div>-->
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores dignissimos
-                            doloremque, laboriosam quibusdam quo vero voluptates. Ad incidunt iste necessitatibus. Ad
-                            amet aut esse ex fuga id ipsam odio!</p>
-                    </div><!--description-->
-                </div>
+
             </section>
         </section><!--profile positions section-->
         <section id="profile-activity-section" class="flex f-col">
@@ -1895,6 +2013,9 @@
 <script src="assets/js/jquery-3.7.0.min.js"></script>
 <script src="assets/js/boostrap/bootstrap.min.js"></script>
 <script src="assets/js/indexController.js"></script>
+<script src="assets/js/controller/pageController.js"></script>
+<script src="assets/js/controller/postController.js"></script>
+<script src="assets/js/controller/userController.js"></script>
 <script>
 
 </script>
