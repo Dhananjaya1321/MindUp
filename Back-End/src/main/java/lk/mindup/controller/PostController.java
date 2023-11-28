@@ -7,12 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/post")
 public class PostController {
     @Autowired
     PostService postService;
+
+    @PostMapping
+    public ResponseUtil saveUserPost(@RequestPart("media") MultipartFile media, @RequestPart("dto") PostDTO dto) throws IOException {
+        dto.setMedia(media);
+        postService.saveUserPost(dto);
+        return new ResponseUtil("Ok", "Successfully Added...!",dto.getPost_id());
+    }
+
+    @PostMapping(path = "/without/media")
+    public ResponseUtil saveUserPost(@RequestBody PostDTO dto) throws IOException {
+        postService.saveUserPost(dto);
+        return new ResponseUtil("Ok", "Successfully Added...!",dto.getPost_id());
+    }
 
     @GetMapping(path = "/posts", params = {"user_id","post_count"})
     public ResponseUtil getUserPosts(String user_id,int post_count) {

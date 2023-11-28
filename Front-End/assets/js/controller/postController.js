@@ -31,7 +31,7 @@ function saveUserPost() {
         })
     } else {
         $.ajax({
-            url: base_url + "/post",
+            url: base_url + "/post/without/media",
             method: "post",
             data: JSON.stringify(data),
             contentType: "application/json",
