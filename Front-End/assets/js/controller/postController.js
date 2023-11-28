@@ -1,3 +1,7 @@
+$("#post-post-btn").click(function () {
+    saveUserPost();
+})
+
 function saveUserPost() {
     const date = new Date();
     let post_text = $("#post-txt").val();
@@ -30,18 +34,20 @@ function saveUserPost() {
             }
         })
     } else {
-        $.ajax({
-            url: base_url + "/post/without/media",
-            method: "post",
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            success: function (resp) {
+       if (post_text!==''){
+           $.ajax({
+               url: base_url + "/post/without/media",
+               method: "post",
+               data: JSON.stringify(data),
+               contentType: "application/json",
+               success: function (resp) {
 
-            },
-            error: function (resp) {
+               },
+               error: function (resp) {
 
-            }
-        })
+               }
+           })
+       }
     }
 
 }
