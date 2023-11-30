@@ -1,6 +1,23 @@
 $("#post-post-btn").click(function () {
     saveUserPost();
 })
+let user_posts=[];
+
+function getUserPosts() {
+    $.ajax({
+        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_posts.length,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            user_posts=resp.data;
+            console.log(user_posts)
+            setPostsForUserActivitySection();
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
 
 function saveUserPost() {
     const date = new Date();

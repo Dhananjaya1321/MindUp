@@ -1,18 +1,41 @@
 /*============================================= user account =============================================*/
-let user_posts=[];
-function getUserPosts() {
-    $.ajax({
-        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_posts.length,
-        method: "get",
-        async: false,
-        success: function (resp) {
-            user_posts=resp.data;
-            console.log(user_posts)
-        },
-        error: function (resp) {
-            alert(resp.JSON.data);
-        }
-    })
+function setPostsForUserActivitySection() {
+    for (let i in user_posts) {
+        let post=`<div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp" style="background: url(${})"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>User or Page Name</h3>
+                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
+                            explicabo incidunt nemo soluta?
+                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
+                            quam
+                            unde vel!</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar">
+                        <div class="first-reacted-user"></div><!--first reacted user-->
+                        <div class="second-reacted-user"></div><!--second reacted user-->
+                        <div class="other-reacted-users">
+                            <small>
+                                <span class="first-reacted-user-name">first userName</span>
+                                <span class="second-reacted-user-name">second userName</span>
+                                and others <a href="#"><span class="other-reaction-count">5</span></a>
+                            </small>
+                        </div>
+                    </div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+            </div>`
+        $("#profile-activity-section>section").append(post);
+    }
 }
 
 function getUserPosition() {
