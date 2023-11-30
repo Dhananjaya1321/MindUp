@@ -31,7 +31,7 @@ public class PostController {
 
     @GetMapping(path = "/posts", params = {"user_id","post_count"})
     public ResponseUtil getUserPosts(String user_id,int post_count) {
-        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getUserPosts(user_id,post_count+10));
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getUserPosts(user_id,post_count));
     }
 
     @GetMapping(path = "/last/post/id")

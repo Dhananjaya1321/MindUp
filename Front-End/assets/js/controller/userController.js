@@ -1,12 +1,13 @@
 /*============================================= user account =============================================*/
-let user_post_count=[];
+let user_posts=[];
 function getUserPosts() {
     $.ajax({
-        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_post_count.length,
+        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_posts.length,
         method: "get",
         async: false,
         success: function (resp) {
-            user_post_count=resp.data;
+            user_posts=resp.data;
+            console.log(user_posts)
         },
         error: function (resp) {
             alert(resp.JSON.data);

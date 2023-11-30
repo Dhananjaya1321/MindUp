@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,7 +36,7 @@ public class CustomEntity {
     private String post_id;
     private LocalDateTime dateTime;
     private String post_text;
-    private String how_can_view;
+    private String who_can_view;
     private String media;
     private String reaction_id;
     private String user_id;
@@ -48,18 +49,31 @@ public class CustomEntity {
     private String page_verified_or_not;
     private String page_profile_photo;
     private String page_cover_photo;
+    private User user;
+    private Page page;
+    private List<Reactions> reactions;
 
     public CustomEntity(String name, String address, String country, String contact, String gender, String headline, String youtube_channel, String verified_or_not, String profile_photo, String cover_photo, String page_id) {
-        this.name=name;
-        this.address=address;
-        this.country=country;
-        this.contact=contact;
-        this.gender=gender;
-        this.headline=headline;
-        this.youtube_channel=youtube_channel;
-        this.verified_or_not=verified_or_not;
-        this.profile_photo=profile_photo;
-        this.cover_photo=cover_photo;
-        this.page_id=page_id;
+        this.name = name;
+        this.address = address;
+        this.country = country;
+        this.contact = contact;
+        this.gender = gender;
+        this.headline = headline;
+        this.youtube_channel = youtube_channel;
+        this.verified_or_not = verified_or_not;
+        this.profile_photo = profile_photo;
+        this.cover_photo = cover_photo;
+        this.page_id = page_id;
+    }
+
+    public CustomEntity(String post_id, LocalDateTime dateTime, String post_text, String who_can_view, String media, String user_id, String page_id) {
+        this.post_id = post_id;
+        this.dateTime = dateTime;
+        this.post_text = post_text;
+        this.who_can_view = who_can_view;
+        this.media = media;
+        this.user_id = user_id;
+        this.page_id = page_id;
     }
 }
