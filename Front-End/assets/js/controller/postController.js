@@ -18,6 +18,19 @@ function getUserPosts() {
         }
     })
 }
+function getReactionsOfPost(post_id) {
+    $.ajax({
+        url: base_url + "/post/reacted/users?post_id=" + post_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
 
 function saveUserPost() {
     const date = new Date();

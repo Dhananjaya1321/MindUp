@@ -29,6 +29,8 @@ public class PostController {
         return new ResponseUtil("Ok", "Successfully Added...!",dto.getPost_id());
     }
 
+
+
     @GetMapping(path = "/posts", params = {"user_id","post_count"})
     public ResponseUtil getUserPosts(String user_id,int post_count) {
         return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getUserPosts(user_id,post_count));
