@@ -1,15 +1,15 @@
 $("#post-post-btn").click(function () {
     saveUserPost();
 })
-let user_posts=[];
+let user_posts = [];
 
 function getUserPosts() {
     $.ajax({
-        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_posts.length,
+        url: base_url + "/post/posts?user_id=" + user_id + "&post_count=" + user_posts.length,
         method: "get",
         async: false,
         success: function (resp) {
-            user_posts=resp.data;
+            user_posts = resp.data;
             console.log(user_posts)
             setPostsForUserActivitySection();
         },
@@ -18,13 +18,14 @@ function getUserPosts() {
         }
     })
 }
+
 function getReactionsOfPost(post_id) {
     $.ajax({
         url: base_url + "/post/reacted/users?post_id=" + post_id,
         method: "get",
         async: false,
         success: function (resp) {
-
+            console.log(resp.data);
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -84,9 +85,9 @@ function saveUserPost() {
 
 function clearPostForm() {
     $("#file-input-in-post-module,#post-txt").val('');
-    $("#post-txt").css("height","250px");
-    $("#post-media").css("background",`url("")`);
-    $("#post-media").css("display","none");
+    $("#post-txt").css("height", "250px");
+    $("#post-media").css("background", `url("")`);
+    $("#post-media").css("display", "none");
 }
 
 function getLastReactionId() {

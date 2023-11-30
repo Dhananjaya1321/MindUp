@@ -4,7 +4,7 @@ function setPostsForUserActivitySection() {
         getReactionsOfPost(user_posts[i].post_id);
         let post=`<div style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
-                        <div class="user-or-page-dp" style="background: url(${})"></div><!--user or page DP-->
+                        <div class="user-or-page-dp" style="background: url("")"></div><!--user or page DP-->
                         <div class="user-or-page-details">
                             <h3>User or Page Name</h3>
                             <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>

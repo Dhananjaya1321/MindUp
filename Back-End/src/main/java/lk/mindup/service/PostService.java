@@ -13,5 +13,7 @@ public interface PostService {
 
     String getLastReactionId();
 
+    List<CustomDTO> getReactionsOfPost(String post_id);
+
     List<CustomDTO> getUserPosts(String user_id, int post_count);
 }

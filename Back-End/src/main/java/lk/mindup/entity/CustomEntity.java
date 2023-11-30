@@ -76,4 +76,11 @@ public class CustomEntity {
         this.user_id = user_id;
         this.page_id = page_id;
     }
+
+    public CustomEntity(String reaction_id, String user_id, String profile_photo, String name) {
+        this.reaction_id = reaction_id;
+        this.user_id = user_id;
+        this.profile_photo = profile_photo;
+        this.name = name;
+    }
 }

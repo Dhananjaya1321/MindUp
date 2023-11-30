@@ -80,6 +80,12 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<CustomDTO> getReactionsOfPost(String post_id) {
+        return modelMapper.map(reactionsRepo.getReactionsOfPost(post_id), new TypeToken<ArrayList<CustomEntity>>() {
+        }.getType());
+    }
+
+    @Override
     public List<CustomDTO> getUserPosts(String user_id, int post_count) {
         return modelMapper.map(postRepo.getUserPosts(user_id,  PageRequest.of(0, post_count+10)), new TypeToken<ArrayList<CustomEntity>>() {
         }.getType());
