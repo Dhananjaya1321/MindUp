@@ -1,13 +1,28 @@
 /*============================================= user account =============================================*/
 function setPostsForUserActivitySection() {
     for (let i in user_posts) {
-        getReactionsOfPost(user_posts[i].post_id);
-        let post=`<div style="border: 1px solid #e5e5e5;" class="post flex f-col">
+        let reactions=getReactionsOfPost(user_posts[i].post_id);
+        let reaction=`<small>No reactions</small>`;
+        if (reactions.length>0){
+            reaction=`<div class="first-reacted-user" style="background: url(${reactions[0].profile_photo}); background-size: cover; background-position: center"></div><!--first reacted user-->
+                      <div class="second-reacted-user" style="background: url(${reactions[1].profile_photo}); background-size: cover; background-position: center"></div><!--second reacted user-->
+                      <div class="other-reacted-users">
+                          <small>
+                              <span class="first-reacted-user-name">${reactions[0].name}</span>
+                              <span class="second-reacted-user-name">${reactions[1].name}</span>
+                              and others <a href="#"><span class="other-reaction-count">${reactions.length-2}</span></a>
+                          </small>
+                      </div>`
+        }
+        $(`#${user_posts[i].post_id}>div:nth-child(4)`).append(reaction);
+
+
+        let post=`<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
-                        <div class="user-or-page-dp" style="background: url("")"></div><!--user or page DP-->
+                        <div class="user-or-page-dp" style="background: url(${user_profile_photo}); background-position: center; background-size: cover"></div><!--user or page DP-->
                         <div class="user-or-page-details">
-                            <h3>User or Page Name</h3>
-                            <p>Headline ex- I am Isuru Dhananaya, a passionate and dedicated</p>
+                            <h3>${user_name}</h3>
+                            <p>${user_headline}</p>
                             <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
                         </div><!--user or page details-->
                     </div><!--posted account or page details-->
@@ -19,17 +34,7 @@ function setPostsForUserActivitySection() {
                             unde vel!</p>
                     </div><!--post content-->
                     <div class="post-media"></div><!--image or video content of post-->
-                    <div class="post-reaction-bar">
-                        <div class="first-reacted-user"></div><!--first reacted user-->
-                        <div class="second-reacted-user"></div><!--second reacted user-->
-                        <div class="other-reacted-users">
-                            <small>
-                                <span class="first-reacted-user-name">first userName</span>
-                                <span class="second-reacted-user-name">second userName</span>
-                                and others <a href="#"><span class="other-reaction-count">5</span></a>
-                            </small>
-                        </div>
-                    </div><!--who are the react this post-->
+                    <div class="post-reaction-bar"></div><!--who are the react this post-->
                     <div class="horizontal-line"></div>
                     <div class="post-reaction-bar">
                         <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
@@ -120,6 +125,10 @@ function getUserDetails() {
         async: false,
         success: function (resp) {
             console.log(resp.data[0]);
+            user_profile_photo=resp.data[0].profile_photo;
+            user_cover_photo=resp.data[0].cover_photo;
+            user_name=resp.data[0].name;
+            user_headline=truncateParagraph(resp.data[0].headline,62);
             setDetailsForProfile(resp.data[0]);
             setDetailsForHomePage(resp.data[0]);
         },

@@ -20,17 +20,20 @@ function getUserPosts() {
 }
 
 function getReactionsOfPost(post_id) {
+    let reactions=[];
     $.ajax({
         url: base_url + "/post/reacted/users?post_id=" + post_id,
         method: "get",
         async: false,
         success: function (resp) {
+            reactions=resp.data;
             console.log(resp.data);
         },
         error: function (resp) {
             alert(resp.JSON.data);
         }
     })
+    return reactions;
 }
 
 function saveUserPost() {
