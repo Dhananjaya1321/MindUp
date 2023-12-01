@@ -118,6 +118,20 @@ function getUserFollowingCount() {
     });
 }
 
+function getPopularUsers() {
+    $.ajax({
+        url: base_url + "/user/popular/users?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
 function getUserDetails() {
     $.ajax({
         url: base_url + "/user/details?user_id=" + user_id,
