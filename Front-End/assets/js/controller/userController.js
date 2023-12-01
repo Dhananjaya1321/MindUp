@@ -14,8 +14,6 @@ function setPostsForUserActivitySection() {
                           </small>
                       </div>`
         }
-        $(`#${user_posts[i].post_id}>div:nth-child(4)`).append(reaction);
-
 
         let post=`<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
@@ -40,6 +38,8 @@ function setPostsForUserActivitySection() {
                         <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
                     </div><!--heart reaction button here-->
             </div>`
+
+        $(`#${user_posts[i].post_id}>div:nth-child(4)`).append(reaction);
         $("#profile-activity-section>section").append(post);
     }
 }
@@ -143,9 +143,9 @@ function setDetailsForHomePage(user) {
     $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
     $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
 
-    $("#profile-photo").css("background", `url(${user.profile_photo})`);
-    $("#profile-photo").css("backgroundSize", `cover`);
-    $("#profile-photo").css("backgroundPosition", `center`);
+    $("#profile-photo,#profile-photo-of-create-post-section").css("background", `url(${user.profile_photo})`);
+    $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundSize", `cover`);
+    $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundPosition", `center`);
 
     if (user.name !== null) {
         $("#user-name").text(`${user.name}`);
