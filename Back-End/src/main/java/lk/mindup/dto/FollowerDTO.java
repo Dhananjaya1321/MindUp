@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 @ToString
 public class FollowerDTO {
     private String follower_id;
-
+    private String other_user_id;
     private UserDTO user;
     private PageDTO page;
 }

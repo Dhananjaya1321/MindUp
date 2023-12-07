@@ -17,6 +17,8 @@ public interface UserService {
 
     int getFollowersCount(String user_id);
 
+    List<UserDTO> getNotFollowers(String user_id);
+
     List<PositionsDTO> getPositions(String user_id);
 
     int getFollowingCount(String user_id);

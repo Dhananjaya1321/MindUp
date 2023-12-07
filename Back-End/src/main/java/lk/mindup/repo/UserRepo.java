@@ -1,5 +1,6 @@
 package lk.mindup.repo;
 
+import lk.mindup.dto.UserDTO;
 import lk.mindup.entity.CustomEntity;
 import lk.mindup.entity.Positions;
 import lk.mindup.entity.User;
@@ -14,6 +15,16 @@ public interface UserRepo extends JpaRepository<User, String> {
 
     @Query(value = "SELECT user_id FROM user JOIN login l ON l.email = user.login_email WHERE email=?1", nativeQuery = true)
     String getUserId(String email);
+
+    @Query(value = "SELECT NEW lk.mindup.entity.User(u.user_id, u.name, u.headline, u.verified_or_not, u.profile_photo, u.cover_photo) " +
+            "FROM User u " +
+            "WHERE NOT EXISTS (" +
+            "    SELECT 1 " +
+            "    FROM Follower f " +
+            "    JOIN User u2 ON u2.user_id = f.user.user_id " +
+            "    WHERE u2.user_id = ?1 AND f.other_user_id = u.user_id" +
+            ") AND u.user_id <> ?1")
+    List<User> getNotFollowers(String user_id);
 
     @Query(value = "SELECT NEW lk.mindup.entity.CustomEntity(u.name,u.address,u.country,u.contact,u.gender,u.headline,u.youtube_channel,u.verified_or_not,u.profile_photo,u.cover_photo,p.page_id) FROM User u LEFT JOIN Page p ON p.page_id = u.page.page_id  WHERE u.user_id=?1")
     CustomEntity getUserDetails(String user_id);

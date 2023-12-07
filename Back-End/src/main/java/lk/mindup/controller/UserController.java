@@ -19,9 +19,14 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Added...!", userDTO.getLogin().getEmail());
     }
 
+    @GetMapping(path = "/popular/users", params = {"user_id"})
+    public ResponseUtil getNotFollowers(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getNotFollowers(user_id));
+    }
+
+
     @GetMapping(path = "/details", params = {"user_id"})
     public ResponseUtil getUserDetails(String user_id) {
-        System.out.println("\n\n\n\n" + userService.getUserDetails(user_id));
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getUserDetails(user_id));
     }
 

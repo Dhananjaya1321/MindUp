@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class FollowingDTO {
     private String following_id;
-
+    private String other_user_id;
     private UserDTO user;
     private PageDTO page;
 }
