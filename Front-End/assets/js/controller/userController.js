@@ -150,14 +150,14 @@ function getNotFollowers() {
                                  </div><!--user-->`
                 $("#popular-peoples-section>section").append(userForFollow);
 
-                if (user.cover_photo!==null){
+                if (user.cover_photo !== null) {
                     $(`#user-cover-photo-${user.user_id}`).css("background", `url(${user.cover_photo})`);
                 }
-                if (user.profile_photo!==null){
+                if (user.profile_photo !== null) {
                     $(`#profile-photo-${user.user_id}`).css("background", `url(${user.profile_photo})`);
                 }
-                $(`#user-cover-photo-${user.user_id},#profile-photo-${user.user_id}`).css("backgroundPosition", "center");
-                $(`#user-cover-photo-${user.user_id},#profile-photo-${user.user_id}`).css("backgroundSize", "cover");
+                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundPosition", "center");
+                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundSize", "cover");
 
             }
         },
@@ -172,7 +172,31 @@ function followBtnEvent() {
         /*this user id like user-user-1*/
         let btnId = $(this).attr("id").substring(5);/*remove user- and get to user-1*/
         console.log(btnId);
+        followUser(btnId);
     });
+}
+
+function followUser(other_user_id) {
+    let following = {
+        "following_id":getLastFollowingId(),
+        "other_user_id":other_user_id,
+        "user":{
+            "user_id":user_id
+        },
+    }
+    $.ajax({
+        url: base_url + "/user?user_id=" + user_id + "&other_user_id=" + other_user_id,
+        method: "post",
+        data: JSON.stringify(following),
+        contentType: "application/json",
+        async:false,
+        success:function (resp) {
+            $(`#${other_user_id}`).text("Following");
+        },
+        error:function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
 }
 
 
@@ -426,17 +450,19 @@ function getLastPositionId() {
 }
 
 function getLastFollowingId() {
+    let last_following_id;
     $.ajax({
         url: base_url + "/user/last/following/id",
         method: "get",
         async: false,
         success: function (resp) {
-            generateNextFollowingId(resp.data);
+            last_following_id=generateNextFollowingId(resp.data);
         },
         error: function (resp) {
 
         }
     })
+    return last_following_id;
 }
 
 function getLastFollowerId() {
