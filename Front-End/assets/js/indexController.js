@@ -75,6 +75,7 @@ $("#nav-users").click(function () {
     $("#followed-page-section,#user-section").css("display", "flex");
     $("#page-section,#posts-shared-section,#recommendation-section,#notifications-section,#profile-section").css("display", "none");
     getNotFollowers();
+    followBtnEvent();
 });
 
 $("#nav-notification").click(function () {

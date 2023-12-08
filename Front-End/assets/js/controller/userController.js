@@ -132,10 +132,10 @@ function getNotFollowers() {
                 let user = resp.data[i];
                 let headline = truncateParagraph(user.headline, 101);
                 let userForFollow = `<div class="user flex f-col">
-                                        <div class="user-cover-photo"></div><!--cover photo-->
+                                        <div id="user-cover-photo-${user.user_id}" class="user-cover-photo"></div><!--cover photo-->
                                         <div class="user-dp flex">
                                             <div class="flex">
-                                                <div class="profile-photo"></div>
+                                                <div id="profile-photo-${user.user_id}" class="profile-photo"></div>
                                             </div>
                                         </div><!--profile photo-->
                                         <div class="user-summary flex f-col">
@@ -145,14 +145,20 @@ function getNotFollowers() {
                                             </p>
                                         </div><!--about-->
                                         <div class="flex user-follow-btn-div">
-                                            <button>Follow</button>
+                                                <button id="user-${user.user_id}" class="user-follow-btn">Follow</button>
                                         </div><!--follow button-->
                                  </div><!--user-->`
-                $("#user-cover-photo").css("background", `url(${user.cover_photo})`);
-                $("#profile-photo").css("background", `url(${user.profile_photo})`);
-                $("#user-cover-photo,#profile-photo").css("backgroundPosition", "center");
-                $("#user-cover-photo,#profile-photo").css("backgroundSize", "cover");
                 $("#popular-peoples-section>section").append(userForFollow);
+
+                if (user.cover_photo!==null){
+                    $(`#user-cover-photo-${user.user_id}`).css("background", `url(${user.cover_photo})`);
+                }
+                if (user.profile_photo!==null){
+                    $(`#profile-photo-${user.user_id}`).css("background", `url(${user.profile_photo})`);
+                }
+                $(`#user-cover-photo-${user.user_id},#profile-photo-${user.user_id}`).css("backgroundPosition", "center");
+                $(`#user-cover-photo-${user.user_id},#profile-photo-${user.user_id}`).css("backgroundSize", "cover");
+
             }
         },
         error: function (resp) {
@@ -160,6 +166,15 @@ function getNotFollowers() {
         }
     })
 }
+
+function followBtnEvent() {
+    $(".user-follow-btn").click(function () {
+        /*this user id like user-user-1*/
+        let btnId = $(this).attr("id").substring(5);/*remove user- and get to user-1*/
+        console.log(btnId);
+    });
+}
+
 
 function getUserDetails() {
     $.ajax({
@@ -211,13 +226,17 @@ function truncateParagraph(paragraph, maxLength) {
 }
 
 function setDetailsForProfile(user) {
-    $("#cover-img").css("background", `url(${user.cover_photo})`);
-    $("#cover-img").css("backgroundSize", `cover`);
-    $("#cover-img").css("backgroundPosition", `center`);
+    if (user.cover_photo !== null) {
+        $("#cover-img").css("background", `url(${user.cover_photo})`);
+        $("#cover-img").css("backgroundSize", `cover`);
+        $("#cover-img").css("backgroundPosition", `center`);
+    }
 
-    $("#dp-img").css("background", `url(${user.profile_photo})`);
-    $("#dp-img").css("backgroundSize", `cover`);
-    $("#dp-img").css("backgroundPosition", `center`);
+    if (user.profile_photo !== null) {
+        $("#dp-img").css("background", `url(${user.profile_photo})`);
+        $("#dp-img").css("backgroundSize", `cover`);
+        $("#dp-img").css("backgroundPosition", `center`);
+    }
 
     /*==================================================================*/
     if (user.page_id !== null) {
