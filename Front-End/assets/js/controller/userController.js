@@ -130,7 +130,12 @@ function getNotFollowers() {
             console.log(resp.data);
             for (let i in resp.data) {
                 let user = resp.data[i];
-                let headline = truncateParagraph(user.headline, 101);
+                let headline;
+                if (user.headline != null) {
+                    headline = truncateParagraph(user.headline, 101);
+                }else {
+                    headline="---";
+                }
                 let userForFollow = `<div class="user flex f-col">
                                         <div id="user-cover-photo-${user.user_id}" class="user-cover-photo"></div><!--cover photo-->
                                         <div class="user-dp flex">
@@ -182,7 +187,11 @@ function checkBeforeToFollowUser(other_user_id) {
         method: "get",
         async: false,
         success: function (resp) {
-            console.log(resp.data);
+            if (resp.data) {
+                followUser(other_user_id);
+            } else {
+
+            }
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -199,13 +208,14 @@ function followUser(other_user_id) {
         },
     }
     $.ajax({
-        url: base_url + "/user/follow?user_id=" + user_id + "&other_user_id=" + other_user_id,
+        url: base_url + "/user/follow?follower_id=" + getLastFollowerId(),
         method: "post",
         data: JSON.stringify(following),
         contentType: "application/json",
         async: false,
         success: function (resp) {
-            $(`#${other_user_id}`).text("Following");
+            alert(resp.data);
+            $(`#user-${other_user_id}`).text("Following");
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -480,17 +490,19 @@ function getLastFollowingId() {
 }
 
 function getLastFollowerId() {
+    let last_follower_id;
     $.ajax({
         url: base_url + "/user/last/follower/id",
         method: "get",
         async: false,
         success: function (resp) {
-            generateNextFollowerId(resp.data);
+            last_follower_id = generateNextFollowerId(resp.data);
         },
         error: function (resp) {
 
         }
-    })
+    });
+    return last_follower_id;
 }
 
 function getLastUserId() {

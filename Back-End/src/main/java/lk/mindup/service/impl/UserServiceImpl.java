@@ -1,9 +1,9 @@
 package lk.mindup.service.impl;
 
-import lk.mindup.dto.CustomDTO;
-import lk.mindup.dto.PositionsDTO;
-import lk.mindup.dto.UserDTO;
+import lk.mindup.dto.*;
 import lk.mindup.entity.CustomEntity;
+import lk.mindup.entity.Follower;
+import lk.mindup.entity.Following;
 import lk.mindup.entity.User;
 import lk.mindup.repo.*;
 import lk.mindup.service.UserService;
@@ -43,6 +43,14 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException(dto.getLogin().getEmail() + " Already exists");
         }
         userRepo.save(modelMapper.map(dto, User.class));
+    }
+
+    @Override
+    public void saveFollow(FollowingDTO dto,String follower_id) {
+        FollowerDTO followerDTO = new FollowerDTO(follower_id, dto.getUser().getUser_id(), new UserDTO(dto.getOther_user_id()));
+        FollowingDTO followingDTO = new FollowingDTO(dto.getFollowing_id(), dto.getOther_user_id(), new UserDTO(dto.getUser().getUser_id()));
+        followerRepo.save(modelMapper.map(followerDTO, Follower.class));
+        followingRepo.save(modelMapper.map(followingDTO, Following.class));
     }
 
     @Override

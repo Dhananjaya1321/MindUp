@@ -1,6 +1,7 @@
 package lk.mindup.service;
 
 import lk.mindup.dto.CustomDTO;
+import lk.mindup.dto.FollowingDTO;
 import lk.mindup.dto.PositionsDTO;
 import lk.mindup.dto.UserDTO;
 
@@ -8,6 +9,8 @@ import java.util.List;
 
 public interface UserService {
     void saveUser(UserDTO dto);
+
+    void saveFollow(FollowingDTO dto, String follower_id);
 
     boolean checkBeforeToFollowUser(String user_id, String other_user_id);
 
