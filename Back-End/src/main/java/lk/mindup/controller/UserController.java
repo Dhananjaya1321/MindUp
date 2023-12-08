@@ -19,7 +19,7 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Added...!", userDTO.getLogin().getEmail());
     }
 
-    @GetMapping(path = "/popular/users", params = {"user_id"})
+    @GetMapping(path = "/not/followers", params = {"user_id"})
     public ResponseUtil getNotFollowers(String user_id) {
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getNotFollowers(user_id));
     }

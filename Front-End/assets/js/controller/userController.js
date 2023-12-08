@@ -118,13 +118,39 @@ function getUserFollowingCount() {
     });
 }
 
-function getPopularUsers() {
+function getNotFollowers() {
     $.ajax({
-        url: base_url + "/user/popular/users?user_id=" + user_id,
+        url: base_url + "/user/not/followers?user_id=" + user_id,
         method: "get",
         async: false,
         success: function (resp) {
-
+            console.log(resp.data);
+            for (let i in resp.data) {
+                let user=resp.data[i];
+                let headline = truncateParagraph(user.headline,101);
+                let userForFollow=`<div class="user flex f-col">
+                                        <div class="user-cover-photo"></div><!--cover photo-->
+                                        <div class="user-dp flex">
+                                            <div class="flex">
+                                                <div class="profile-photo"></div>
+                                            </div>
+                                        </div><!--profile photo-->
+                                        <div class="user-summary flex f-col">
+                                            <h4 class="user-name">${user.name}</h4>
+                                            <p class="user-about">
+                                                ${headline}
+                                            </p>
+                                        </div><!--about-->
+                                        <div class="flex user-follow-btn-div">
+                                            <button>Follow</button>
+                                        </div><!--follow button-->
+                                 </div><!--user-->`
+                $("#user-cover-photo").css("background",`url(${user.cover_photo})`);
+                $("#profile-photo").css("background",`url(${user.profile_photo})`);
+                $("#user-cover-photo,#profile-photo").css("backgroundPosition","center");
+                $("#user-cover-photo,#profile-photo").css("backgroundSize","cover");
+                $("#popular-peoples-section>section").append(userForFollow);
+            }
         },
         error: function (resp) {
             alert(resp.JSON.data);

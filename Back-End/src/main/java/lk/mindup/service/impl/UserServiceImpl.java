@@ -70,9 +70,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> getNotFollowers(String user_id) {
-        List<User> followers = userRepo.getNotFollowers(user_id);
-        System.out.println("\n\n\n"+followers);
-        return modelMapper.map(followers, new TypeToken<ArrayList<User>>() {
+        return modelMapper.map(userRepo.getNotFollowers(user_id), new TypeToken<ArrayList<User>>() {
         }.getType());
     }
 
