@@ -1,5 +1,7 @@
 /*============================================= user account =============================================*/
 function setPostsForUserActivitySection() {
+    $("#profile-activity-section>section").empty();
+
     for (let i in user_posts) {
         let reactions = getReactionsOfPost(user_posts[i].post_id);
         let reaction = `<small>No reactions</small>`;
@@ -127,14 +129,14 @@ function getNotFollowers() {
         method: "get",
         async: false,
         success: function (resp) {
-            console.log(resp.data);
+            $("#popular-peoples-section>section").empty();
             for (let i in resp.data) {
                 let user = resp.data[i];
                 let headline;
-                if (user.headline != null) {
+                if (user.headline !== null) {
                     headline = truncateParagraph(user.headline, 101);
-                }else {
-                    headline="---";
+                } else {
+                    headline = "---";
                 }
                 let userForFollow = `<div class="user flex f-col">
                                         <div id="user-cover-photo-${user.user_id}" class="user-cover-photo"></div><!--cover photo-->
@@ -223,7 +225,6 @@ function followUser(other_user_id) {
     })
 }
 
-
 function getUserDetails() {
     $.ajax({
         url: base_url + "/user/details?user_id=" + user_id,
@@ -234,7 +235,11 @@ function getUserDetails() {
             user_profile_photo = resp.data[0].profile_photo;
             user_cover_photo = resp.data[0].cover_photo;
             user_name = resp.data[0].name;
-            user_headline = truncateParagraph(resp.data[0].headline, 62);
+            if(resp.data[0].headline!==null){
+                user_headline = truncateParagraph(resp.data[0].headline, 62);
+            }else {
+                user_headline = "---";
+            }
             setDetailsForProfile(resp.data[0]);
             setDetailsForHomePage(resp.data[0]);
         },
@@ -260,9 +265,11 @@ function setDetailsForHomePage(user) {
     if (user.name !== null) {
         $("#user-name").text(`${user.name}`);
     }
-
+    console.log(user.headline !== null,user.headline)
     if (user.headline !== null) {
         $("#about").text(truncateParagraph(`${user.headline}`, 101));
+    } else {
+        $("#about").text("---");
     }
 }
 

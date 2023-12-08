@@ -20,7 +20,7 @@ public interface UserRepo extends JpaRepository<User, String> {
             "FROM User u " +
             "WHERE NOT EXISTS (" +
             "    SELECT 1 " +
-            "    FROM Follower f " +
+            "    FROM Following f " +
             "    JOIN User u2 ON u2.user_id = f.user.user_id " +
             "    WHERE u2.user_id = ?1 AND f.other_user_id = u.user_id" +
             ") AND u.user_id <> ?1")
