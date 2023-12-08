@@ -9,6 +9,8 @@ import java.util.List;
 public interface UserService {
     void saveUser(UserDTO dto);
 
+    boolean checkBeforeToFollowUser(String user_id, String other_user_id);
+
     List<CustomDTO> getUserDetails(String user_id);
 
     String getLastUserId();

@@ -46,6 +46,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean checkBeforeToFollowUser(String user_id, String other_user_id) {
+        return followerRepo.checkBeforeToFollowUser(user_id, other_user_id) == null;
+    }
+
+    @Override
     public List<CustomDTO> getUserDetails(String user_id) {
         ArrayList<CustomEntity> customEntities = new ArrayList<>();
         customEntities.add(userRepo.getUserDetails(user_id));
