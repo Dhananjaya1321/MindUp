@@ -172,28 +172,42 @@ function followBtnEvent() {
         /*this user id like user-user-1*/
         let btnId = $(this).attr("id").substring(5);/*remove user- and get to user-1*/
         console.log(btnId);
-        followUser(btnId);
+        checkBeforeToFollowUser(btnId);
+    });
+}
+
+function checkBeforeToFollowUser(other_user_id) {
+    $.ajax({
+        url: base_url + "/user/check/follow?user_id=" + user_id + "&other_user_id=" + other_user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            console.log(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
     });
 }
 
 function followUser(other_user_id) {
     let following = {
-        "following_id":getLastFollowingId(),
-        "other_user_id":other_user_id,
-        "user":{
-            "user_id":user_id
+        "following_id": getLastFollowingId(),
+        "other_user_id": other_user_id,
+        "user": {
+            "user_id": user_id
         },
     }
     $.ajax({
-        url: base_url + "/user?user_id=" + user_id + "&other_user_id=" + other_user_id,
+        url: base_url + "/user/follow?user_id=" + user_id + "&other_user_id=" + other_user_id,
         method: "post",
         data: JSON.stringify(following),
         contentType: "application/json",
-        async:false,
-        success:function (resp) {
+        async: false,
+        success: function (resp) {
             $(`#${other_user_id}`).text("Following");
         },
-        error:function (resp) {
+        error: function (resp) {
             alert(resp.JSON.data);
         }
     })
@@ -456,7 +470,7 @@ function getLastFollowingId() {
         method: "get",
         async: false,
         success: function (resp) {
-            last_following_id=generateNextFollowingId(resp.data);
+            last_following_id = generateNextFollowingId(resp.data);
         },
         error: function (resp) {
 
