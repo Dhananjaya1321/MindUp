@@ -1,23 +1,27 @@
 /*============================================= user account =============================================*/
 function setPostsForUserActivitySection() {
     for (let i in user_posts) {
-        let reactions=getReactionsOfPost(user_posts[i].post_id);
-        let reaction=`<small>No reactions</small>`;
-        if (reactions.length>0){
-            reaction=`<div class="first-reacted-user" style="background: url(${reactions[0].profile_photo}); background-size: cover; background-position: center"></div><!--first reacted user-->
-                      <div class="second-reacted-user" style="background: url(${reactions[1].profile_photo}); background-size: cover; background-position: center"></div><!--second reacted user-->
+        let reactions = getReactionsOfPost(user_posts[i].post_id);
+        let reaction = `<small>No reactions</small>`;
+        if (reactions.length > 0) {
+            reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
+                      <div class="second-reacted-user"></div><!--second reacted user-->
                       <div class="other-reacted-users">
                           <small>
                               <span class="first-reacted-user-name">${reactions[0].name}</span>
                               <span class="second-reacted-user-name">${reactions[1].name}</span>
-                              and others <a href="#"><span class="other-reaction-count">${reactions.length-2}</span></a>
+                              and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
                           </small>
                       </div>`
+            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
+            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
+            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
+            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
         }
 
-        let post=`<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
+        let post = `<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
-                        <div class="user-or-page-dp" style="background: url(${user_profile_photo}); background-position: center; background-size: cover"></div><!--user or page DP-->
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
                         <div class="user-or-page-details">
                             <h3>${user_name}</h3>
                             <p>${user_headline}</p>
@@ -25,11 +29,7 @@ function setPostsForUserActivitySection() {
                         </div><!--user or page details-->
                     </div><!--posted account or page details-->
                     <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae dolorem, eaque
-                            explicabo incidunt nemo soluta?
-                            Aspernatur, deserunt dolor doloremque doloribus eum fugiat ipsa necessitatibus odio officia
-                            quam
-                            unde vel!</p>
+                        <p>${user_posts[i].post_text}</p>
                     </div><!--post content-->
                     <div class="post-media"></div><!--image or video content of post-->
                     <div class="post-reaction-bar"></div><!--who are the react this post-->
@@ -39,7 +39,10 @@ function setPostsForUserActivitySection() {
                     </div><!--heart reaction button here-->
             </div>`
 
-        $(`#${user_posts[i].post_id}>div:nth-child(4)`).append(reaction);
+        $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
+        $("#user-or-page-dp").css("backgroundPosition", "center");
+        $("#user-or-page-dp").css("backgroundSize", "cover");
+        $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
         $("#profile-activity-section>section").append(post);
     }
 }
@@ -126,9 +129,9 @@ function getNotFollowers() {
         success: function (resp) {
             console.log(resp.data);
             for (let i in resp.data) {
-                let user=resp.data[i];
-                let headline = truncateParagraph(user.headline,101);
-                let userForFollow=`<div class="user flex f-col">
+                let user = resp.data[i];
+                let headline = truncateParagraph(user.headline, 101);
+                let userForFollow = `<div class="user flex f-col">
                                         <div class="user-cover-photo"></div><!--cover photo-->
                                         <div class="user-dp flex">
                                             <div class="flex">
@@ -145,10 +148,10 @@ function getNotFollowers() {
                                             <button>Follow</button>
                                         </div><!--follow button-->
                                  </div><!--user-->`
-                $("#user-cover-photo").css("background",`url(${user.cover_photo})`);
-                $("#profile-photo").css("background",`url(${user.profile_photo})`);
-                $("#user-cover-photo,#profile-photo").css("backgroundPosition","center");
-                $("#user-cover-photo,#profile-photo").css("backgroundSize","cover");
+                $("#user-cover-photo").css("background", `url(${user.cover_photo})`);
+                $("#profile-photo").css("background", `url(${user.profile_photo})`);
+                $("#user-cover-photo,#profile-photo").css("backgroundPosition", "center");
+                $("#user-cover-photo,#profile-photo").css("backgroundSize", "cover");
                 $("#popular-peoples-section>section").append(userForFollow);
             }
         },
@@ -165,10 +168,10 @@ function getUserDetails() {
         async: false,
         success: function (resp) {
             console.log(resp.data[0]);
-            user_profile_photo=resp.data[0].profile_photo;
-            user_cover_photo=resp.data[0].cover_photo;
-            user_name=resp.data[0].name;
-            user_headline=truncateParagraph(resp.data[0].headline,62);
+            user_profile_photo = resp.data[0].profile_photo;
+            user_cover_photo = resp.data[0].cover_photo;
+            user_name = resp.data[0].name;
+            user_headline = truncateParagraph(resp.data[0].headline, 62);
             setDetailsForProfile(resp.data[0]);
             setDetailsForHomePage(resp.data[0]);
         },
@@ -179,17 +182,22 @@ function getUserDetails() {
 }
 
 function setDetailsForHomePage(user) {
-    $("#profile-summary-cover-photo").css("background", `url(${user.cover_photo})`);
-    $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
-    $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
+    if (user.cover_photo !== null) {
+        $("#profile-summary-cover-photo").css("background", `url(${user.cover_photo})`);
+        $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
+        $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
+    }
 
-    $("#profile-photo,#profile-photo-of-create-post-section").css("background", `url(${user.profile_photo})`);
-    $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundSize", `cover`);
-    $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundPosition", `center`);
+    if (user.profile_photo !== null) {
+        $("#profile-photo,#profile-photo-of-create-post-section").css("background", `url(${user.profile_photo})`);
+        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundSize", `cover`);
+        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundPosition", `center`);
+    }
 
     if (user.name !== null) {
         $("#user-name").text(`${user.name}`);
     }
+
     if (user.headline !== null) {
         $("#about").text(truncateParagraph(`${user.headline}`, 101));
     }
