@@ -192,7 +192,7 @@ function checkBeforeToFollowUser(other_user_id) {
             if (resp.data) {
                 followUser(other_user_id);
             } else {
-
+                unfollowUser(other_user_id);
             }
         },
         error: function (resp) {
@@ -216,8 +216,21 @@ function followUser(other_user_id) {
         contentType: "application/json",
         async: false,
         success: function (resp) {
-            alert(resp.data);
             $(`#user-${other_user_id}`).text("Following");
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function unfollowUser(other_user_id) {
+    $.ajax({
+        url: base_url + "/user/unfollow?user_id="+user_id+"&other_user_id="+other_user_id,
+        method: "delete",
+        async: false,
+        success: function (resp) {
+            $(`#user-${other_user_id}`).text("Follow");
         },
         error: function (resp) {
             alert(resp.JSON.data);
