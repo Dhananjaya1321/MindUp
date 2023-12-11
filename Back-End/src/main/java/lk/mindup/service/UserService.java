@@ -12,6 +12,8 @@ public interface UserService {
 
     void saveFollow(FollowingDTO dto, String follower_id);
 
+    void unfollow(String user_id, String other_user_id);
+
     boolean checkBeforeToFollowUser(String user_id, String other_user_id);
 
     List<CustomDTO> getUserDetails(String user_id);

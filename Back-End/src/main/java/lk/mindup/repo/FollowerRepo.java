@@ -10,4 +10,7 @@ public interface FollowerRepo extends JpaRepository<Follower,String> {
 
     @Query(value = "SELECT following_id FROM following WHERE user_user_id=?1 AND other_user_id=?2",nativeQuery = true)
     String checkBeforeToFollowUser(String user_id, String other_user_id);
+
+    @Query(value = "SELECT follower_id FROM follower WHERE user_user_id=?1 AND other_user_id=?2",nativeQuery = true)
+    String getFollowerId(String user_id, String other_user_id);
 }

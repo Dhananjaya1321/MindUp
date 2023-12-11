@@ -46,11 +46,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveFollow(FollowingDTO dto,String follower_id) {
+    public void saveFollow(FollowingDTO dto, String follower_id) {
         FollowerDTO followerDTO = new FollowerDTO(follower_id, dto.getUser().getUser_id(), new UserDTO(dto.getOther_user_id()));
         FollowingDTO followingDTO = new FollowingDTO(dto.getFollowing_id(), dto.getOther_user_id(), new UserDTO(dto.getUser().getUser_id()));
         followerRepo.save(modelMapper.map(followerDTO, Follower.class));
         followingRepo.save(modelMapper.map(followingDTO, Following.class));
+    }
+
+    @Override
+    public void unfollow(String user_id, String other_user_id) {
+        followingRepo.deleteById(followingRepo.getFollowingId(user_id,other_user_id));
+        followerRepo.deleteById(followerRepo.getFollowerId(other_user_id,user_id));
+
     }
 
     @Override
