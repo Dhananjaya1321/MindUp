@@ -1,6 +1,40 @@
 $("#post-post-btn").click(function () {
     saveUserPost();
 })
+let user_posts = [];
+
+function getUserPosts() {
+    $.ajax({
+        url: base_url + "/post/posts?user_id=" + user_id + "&post_count=" + user_posts.length,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            user_posts = resp.data;
+            console.log(user_posts)
+            setPostsForUserActivitySection();
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function getReactionsOfPost(post_id) {
+    let reactions=[];
+    $.ajax({
+        url: base_url + "/post/reacted/users?post_id=" + post_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            reactions=resp.data;
+            console.log(resp.data);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+    return reactions;
+}
 
 function saveUserPost() {
     const date = new Date();
@@ -27,31 +61,37 @@ function saveUserPost() {
             contentType: false,
             processData: false,
             success: function (resp) {
-
+                clearPostForm();
             },
             error: function (resp) {
-
+                clearPostForm();
             }
         })
     } else {
-       if (post_text!==''){
-           $.ajax({
-               url: base_url + "/post/without/media",
-               method: "post",
-               data: JSON.stringify(data),
-               contentType: "application/json",
-               success: function (resp) {
-
-               },
-               error: function (resp) {
-
-               }
-           })
-       }
+        if (post_text !== '') {
+            $.ajax({
+                url: base_url + "/post/without/media",
+                method: "post",
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                success: function (resp) {
+                    clearPostForm();
+                },
+                error: function (resp) {
+                    clearPostForm();
+                }
+            })
+        }
     }
 
 }
 
+function clearPostForm() {
+    $("#file-input-in-post-module,#post-txt").val('');
+    $("#post-txt").css("height", "250px");
+    $("#post-media").css("background", `url("")`);
+    $("#post-media").css("display", "none");
+}
 
 function getLastReactionId() {
     $.ajax({

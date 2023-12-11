@@ -17,6 +17,7 @@ import javax.persistence.ManyToOne;
 public class Follower {
     @Id
     private String follower_id;
+    private String other_user_id;
 
     @ManyToOne
     private User user;

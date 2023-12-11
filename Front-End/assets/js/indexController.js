@@ -1,21 +1,37 @@
+$(window).ready(function () {
+    loadAllCountries();
+});
+
 let base_url = "http://localhost:8080";
 let user_id;
+let user_profile_photo;
+let user_cover_photo;
+let user_name;
+let user_headline;
 
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
-/*$("#signin-btn").click(function () {
-    $("#login-main").css("display", "none");
-    $("#nav-bar, #home-main").css("display", "flex");
-});*/
+$("#signin-btn").click(function () {
+    let email = $("#sign-in-email").val();
+    let password = $("#sign-in-password").val();
+    searchPassword(email, password);
+});
 
 $("#signup-btn").click(function () {
     $("#sign-up-section").css("display", "none");
     $("#get-details-section").css("display", "flex");
 });
 
-/*$("#signup-get-details-next-btn,#signup-get-details-skip-btn").click(function () {
-    $("#login-main").css("display", "none");
-    $("#nav-bar, #home-main").css("display", "flex");
-});*/
+$("#signup-get-details-next-btn").click(function () {
+    let name = $("#signup-get-details-full-name").val();
+    let country = $("#signup-get-details-country").val();
+    let contact = $("#signup-get-details-contact").val();
+    let gender = $("input[name='gender']:checked").val();
+    saveUser(name, country, contact, gender);
+});
+
+$("#signup-get-details-skip-btn").click(function () {
+    saveUser();
+});
 
 $("#signin-to-signup-btn").click(function () {
     $("#sign-in-section").css("display", "none");
@@ -58,6 +74,8 @@ $("#nav-home").click(function () {
 $("#nav-users").click(function () {
     $("#followed-page-section,#user-section").css("display", "flex");
     $("#page-section,#posts-shared-section,#recommendation-section,#notifications-section,#profile-section").css("display", "none");
+    getNotFollowers();
+    followBtnEvent();
 });
 
 $("#nav-notification").click(function () {
@@ -73,6 +91,7 @@ $("#nav-profile").click(function () {
     getUserFollowingCount();
     getUserFollowersCount();
     getUserPosition();
+    getUserPosts();
 });
 
 $("#addBtn").click(function () {
