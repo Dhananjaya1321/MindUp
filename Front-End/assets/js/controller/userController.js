@@ -1,23 +1,53 @@
-$(window).ready(function () {
-    loadAllCountries();
-});
-
 /*============================================= user account =============================================*/
-let user_post_count=[];
-function getUserPosts() {
-    $.ajax({
-        url: base_url + "/post/posts?user_id=" + user_id+"&post_count="+user_post_count.length,
-        method: "get",
-        async: false,
-        success: function (resp) {
-            user_post_count=resp.data;
-        },
-        error: function (resp) {
-            alert(resp.JSON.data);
-        }
-    })
-}
+function setPostsForUserActivitySection() {
+    $("#profile-activity-section>section").empty();
 
+    for (let i in user_posts) {
+        let reactions = getReactionsOfPost(user_posts[i].post_id);
+        let reaction = `<small>No reactions</small>`;
+        if (reactions.length > 0) {
+            reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
+                      <div class="second-reacted-user"></div><!--second reacted user-->
+                      <div class="other-reacted-users">
+                          <small>
+                              <span class="first-reacted-user-name">${reactions[0].name}</span>
+                              <span class="second-reacted-user-name">${reactions[1].name}</span>
+                              and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
+                          </small>
+                      </div>`
+            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
+            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
+            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
+            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
+        }
+
+        let post = `<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>${user_name}</h3>
+                            <p>${user_headline}</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>${user_posts[i].post_text}</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar"></div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+            </div>`
+
+        $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
+        $("#user-or-page-dp").css("backgroundPosition", "center");
+        $("#user-or-page-dp").css("backgroundSize", "cover");
+        $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
+        $("#profile-activity-section>section").append(post);
+    }
+}
 
 function getUserPosition() {
     $.ajax({
@@ -93,14 +123,50 @@ function getUserFollowingCount() {
     });
 }
 
-function getUserDetails() {
+function getNotFollowers() {
     $.ajax({
-        url: base_url + "/user/details?user_id=" + user_id,
+        url: base_url + "/user/not/followers?user_id=" + user_id,
         method: "get",
         async: false,
         success: function (resp) {
-            console.log(resp.data[0]);
-            setDetailsForProfile(resp.data[0]);
+            $("#popular-peoples-section>section").empty();
+            for (let i in resp.data) {
+                let user = resp.data[i];
+                let headline;
+                if (user.headline !== null) {
+                    headline = truncateParagraph(user.headline, 101);
+                } else {
+                    headline = "---";
+                }
+                let userForFollow = `<div class="user flex f-col">
+                                        <div id="user-cover-photo-${user.user_id}" class="user-cover-photo"></div><!--cover photo-->
+                                        <div class="user-dp flex">
+                                            <div class="flex">
+                                                <div id="profile-photo-${user.user_id}" class="profile-photo"></div>
+                                            </div>
+                                        </div><!--profile photo-->
+                                        <div class="user-summary flex f-col">
+                                            <h4 class="user-name">${user.name}</h4>
+                                            <p class="user-about">
+                                                ${headline}
+                                            </p>
+                                        </div><!--about-->
+                                        <div class="flex user-follow-btn-div">
+                                                <button id="user-${user.user_id}" class="user-follow-btn">Follow</button>
+                                        </div><!--follow button-->
+                                 </div><!--user-->`
+                $("#popular-peoples-section>section").append(userForFollow);
+
+                if (user.cover_photo !== null) {
+                    $(`#user-cover-photo-${user.user_id}`).css("background", `url(${user.cover_photo})`);
+                }
+                if (user.profile_photo !== null) {
+                    $(`#profile-photo-${user.user_id}`).css("background", `url(${user.profile_photo})`);
+                }
+                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundPosition", "center");
+                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundSize", "cover");
+
+            }
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -108,14 +174,137 @@ function getUserDetails() {
     })
 }
 
-function setDetailsForProfile(user) {
-    $("#cover-img").css("background", `url(${user.cover_photo})`);
-    $("#cover-img").css("backgroundSize", `cover`);
-    $("#cover-img").css("backgroundPosition", `center`);
+function followBtnEvent() {
+    $(".user-follow-btn").click(function () {
+        /*this user id like user-user-1*/
+        let btnId = $(this).attr("id").substring(5);/*remove user- and get to user-1*/
+        console.log(btnId);
+        checkBeforeToFollowUser(btnId);
+    });
+}
 
-    $("#dp-img").css("background", `url(${user.profile_photo})`);
-    $("#dp-img").css("backgroundSize", `cover`);
-    $("#dp-img").css("backgroundPosition", `center`);
+function checkBeforeToFollowUser(other_user_id) {
+    $.ajax({
+        url: base_url + "/user/check/follow?user_id=" + user_id + "&other_user_id=" + other_user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            if (resp.data) {
+                followUser(other_user_id);
+            } else {
+                unfollowUser(other_user_id);
+            }
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+}
+
+function followUser(other_user_id) {
+    let following = {
+        "following_id": getLastFollowingId(),
+        "other_user_id": other_user_id,
+        "user": {
+            "user_id": user_id
+        },
+    }
+    $.ajax({
+        url: base_url + "/user/follow?follower_id=" + getLastFollowerId(),
+        method: "post",
+        data: JSON.stringify(following),
+        contentType: "application/json",
+        async: false,
+        success: function (resp) {
+            $(`#user-${other_user_id}`).text("Following");
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function unfollowUser(other_user_id) {
+    $.ajax({
+        url: base_url + "/user/unfollow?user_id="+user_id+"&other_user_id="+other_user_id,
+        method: "delete",
+        async: false,
+        success: function (resp) {
+            $(`#user-${other_user_id}`).text("Follow");
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function getUserDetails() {
+    $.ajax({
+        url: base_url + "/user/details?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            console.log(resp.data[0]);
+            user_profile_photo = resp.data[0].profile_photo;
+            user_cover_photo = resp.data[0].cover_photo;
+            user_name = resp.data[0].name;
+            if(resp.data[0].headline!==null){
+                user_headline = truncateParagraph(resp.data[0].headline, 62);
+            }else {
+                user_headline = "---";
+            }
+            setDetailsForProfile(resp.data[0]);
+            setDetailsForHomePage(resp.data[0]);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function setDetailsForHomePage(user) {
+    if (user.cover_photo !== null) {
+        $("#profile-summary-cover-photo").css("background", `url(${user.cover_photo})`);
+        $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
+        $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
+    }
+
+    if (user.profile_photo !== null) {
+        $("#profile-photo,#profile-photo-of-create-post-section").css("background", `url(${user.profile_photo})`);
+        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundSize", `cover`);
+        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundPosition", `center`);
+    }
+
+    if (user.name !== null) {
+        $("#user-name").text(`${user.name}`);
+    }
+    console.log(user.headline !== null,user.headline)
+    if (user.headline !== null) {
+        $("#about").text(truncateParagraph(`${user.headline}`, 101));
+    } else {
+        $("#about").text("---");
+    }
+}
+
+function truncateParagraph(paragraph, maxLength) {
+    if (paragraph.length > maxLength) {
+        return paragraph.substring(0, maxLength) + '...';
+    }
+    return paragraph;
+}
+
+function setDetailsForProfile(user) {
+    if (user.cover_photo !== null) {
+        $("#cover-img").css("background", `url(${user.cover_photo})`);
+        $("#cover-img").css("backgroundSize", `cover`);
+        $("#cover-img").css("backgroundPosition", `center`);
+    }
+
+    if (user.profile_photo !== null) {
+        $("#dp-img").css("background", `url(${user.profile_photo})`);
+        $("#dp-img").css("backgroundSize", `cover`);
+        $("#dp-img").css("backgroundPosition", `center`);
+    }
 
     /*==================================================================*/
     if (user.page_id !== null) {
@@ -173,12 +362,6 @@ function setDetailsForProfile(user) {
 
 
 /*=============================================== sign-in ================================================*/
-$("#signin-btn").click(function () {
-    let email = $("#sign-in-email").val();
-    let password = $("#sign-in-password").val();
-    searchPassword(email, password);
-});
-
 function searchPassword(email, password) {
     $.ajax({
         url: base_url + "/login?email=" + email + "&password=" + password,
@@ -186,6 +369,7 @@ function searchPassword(email, password) {
         success: function (resp) {
             getUserId(email);
             if (resp.data) {
+                getUserDetails();
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
             } else {
@@ -247,18 +431,6 @@ function loadAllCountries() {
 
 
 /*=============================================== sign-up ================================================*/
-$("#signup-get-details-next-btn").click(function () {
-    let name = $("#signup-get-details-full-name").val();
-    let country = $("#signup-get-details-country").val();
-    let contact = $("#signup-get-details-contact").val();
-    let gender = $("input[name='gender']:checked").val();
-    saveUser(name, country, contact, gender);
-});
-
-$("#signup-get-details-skip-btn").click(function () {
-    saveUser();
-});
-
 function saveUser(name, country, contact, gender) {
     let email = $("#sign-up-email").val();
     let password = $("#sign-up-password").val();
@@ -294,6 +466,7 @@ function saveUser(name, country, contact, gender) {
         data: JSON.stringify(data),
         success: function (resp) {
             user_id = userid;
+            getUserDetails();
             $("#login-main").css("display", "none");
             $("#nav-bar, #home-main").css("display", "flex");
             // alert(resp.data);
@@ -321,31 +494,35 @@ function getLastPositionId() {
 }
 
 function getLastFollowingId() {
+    let last_following_id;
     $.ajax({
         url: base_url + "/user/last/following/id",
         method: "get",
         async: false,
         success: function (resp) {
-            generateNextFollowingId(resp.data);
+            last_following_id = generateNextFollowingId(resp.data);
         },
         error: function (resp) {
 
         }
     })
+    return last_following_id;
 }
 
 function getLastFollowerId() {
+    let last_follower_id;
     $.ajax({
         url: base_url + "/user/last/follower/id",
         method: "get",
         async: false,
         success: function (resp) {
-            generateNextFollowerId(resp.data);
+            last_follower_id = generateNextFollowerId(resp.data);
         },
         error: function (resp) {
 
         }
-    })
+    });
+    return last_follower_id;
 }
 
 function getLastUserId() {

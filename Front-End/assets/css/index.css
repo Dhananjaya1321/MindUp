@@ -425,6 +425,7 @@ main {
 }
 
 .post-content {
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -578,6 +579,12 @@ main {
     background-color: white;
 }
 
+.user-summary{
+    height: 97px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
 /*============================================= Notification section =====================================================*/
 
 #notifications-section {

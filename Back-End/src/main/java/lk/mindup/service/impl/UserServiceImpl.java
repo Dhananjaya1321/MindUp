@@ -1,10 +1,9 @@
 package lk.mindup.service.impl;
 
-import lk.mindup.dto.CustomDTO;
-import lk.mindup.dto.PositionsDTO;
-import lk.mindup.dto.UserDTO;
+import lk.mindup.dto.*;
 import lk.mindup.entity.CustomEntity;
-import lk.mindup.entity.Login;
+import lk.mindup.entity.Follower;
+import lk.mindup.entity.Following;
 import lk.mindup.entity.User;
 import lk.mindup.repo.*;
 import lk.mindup.service.UserService;
@@ -47,6 +46,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void saveFollow(FollowingDTO dto, String follower_id) {
+        FollowerDTO followerDTO = new FollowerDTO(follower_id, dto.getUser().getUser_id(), new UserDTO(dto.getOther_user_id()));
+        FollowingDTO followingDTO = new FollowingDTO(dto.getFollowing_id(), dto.getOther_user_id(), new UserDTO(dto.getUser().getUser_id()));
+        followerRepo.save(modelMapper.map(followerDTO, Follower.class));
+        followingRepo.save(modelMapper.map(followingDTO, Following.class));
+    }
+
+    @Override
+    public void unfollow(String user_id, String other_user_id) {
+        followingRepo.deleteById(followingRepo.getFollowingId(user_id,other_user_id));
+        followerRepo.deleteById(followerRepo.getFollowerId(other_user_id,user_id));
+
+    }
+
+    @Override
+    public boolean checkBeforeToFollowUser(String user_id, String other_user_id) {
+        return followerRepo.checkBeforeToFollowUser(user_id, other_user_id) == null;
+    }
+
+    @Override
     public List<CustomDTO> getUserDetails(String user_id) {
         ArrayList<CustomEntity> customEntities = new ArrayList<>();
         customEntities.add(userRepo.getUserDetails(user_id));
@@ -67,6 +86,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getFollowersCount(String user_id) {
         return userRepo.getFollowersCount(user_id);
+    }
+
+    @Override
+    public List<UserDTO> getNotFollowers(String user_id) {
+        return modelMapper.map(userRepo.getNotFollowers(user_id), new TypeToken<ArrayList<User>>() {
+        }.getType());
     }
 
     @Override

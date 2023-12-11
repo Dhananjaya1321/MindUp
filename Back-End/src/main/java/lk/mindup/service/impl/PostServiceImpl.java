@@ -1,7 +1,9 @@
 package lk.mindup.service.impl;
 
+import lk.mindup.dto.CustomDTO;
 import lk.mindup.dto.PositionsDTO;
 import lk.mindup.dto.PostDTO;
+import lk.mindup.entity.CustomEntity;
 import lk.mindup.entity.Post;
 import lk.mindup.entity.User;
 import lk.mindup.repo.PostRepo;
@@ -11,6 +13,7 @@ import lk.mindup.service.PostService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -77,8 +80,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostDTO> getUserPosts(String user_id, int post_count) {
-        return modelMapper.map(postRepo.getUserPosts(user_id, post_count), new TypeToken<ArrayList<Post>>() {
+    public List<CustomDTO> getReactionsOfPost(String post_id) {
+        return modelMapper.map(reactionsRepo.getReactionsOfPost(post_id), new TypeToken<ArrayList<CustomEntity>>() {
+        }.getType());
+    }
+
+    @Override
+    public List<CustomDTO> getUserPosts(String user_id, int post_count) {
+        return modelMapper.map(postRepo.getUserPosts(user_id,  PageRequest.of(0, post_count+10)), new TypeToken<ArrayList<CustomEntity>>() {
         }.getType());
     }
 

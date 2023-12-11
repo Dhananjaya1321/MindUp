@@ -38,4 +38,8 @@ public class UserDTO {
     private List<FollowingDTO> followings;
 
     private List<ReactionsDTO> reactions;
+
+    public UserDTO(String user_id) {
+        this.user_id=user_id;
+    }
 }

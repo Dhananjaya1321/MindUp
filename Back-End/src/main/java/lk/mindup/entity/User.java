@@ -53,4 +53,12 @@ public class User {
     public User(String user_id) {
         this.user_id=user_id;
     }
+    public User(String user_id,String name,String headline,String verified_or_not,String profile_photo,String cover_photo) {
+        this.user_id=user_id;
+        this.name=name;
+        this.headline=headline;
+        this.verified_or_not=verified_or_not;
+        this.profile_photo=profile_photo;
+        this.cover_photo=cover_photo;
+    }
 }

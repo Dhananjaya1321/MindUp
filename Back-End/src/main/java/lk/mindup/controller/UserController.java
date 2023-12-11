@@ -1,6 +1,8 @@
 package lk.mindup.controller;
 
+import lk.mindup.dto.FollowingDTO;
 import lk.mindup.dto.UserDTO;
+import lk.mindup.entity.Following;
 import lk.mindup.service.UserService;
 import lk.mindup.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,31 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Added...!", userDTO.getLogin().getEmail());
     }
 
+    @PostMapping(path = "/follow", params = {"follower_id"})
+    public ResponseUtil saveFollow(@RequestBody FollowingDTO dto, String follower_id) {
+        userService.saveFollow(dto, follower_id);
+        return new ResponseUtil("Ok", "Successfully Added...!", dto.getFollowing_id());
+    }
+
+    @DeleteMapping(path = "/unfollow", params = {"user_id", "other_user_id"})
+    public ResponseUtil unfollow(String user_id, String other_user_id) {
+        System.out.println(user_id+" "+other_user_id);
+        userService.unfollow(user_id, other_user_id);
+        return new ResponseUtil("Ok", "Successfully Delete...!", user_id);
+    }
+
+    @GetMapping(path = "/check/follow", params = {"user_id", "other_user_id"})
+    public ResponseUtil checkBeforeToFollowUser(String user_id, String other_user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.checkBeforeToFollowUser(user_id, other_user_id));
+    }
+
+    @GetMapping(path = "/not/followers", params = {"user_id"})
+    public ResponseUtil getNotFollowers(String user_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getNotFollowers(user_id));
+    }
+
     @GetMapping(path = "/details", params = {"user_id"})
     public ResponseUtil getUserDetails(String user_id) {
-        System.out.println("\n\n\n\n" + userService.getUserDetails(user_id));
         return new ResponseUtil("Ok", "Successfully Loaded...!", userService.getUserDetails(user_id));
     }
 
