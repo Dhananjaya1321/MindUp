@@ -39,25 +39,56 @@ function getReactionsOfPost(post_id) {
 function saveReaction() {
     $(".heart-react").click(function () {
         let post_id = $(this).attr("id").substring(4);
-        let data = {
-            "reaction_id": getLastReactionId(),
-            "user": {"user_id": user_id},
-            "post": {"post_id": post_id}
-        }
-        $.ajax({
-            url: base_url + "/post/reaction",
-            method: "post",
-            contentType: "application/json",
-            data: JSON.stringify(data),
-            async: false,
-            success: function (resp) {
-                $("#btn-" + post_id).css("color", "red")
-            },
-            error: function (resp) {
-                alert(resp.JSON.data);
+        if (checkReaction(post_id)){
+            let data = {
+                "reaction_id": getLastReactionId(),
+                "user": {"user_id": user_id},
+                "post": {"post_id": post_id}
             }
-        })
+            $.ajax({
+                url: base_url + "/post/reaction",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                async: false,
+                success: function (resp) {
+                    $("#btn-" + post_id).css("color", "red")
+                },
+                error: function (resp) {
+                    alert(resp.JSON.data);
+                }
+            });
+        }else {
+            undoReaction(post_id);
+        }
     });
+}
+
+function undoReaction(post_id) {
+    $.ajax({
+        url: base_url + "/post/undo/reaction?user_id="+user_id+"&post_id="+post_id,
+        method: "delete",
+        success: function (resp) {
+            $("#btn-" + post_id).css("color", "black");
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+function checkReaction(post_id) {
+    let status=true;
+    $.ajax({
+        url: base_url + "/post/check/reaction?user_id="+user_id+"&post_id="+post_id,
+        method: "get",
+        success: function (resp) {
+            status=false;
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+    return status;
 }
 
 function saveUserPost() {

@@ -76,6 +76,7 @@ function checkAndSetUserReactionBtnColorForActivities() {
     }
     saveReaction();
 }
+
 function getUserPosition() {
     $.ajax({
         url: base_url + "/user/position?user_id=" + user_id,
