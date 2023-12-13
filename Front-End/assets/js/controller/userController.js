@@ -70,8 +70,10 @@ function setPostsForUserActivitySection() {
 function checkAndSetUserReactionBtnColorForActivities() {
     for (let i in user_posts) {
         let reactions = getReactionsOfPost(user_posts[i].post_id);
-        if (reactions[0].user_id===user_id){
-            $("#btn-"+user_posts[i].post_id).css("color","red");
+        if (reactions.length>0){
+            if (reactions[0].user_id===user_id){
+                $("#btn-"+user_posts[i].post_id).css("color","red");
+            }
         }
     }
     saveReaction();

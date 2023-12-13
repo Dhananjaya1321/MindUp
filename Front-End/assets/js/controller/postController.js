@@ -68,6 +68,7 @@ function undoReaction(post_id) {
     $.ajax({
         url: base_url + "/post/undo/reaction?user_id="+user_id+"&post_id="+post_id,
         method: "delete",
+        async:false,
         success: function (resp) {
             $("#btn-" + post_id).css("color", "black");
         },
@@ -78,12 +79,14 @@ function undoReaction(post_id) {
 }
 
 function checkReaction(post_id) {
-    let status=true;
+    let status;
     $.ajax({
         url: base_url + "/post/check/reaction?user_id="+user_id+"&post_id="+post_id,
         method: "get",
+        async:false,
         success: function (resp) {
             status=resp.data;
+            console.log(status)
         },
         error: function (resp) {
             alert(resp.JSON.data);

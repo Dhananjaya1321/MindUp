@@ -36,12 +36,15 @@ public class PostController {
         postService.saveUserPost(dto);
         return new ResponseUtil("Ok", "Successfully Added...!", dto.getPost_id());
     }
+    @DeleteMapping(path = "/undo/reaction", params = {"user_id","post_id"})
+    public ResponseUtil undoReaction(String user_id,String post_id){
+        postService.undoReaction(user_id,post_id);
+        return new ResponseUtil("Ok", "Successfully Deleted...!", post_id);
+    }
 
     @GetMapping(path = "/check/reaction", params = {"user_id","post_id"})
     public ResponseUtil checkReaction(String user_id,String post_id) {
-        boolean b = postService.checkReaction(user_id, post_id);
-        System.out.println(b);
-        return new ResponseUtil("Ok", "Successfully Loaded...!", b);
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.checkReaction(user_id, post_id));
     }
 
     @GetMapping(path = "/reacted/users", params = {"post_id"})

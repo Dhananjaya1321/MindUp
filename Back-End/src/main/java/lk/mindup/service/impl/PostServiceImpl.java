@@ -84,6 +84,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public void undoReaction(String user_id, String post_id) {
+       reactionsRepo.deleteById(reactionsRepo.checkReaction(user_id, post_id));
+    }
+
+    @Override
     public String getLastPostId() {
         return postRepo.getLastPostId();
     }

@@ -14,6 +14,8 @@ public interface PostService {
 
     boolean checkReaction(String user_id, String post_id);
 
+    void undoReaction(String user_id, String post_id);
+
     String getLastPostId();
 
     String getLastReactionId();
