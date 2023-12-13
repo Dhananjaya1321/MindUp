@@ -37,6 +37,13 @@ public class PostController {
         return new ResponseUtil("Ok", "Successfully Added...!", dto.getPost_id());
     }
 
+    @GetMapping(path = "/check/reaction", params = {"user_id","post_id"})
+    public ResponseUtil checkReaction(String user_id,String post_id) {
+        boolean b = postService.checkReaction(user_id, post_id);
+        System.out.println(b);
+        return new ResponseUtil("Ok", "Successfully Loaded...!", b);
+    }
+
     @GetMapping(path = "/reacted/users", params = {"post_id"})
     public ResponseUtil getReactionsOfPost(String post_id) {
         return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getReactionsOfPost(post_id));

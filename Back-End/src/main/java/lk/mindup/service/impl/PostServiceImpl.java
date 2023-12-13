@@ -76,6 +76,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public boolean checkReaction(String user_id, String post_id) {
+        if (reactionsRepo.checkReaction(user_id, post_id) == null){
+            return false;
+        }
+         return true;
+    }
+
+    @Override
     public String getLastPostId() {
         return postRepo.getLastPostId();
     }

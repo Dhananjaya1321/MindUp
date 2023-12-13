@@ -12,6 +12,8 @@ public interface PostService {
 
     void saveUserPost(PostDTO dto) throws IOException;
 
+    boolean checkReaction(String user_id, String post_id);
+
     String getLastPostId();
 
     String getLastReactionId();
