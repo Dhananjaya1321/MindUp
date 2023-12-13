@@ -36,6 +36,30 @@ function getReactionsOfPost(post_id) {
     return reactions;
 }
 
+function saveReaction() {
+    $(".heart-react").click(function () {
+        let post_id = $(this).attr("id").substring(4);
+        let data={
+            "reaction_id":getLastReactionId(),
+            "post_id": post_id,
+            "user_id":user_id
+        }
+        $.ajax({
+            url:base_url+"post",
+            method:"post",
+            contentType:"application/json",
+            data:JSON.stringify(data),
+            async:false,
+            success:function (resp) {
+                $("#btn-"+post_id).css("color","red")
+            },
+            error:function (resp) {
+                alert(resp.JSON.data);
+            }
+        })
+    });
+}
+
 function saveUserPost() {
     const date = new Date();
     let post_text = $("#post-txt").val();
@@ -94,16 +118,18 @@ function clearPostForm() {
 }
 
 function getLastReactionId() {
+    let last_reaction_id;
     $.ajax({
         url: base_url + "/post/last/reaction/id",
         method: "get",
         success: function (resp) {
-            generateNextReactionId(resp.data);
+            last_reaction_id=generateNextReactionId(resp.data);
         },
         error: function (resp) {
 
         }
-    })
+    });
+    return last_reaction_id;
 }
 
 function getLastPostId() {

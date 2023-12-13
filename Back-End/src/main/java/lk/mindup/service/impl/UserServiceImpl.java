@@ -55,8 +55,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void unfollow(String user_id, String other_user_id) {
-        followingRepo.deleteById(followingRepo.getFollowingId(user_id,other_user_id));
-        followerRepo.deleteById(followerRepo.getFollowerId(other_user_id,user_id));
+        followingRepo.deleteById(followingRepo.getFollowingId(user_id, other_user_id));
+        followerRepo.deleteById(followerRepo.getFollowerId(other_user_id, user_id));
 
     }
 

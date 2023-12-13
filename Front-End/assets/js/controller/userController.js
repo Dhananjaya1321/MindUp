@@ -37,7 +37,7 @@ function setPostsForUserActivitySection() {
                     <div class="post-reaction-bar"></div><!--who are the react this post-->
                     <div class="horizontal-line"></div>
                     <div class="post-reaction-bar">
-                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                        <button id="btn-${user_posts[i].post_id}" class="heart-react"><i class="fa-regular fa-heart"></i></button>
                     </div><!--heart reaction button here-->
             </div>`
 
@@ -226,7 +226,7 @@ function followUser(other_user_id) {
 
 function unfollowUser(other_user_id) {
     $.ajax({
-        url: base_url + "/user/unfollow?user_id="+user_id+"&other_user_id="+other_user_id,
+        url: base_url + "/user/unfollow?user_id=" + user_id + "&other_user_id=" + other_user_id,
         method: "delete",
         async: false,
         success: function (resp) {
@@ -248,9 +248,9 @@ function getUserDetails() {
             user_profile_photo = resp.data[0].profile_photo;
             user_cover_photo = resp.data[0].cover_photo;
             user_name = resp.data[0].name;
-            if(resp.data[0].headline!==null){
+            if (resp.data[0].headline !== null) {
                 user_headline = truncateParagraph(resp.data[0].headline, 62);
-            }else {
+            } else {
                 user_headline = "---";
             }
             setDetailsForProfile(resp.data[0]);
@@ -278,7 +278,7 @@ function setDetailsForHomePage(user) {
     if (user.name !== null) {
         $("#user-name").text(`${user.name}`);
     }
-    console.log(user.headline !== null,user.headline)
+    console.log(user.headline !== null, user.headline)
     if (user.headline !== null) {
         $("#about").text(truncateParagraph(`${user.headline}`, 101));
     } else {
