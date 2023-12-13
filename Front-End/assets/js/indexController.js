@@ -1,5 +1,6 @@
 $(window).ready(function () {
     loadAllCountries();
+    saveReaction();
 });
 
 let base_url = "http://localhost:8080";

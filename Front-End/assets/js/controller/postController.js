@@ -20,13 +20,13 @@ function getUserPosts() {
 }
 
 function getReactionsOfPost(post_id) {
-    let reactions=[];
+    let reactions = [];
     $.ajax({
         url: base_url + "/post/reacted/users?post_id=" + post_id,
         method: "get",
         async: false,
         success: function (resp) {
-            reactions=resp.data;
+            reactions = resp.data;
             console.log(resp.data);
         },
         error: function (resp) {
@@ -39,21 +39,21 @@ function getReactionsOfPost(post_id) {
 function saveReaction() {
     $(".heart-react").click(function () {
         let post_id = $(this).attr("id").substring(4);
-        let data={
-            "reaction_id":getLastReactionId(),
-            "post_id": post_id,
-            "user_id":user_id
+        let data = {
+            "reaction_id": getLastReactionId(),
+            "user": {"user_id": user_id},
+            "post": {"post_id": post_id}
         }
         $.ajax({
-            url:base_url+"post",
-            method:"post",
-            contentType:"application/json",
-            data:JSON.stringify(data),
-            async:false,
-            success:function (resp) {
-                $("#btn-"+post_id).css("color","red")
+            url: base_url + "/post/reaction",
+            method: "post",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            async: false,
+            success: function (resp) {
+                $("#btn-" + post_id).css("color", "red")
             },
-            error:function (resp) {
+            error: function (resp) {
                 alert(resp.JSON.data);
             }
         })
@@ -122,8 +122,10 @@ function getLastReactionId() {
     $.ajax({
         url: base_url + "/post/last/reaction/id",
         method: "get",
+        async:false,
         success: function (resp) {
-            last_reaction_id=generateNextReactionId(resp.data);
+            last_reaction_id = generateNextReactionId(resp.data);
+            console.log(last_reaction_id)
         },
         error: function (resp) {
 

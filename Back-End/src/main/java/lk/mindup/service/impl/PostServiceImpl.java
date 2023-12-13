@@ -1,10 +1,11 @@
 package lk.mindup.service.impl;
 
 import lk.mindup.dto.CustomDTO;
-import lk.mindup.dto.PositionsDTO;
 import lk.mindup.dto.PostDTO;
+import lk.mindup.dto.ReactionsDTO;
 import lk.mindup.entity.CustomEntity;
 import lk.mindup.entity.Post;
+import lk.mindup.entity.Reactions;
 import lk.mindup.entity.User;
 import lk.mindup.repo.PostRepo;
 import lk.mindup.repo.ReactionsRepo;
@@ -39,6 +40,11 @@ public class PostServiceImpl implements PostService {
     ReactionsRepo reactionsRepo;
 
     String dir = "C:\\Users\\ACER\\Documents\\WorkZone\\MindUp\\Back-End\\src\\main\\resources\\media";
+
+    @Override
+    public void saveReaction(ReactionsDTO dto) {
+        reactionsRepo.save(modelMapper.map(dto, Reactions.class));
+    }
 
     @Override
     public void saveUserPost(PostDTO dto) throws IOException {
@@ -87,7 +93,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<CustomDTO> getUserPosts(String user_id, int post_count) {
-        return modelMapper.map(postRepo.getUserPosts(user_id,  PageRequest.of(0, post_count+10)), new TypeToken<ArrayList<CustomEntity>>() {
+        return modelMapper.map(postRepo.getUserPosts(user_id, PageRequest.of(0, post_count + 10)), new TypeToken<ArrayList<CustomEntity>>() {
         }.getType());
     }
 
