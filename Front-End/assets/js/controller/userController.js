@@ -64,8 +64,18 @@ function setPostsForUserActivitySection() {
         $("#user-or-page-dp").css("backgroundPosition", "center");
         $("#user-or-page-dp").css("backgroundSize", "cover");
     }
+    checkAndSetUserReactionBtnColorForActivities();
 }
 
+function checkAndSetUserReactionBtnColorForActivities() {
+    for (let i in user_posts) {
+        let reactions = getReactionsOfPost(user_posts[i].post_id);
+        if (reactions[0].user_id===user_id){
+            $("#btn-"+user_posts[i].post_id).css("color","red");
+        }
+    }
+    saveReaction();
+}
 function getUserPosition() {
     $.ajax({
         url: base_url + "/user/position?user_id=" + user_id,
