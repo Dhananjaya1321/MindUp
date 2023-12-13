@@ -5,7 +5,15 @@ function setPostsForUserActivitySection() {
     for (let i in user_posts) {
         let reactions = getReactionsOfPost(user_posts[i].post_id);
         let reaction = `<small>No reactions</small>`;
-        if (reactions.length > 0) {
+        if (reactions.length === 1) {
+            reaction = `
+                      <div class="first-reacted-user"></div><!--first reacted user-->
+                      <div class="other-reacted-users">
+                          <small>
+                              <span class="first-reacted-user-name">${reactions[0].name}</span>
+                          </small>
+                      </div>`
+        } else if (reactions.length > 1) {
             reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
                       <div class="second-reacted-user"></div><!--second reacted user-->
                       <div class="other-reacted-users">
@@ -15,10 +23,7 @@ function setPostsForUserActivitySection() {
                               and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
                           </small>
                       </div>`
-            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
-            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
-            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
-            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
+
         }
 
         let post = `<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
@@ -41,11 +46,23 @@ function setPostsForUserActivitySection() {
                     </div><!--heart reaction button here-->
             </div>`
 
+        $("#profile-activity-section>section").append(post);
+        $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
+
+        if (reactions.length === 1) {
+            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
+            $("#first-reacted-user").css("backgroundPosition", "center");
+            $("#first-reacted-user").css("backgroundSize", "cover");
+        } else if (reactions.length > 1) {
+            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
+            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
+            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
+            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
+        }
+
         $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
         $("#user-or-page-dp").css("backgroundPosition", "center");
         $("#user-or-page-dp").css("backgroundSize", "cover");
-        $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
-        $("#profile-activity-section>section").append(post);
     }
 }
 
