@@ -2,6 +2,7 @@ $("#post-post-btn").click(function () {
     saveUserPost();
 })
 let user_posts = [];
+let posts_home = [];
 
 function getUserPosts() {
     $.ajax({
@@ -12,6 +13,22 @@ function getUserPosts() {
             user_posts = resp.data;
             console.log(user_posts)
             setPostsForUserActivitySection();
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function getPostsForHome() {
+    $.ajax({
+        url: base_url + "/post/posts/home?user_id=" + user_id + "&post_count=" + posts_home.length,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            posts_home = resp.data;
+            console.log(posts_home)
+
         },
         error: function (resp) {
             alert(resp.JSON.data);
