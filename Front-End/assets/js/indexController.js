@@ -1,7 +1,6 @@
 $(window).ready(function () {
     loadAllCountries();
     saveReaction();
-    getPostsForHome();
 });
 
 let base_url = "http://localhost:8080";

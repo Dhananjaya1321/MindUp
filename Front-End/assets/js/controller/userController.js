@@ -400,6 +400,7 @@ function searchPassword(email, password) {
             getUserId(email);
             if (resp.data) {
                 getUserDetails();
+                getPostsForHome();
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
             } else {

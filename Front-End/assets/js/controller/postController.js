@@ -28,12 +28,80 @@ function getPostsForHome() {
         success: function (resp) {
             posts_home = resp.data;
             console.log(posts_home)
-
+            setPostsForHomePage();
         },
         error: function (resp) {
             alert(resp.JSON.data);
         }
     })
+}
+
+function setPostsForHomePage() {
+    $("#posts-shared-section>section:last-child").empty();
+
+    for (let i in posts_home) {
+        let reactions = getReactionsOfPost(posts_home[i].post_id);
+        let reaction = `<small>No reactions</small>`;
+        if (reactions.length === 1) {
+            reaction = `
+                      <div class="first-reacted-user"></div><!--first reacted user-->
+                      <div class="other-reacted-users">
+                          <small>
+                              <span class="first-reacted-user-name">${reactions[0].name}</span>
+                          </small>
+                      </div>`
+        } else if (reactions.length > 1) {
+            reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
+                      <div class="second-reacted-user"></div><!--second reacted user-->
+                      <div class="other-reacted-users">
+                          <small>
+                              <span class="first-reacted-user-name">${reactions[0].name}</span>
+                              <span class="second-reacted-user-name">${reactions[1].name}</span>
+                              and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
+                          </small>
+                      </div>`
+        }
+
+        let post = `
+            <div id="${posts_home[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
+                    <div class="posted-account-details f-row">
+                        <div class="user-or-page-dp"></div><!--user or page DP-->
+                        <div class="user-or-page-details">
+                            <h3>${user_name}</h3>
+                            <p>${user_headline}</p>
+                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                        </div><!--user or page details-->
+                    </div><!--posted account or page details-->
+                    <div class="post-content">
+                        <p>${posts_home[i].post_text}</p>
+                    </div><!--post content-->
+                    <div class="post-media"></div><!--image or video content of post-->
+                    <div class="post-reaction-bar"></div><!--who are the react this post-->
+                    <div class="horizontal-line"></div>
+                    <div class="post-reaction-bar">
+                        <button id="btn-${posts_home[i].post_id}" class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                    </div><!--heart reaction button here-->
+            </div>`
+
+        $("#posts-shared-section>section:last-child").append(post);
+        $(`#${posts_home[i].post_id} > div:nth-child(4)`).append(reaction);
+
+        if (reactions.length === 1) {
+            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
+            $("#first-reacted-user").css("backgroundPosition", "center");
+            $("#first-reacted-user").css("backgroundSize", "cover");
+        } else if (reactions.length > 1) {
+            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
+            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
+            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
+            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
+        }
+
+        $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
+        $("#user-or-page-dp").css("backgroundPosition", "center");
+        $("#user-or-page-dp").css("backgroundSize", "cover");
+    }
+    checkAndSetUserReactionBtnColorForActivities();
 }
 
 function getReactionsOfPost(post_id) {
