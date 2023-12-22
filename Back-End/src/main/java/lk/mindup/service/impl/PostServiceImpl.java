@@ -110,4 +110,10 @@ public class PostServiceImpl implements PostService {
         }.getType());
     }
 
+    @Override
+    public List<CustomDTO> getPostsForHome(String user_id, int post_count) {
+        return modelMapper.map(postRepo.getPostsForHome(user_id, PageRequest.of(0, post_count + 50)), new TypeToken<ArrayList<CustomEntity>>() {
+        }.getType());
+    }
+
 }

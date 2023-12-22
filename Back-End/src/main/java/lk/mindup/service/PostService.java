@@ -23,4 +23,6 @@ public interface PostService {
     List<CustomDTO> getReactionsOfPost(String post_id);
 
     List<CustomDTO> getUserPosts(String user_id, int post_count);
+
+    List<CustomDTO> getPostsForHome(String user_id, int post_count);
 }
