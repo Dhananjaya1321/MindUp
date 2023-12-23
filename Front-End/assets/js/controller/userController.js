@@ -14,7 +14,8 @@ function setPostsForUserActivitySection() {
                           </small>
                       </div>`
         } else if (reactions.length > 1) {
-            reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
+            reaction = `
+                      <div class="first-reacted-user"></div><!--first reacted user-->
                       <div class="second-reacted-user"></div><!--second reacted user-->
                       <div class="other-reacted-users">
                           <small>
@@ -23,10 +24,10 @@ function setPostsForUserActivitySection() {
                               and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
                           </small>
                       </div>`
-
         }
 
-        let post = `<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
+        let post = `
+                <div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
                         <div class="user-or-page-dp"></div><!--user or page DP-->
                         <div class="user-or-page-details">
@@ -44,7 +45,7 @@ function setPostsForUserActivitySection() {
                     <div class="post-reaction-bar">
                         <button id="btn-${user_posts[i].post_id}" class="heart-react"><i class="fa-regular fa-heart"></i></button>
                     </div><!--heart reaction button here-->
-            </div>`
+                </div>`
 
         $("#profile-activity-section>section").append(post);
         $(`#${user_posts[i].post_id} > div:nth-child(4)`).empty();
@@ -75,6 +76,21 @@ function checkAndSetUserReactionBtnColorForActivities() {
             for (let j = 0; j < reactions.length; j++) {
                 if (reactions[j].user_id===user_id){
                     $("#btn-"+user_posts[i].post_id).css("color","red");
+                    break;
+                }
+            }
+        }
+    }
+    saveReaction();
+}
+
+function checkAndSetUserReactionBtnColorForHomePagePosts() {
+    for (let i in posts_home) {
+        let reactions = getReactionsOfPost(posts_home[i].post_id);
+        if (reactions.length>0){
+            for (let j = 0; j < reactions.length; j++) {
+                if (reactions[j].user_id===user_id){
+                    $("#btn-"+posts_home[i].post_id).css("color","red");
                     break;
                 }
             }

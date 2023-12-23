@@ -28,7 +28,7 @@ function getPostsForHome() {
         success: function (resp) {
             posts_home = resp.data;
             console.log(posts_home)
-            // setPostsForHomePage();
+            setPostsForHomePage();
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -51,13 +51,19 @@ function setPostsForHomePage() {
                           </small>
                       </div>`
         } else if (reactions.length > 1) {
-            reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
+            let otherCount=``;
+            if (reactions.length - 2>0){
+                otherCount=`and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>`;
+            }
+            reaction = `
+                      <div class="first-reacted-user"></div><!--first reacted user-->
                       <div class="second-reacted-user"></div><!--second reacted user-->
                       <div class="other-reacted-users">
                           <small>
                               <span class="first-reacted-user-name">${reactions[0].name}</span>
+                              &
                               <span class="second-reacted-user-name">${reactions[1].name}</span>
-                              and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
+                              ${otherCount}
                           </small>
                       </div>`
         }
@@ -102,7 +108,7 @@ function setPostsForHomePage() {
         $("#user-or-page-dp").css("backgroundPosition", "center");
         $("#user-or-page-dp").css("backgroundSize", "cover");
     }
-    checkAndSetUserReactionBtnColorForActivities();
+    checkAndSetUserReactionBtnColorForHomePagePosts();
 }
 
 function getReactionsOfPost(post_id) {
@@ -125,6 +131,7 @@ function getReactionsOfPost(post_id) {
 function saveReaction() {
     $(".heart-react").click(function () {
         let post_id = $(this).attr("id").substring(4);
+        console.log("save reactions",post_id)
         if (!checkReaction(post_id)){
             let data = {
                 "reaction_id": getLastReactionId(),
