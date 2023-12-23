@@ -28,7 +28,7 @@ function getPostsForHome() {
         success: function (resp) {
             posts_home = resp.data;
             console.log(posts_home)
-            setPostsForHomePage();
+            // setPostsForHomePage();
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -84,6 +84,7 @@ function setPostsForHomePage() {
             </div>`
 
         $("#posts-shared-section>section:last-child").append(post);
+        $(`#${posts_home[i].post_id} > div:nth-child(4)`).empty();
         $(`#${posts_home[i].post_id} > div:nth-child(4)`).append(reaction);
 
         if (reactions.length === 1) {

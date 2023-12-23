@@ -47,6 +47,7 @@ function setPostsForUserActivitySection() {
             </div>`
 
         $("#profile-activity-section>section").append(post);
+        $(`#${user_posts[i].post_id} > div:nth-child(4)`).empty();
         $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
 
         if (reactions.length === 1) {
@@ -71,8 +72,11 @@ function checkAndSetUserReactionBtnColorForActivities() {
     for (let i in user_posts) {
         let reactions = getReactionsOfPost(user_posts[i].post_id);
         if (reactions.length>0){
-            if (reactions[0].user_id===user_id){
-                $("#btn-"+user_posts[i].post_id).css("color","red");
+            for (let j = 0; j < reactions.length; j++) {
+                if (reactions[j].user_id===user_id){
+                    $("#btn-"+user_posts[i].post_id).css("color","red");
+                    break;
+                }
             }
         }
     }
