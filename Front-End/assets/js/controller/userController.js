@@ -14,18 +14,27 @@ function setPostsForUserActivitySection() {
                           </small>
                       </div>`
         } else if (reactions.length > 1) {
+            let otherCount = ``;
+            if (reactions.length - 2 > 0) {
+                otherCount = `and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>`;
+            }
             reaction = `
                       <div class="first-reacted-user"></div><!--first reacted user-->
                       <div class="second-reacted-user"></div><!--second reacted user-->
                       <div class="other-reacted-users">
                           <small>
                               <span class="first-reacted-user-name">${reactions[0].name}</span>
+                              &
                               <span class="second-reacted-user-name">${reactions[1].name}</span>
-                              and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
+                              ${otherCount}
                           </small>
                       </div>`
         }
 
+        let media = '<div></div>';
+        if (posts_home[i].media !== null) {
+            media = `<div class="post-media"></div><!--image or video content of post-->`;
+        }
         let post = `
                 <div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
@@ -39,7 +48,7 @@ function setPostsForUserActivitySection() {
                     <div class="post-content">
                         <p>${user_posts[i].post_text}</p>
                     </div><!--post content-->
-                    <div class="post-media"></div><!--image or video content of post-->
+                    ${media}
                     <div class="post-reaction-bar"></div><!--who are the react this post-->
                     <div class="horizontal-line"></div>
                     <div class="post-reaction-bar">
@@ -72,10 +81,10 @@ function setPostsForUserActivitySection() {
 function checkAndSetUserReactionBtnColorForActivities() {
     for (let i in user_posts) {
         let reactions = getReactionsOfPost(user_posts[i].post_id);
-        if (reactions.length>0){
+        if (reactions.length > 0) {
             for (let j = 0; j < reactions.length; j++) {
-                if (reactions[j].user_id===user_id){
-                    $("#btn-"+user_posts[i].post_id).css("color","red");
+                if (reactions[j].user_id === user_id) {
+                    $("#btn-" + user_posts[i].post_id).css("color", "red");
                     break;
                 }
             }
@@ -87,10 +96,10 @@ function checkAndSetUserReactionBtnColorForActivities() {
 function checkAndSetUserReactionBtnColorForHomePagePosts() {
     for (let i in posts_home) {
         let reactions = getReactionsOfPost(posts_home[i].post_id);
-        if (reactions.length>0){
+        if (reactions.length > 0) {
             for (let j = 0; j < reactions.length; j++) {
-                if (reactions[j].user_id===user_id){
-                    $("#btn-"+posts_home[i].post_id).css("color","red");
+                if (reactions[j].user_id === user_id) {
+                    $("#btn-" + posts_home[i].post_id).css("color", "red");
                     break;
                 }
             }

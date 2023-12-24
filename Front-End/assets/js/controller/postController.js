@@ -51,9 +51,9 @@ function setPostsForHomePage() {
                           </small>
                       </div>`
         } else if (reactions.length > 1) {
-            let otherCount=``;
-            if (reactions.length - 2>0){
-                otherCount=`and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>`;
+            let otherCount = ``;
+            if (reactions.length - 2 > 0) {
+                otherCount = `and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>`;
             }
             reaction = `
                       <div class="first-reacted-user"></div><!--first reacted user-->
@@ -68,6 +68,12 @@ function setPostsForHomePage() {
                       </div>`
         }
 
+        let media = '<div></div>';
+        if (posts_home[i].media !== null) {
+            media = `<div class="post-media"></div><!--image or video content of post-->`;
+        }
+
+
         let post = `
             <div id="${posts_home[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
@@ -81,7 +87,7 @@ function setPostsForHomePage() {
                     <div class="post-content">
                         <p>${posts_home[i].post_text}</p>
                     </div><!--post content-->
-                    <div class="post-media"></div><!--image or video content of post-->
+                    ${media}
                     <div class="post-reaction-bar"></div><!--who are the react this post-->
                     <div class="horizontal-line"></div>
                     <div class="post-reaction-bar">
@@ -131,8 +137,8 @@ function getReactionsOfPost(post_id) {
 function saveReaction() {
     $(".heart-react").click(function () {
         let post_id = $(this).attr("id").substring(4);
-        console.log("save reactions",post_id)
-        if (!checkReaction(post_id)){
+        console.log("save reactions", post_id)
+        if (!checkReaction(post_id)) {
             let data = {
                 "reaction_id": getLastReactionId(),
                 "user": {"user_id": user_id},
@@ -151,7 +157,7 @@ function saveReaction() {
                     alert(resp.JSON.data);
                 }
             });
-        }else {
+        } else {
             undoReaction(post_id);
         }
     });
@@ -159,9 +165,9 @@ function saveReaction() {
 
 function undoReaction(post_id) {
     $.ajax({
-        url: base_url + "/post/undo/reaction?user_id="+user_id+"&post_id="+post_id,
+        url: base_url + "/post/undo/reaction?user_id=" + user_id + "&post_id=" + post_id,
         method: "delete",
-        async:false,
+        async: false,
         success: function (resp) {
             $("#btn-" + post_id).css("color", "black");
         },
@@ -174,11 +180,11 @@ function undoReaction(post_id) {
 function checkReaction(post_id) {
     let status;
     $.ajax({
-        url: base_url + "/post/check/reaction?user_id="+user_id+"&post_id="+post_id,
+        url: base_url + "/post/check/reaction?user_id=" + user_id + "&post_id=" + post_id,
         method: "get",
-        async:false,
+        async: false,
         success: function (resp) {
-            status=resp.data;
+            status = resp.data;
             console.log(status)
         },
         error: function (resp) {
@@ -250,7 +256,7 @@ function getLastReactionId() {
     $.ajax({
         url: base_url + "/post/last/reaction/id",
         method: "get",
-        async:false,
+        async: false,
         success: function (resp) {
             last_reaction_id = generateNextReactionId(resp.data);
             console.log(last_reaction_id)
