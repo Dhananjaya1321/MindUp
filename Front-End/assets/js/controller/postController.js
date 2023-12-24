@@ -73,14 +73,15 @@ function setPostsForHomePage() {
             media = `<div class="post-media"></div><!--image or video content of post-->`;
         }
 
+        let userDetailsForPost = getUserDetailsForPost(posts_home[i].user_id);
 
         let post = `
             <div id="${posts_home[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
                         <div class="user-or-page-dp"></div><!--user or page DP-->
                         <div class="user-or-page-details">
-                            <h3>${user_name}</h3>
-                            <p>${user_headline}</p>
+                            <h3>${userDetailsForPost.name}</h3>
+                            <p>${userDetailsForPost.headline}</p>
                             <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
                         </div><!--user or page details-->
                     </div><!--posted account or page details-->
@@ -110,11 +111,33 @@ function setPostsForHomePage() {
             $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
         }
 
-        $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
+        $("#user-or-page-dp").css("background", `url(${userDetailsForPost.profile_photo})`);
         $("#user-or-page-dp").css("backgroundPosition", "center");
         $("#user-or-page-dp").css("backgroundSize", "cover");
     }
     checkAndSetUserReactionBtnColorForHomePagePosts();
+}
+
+function getUserDetailsForPost(user_id) {
+    let user_details=null;
+    $.ajax({
+        url: base_url + "/user/details?user_id=" + user_id,
+        method: "get",
+        async: false,
+        success: function (resp) {
+            console.log(resp.data[0]);
+            if (resp.data[0].headline !== null) {
+                resp.data[0].headline = truncateParagraph(resp.data[0].headline, 62);
+            } else {
+                resp.data[0].headline = "---";
+            }
+          user_details=resp.data[0];
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    });
+    return user_details;
 }
 
 function getReactionsOfPost(post_id) {
