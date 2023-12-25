@@ -3,6 +3,7 @@ $("#post-post-btn").click(function () {
 })
 let user_posts = [];
 let posts_home = [];
+let images_path="../Back-End/src/main/resources/media/";
 
 function getUserPosts() {
     $.ajax({
@@ -70,7 +71,8 @@ function setPostsForHomePage() {
 
         let media = '<div></div>';
         if (posts_home[i].media !== null) {
-            media = `<div class="post-media"></div><!--image or video content of post-->`;
+            media = `<img class="post-media" src="">`;
+            // media = `<div class="post-media"></div>`;
         }
 
         let userDetailsForPost = getUserDetailsForPost(posts_home[i].user_id);
@@ -112,8 +114,9 @@ function setPostsForHomePage() {
         }
 
         $("#user-or-page-dp").css("background", `url(${userDetailsForPost.profile_photo})`);
-        $("#user-or-page-dp").css("backgroundPosition", "center");
-        $("#user-or-page-dp").css("backgroundSize", "cover");
+        $(`#${posts_home[i].post_id}>.post-media`).attr("src",`${images_path}${posts_home[i].media}`);
+        $(`#user-or-page-dp`).css("backgroundPosition", "center");
+        $(`#user-or-page-dp`).css("backgroundSize", "cover");
     }
     checkAndSetUserReactionBtnColorForHomePagePosts();
 }

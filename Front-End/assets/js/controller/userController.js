@@ -32,8 +32,8 @@ function setPostsForUserActivitySection() {
         }
 
         let media = '<div></div>';
-        if (posts_home[i].media !== null) {
-            media = `<div class="post-media"></div><!--image or video content of post-->`;
+        if (user_posts[i].media !== null) {
+            media = `<img class="post-media" src=""><!--image or video content of post-->`;
         }
         let post = `
                 <div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
@@ -72,8 +72,9 @@ function setPostsForUserActivitySection() {
         }
 
         $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
-        $("#user-or-page-dp").css("backgroundPosition", "center");
-        $("#user-or-page-dp").css("backgroundSize", "cover");
+        $(`#${user_posts[i].post_id}>.post-media`).attr("src", `${images_path}${user_posts[i].media}`);
+        $(`#user-or-page-dp`).css("backgroundPosition", "center");
+        $(`#user-or-page-dp`).css("backgroundSize", "cover");
     }
     checkAndSetUserReactionBtnColorForActivities();
 }
