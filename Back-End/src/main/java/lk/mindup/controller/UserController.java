@@ -27,6 +27,12 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Added...!", dto.getFollowing_id());
     }
 
+    @PutMapping
+    public ResponseUtil updateProfile(@RequestBody UserDTO dto) {
+        userService.updateProfile(dto);
+        return new ResponseUtil("Ok", "Successfully Updated...!", dto.getUser_id());
+    }
+
     @DeleteMapping(path = "/unfollow", params = {"user_id", "other_user_id"})
     public ResponseUtil unfollow(String user_id, String other_user_id) {
         System.out.println(user_id+" "+other_user_id);

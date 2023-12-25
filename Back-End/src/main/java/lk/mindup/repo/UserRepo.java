@@ -2,6 +2,7 @@ package lk.mindup.repo;
 
 import lk.mindup.dto.UserDTO;
 import lk.mindup.entity.CustomEntity;
+import lk.mindup.entity.Login;
 import lk.mindup.entity.Positions;
 import lk.mindup.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

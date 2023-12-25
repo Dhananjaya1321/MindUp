@@ -5,6 +5,7 @@ $(window).ready(function () {
 
 let base_url = "http://localhost:8080";
 let user_id;
+let user_email;
 let user_profile_photo;
 let user_cover_photo;
 let user_name;

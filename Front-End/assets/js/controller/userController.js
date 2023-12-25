@@ -439,7 +439,10 @@ function updateProfileDetails() {
         "youtube_channel":youtube,
         "country":country,
         "gender":gender,
-        "contact":phone
+        "contact":phone,
+        "login": {
+            "email": user_email,
+        },
     }
 
     $.ajax({
@@ -486,6 +489,7 @@ function getUserId(email) {
         success: function (resp) {
             console.log(resp.data);
             user_id = resp.data;
+            user_email = email;
         },
         error: function (resp) {
             alert(resp.JSON.data);

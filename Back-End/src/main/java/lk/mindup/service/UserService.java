@@ -10,6 +10,8 @@ import java.util.List;
 public interface UserService {
     void saveUser(UserDTO dto);
 
+    void updateProfile(UserDTO dto);
+
     void saveFollow(FollowingDTO dto, String follower_id);
 
     void unfollow(String user_id, String other_user_id);
