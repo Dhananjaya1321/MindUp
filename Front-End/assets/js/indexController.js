@@ -10,6 +10,11 @@ let user_cover_photo;
 let user_name;
 let user_headline;
 
+/*========================================= profile =================================*/
+$("#update-profile-details-form-btn").click(function () {
+    updateProfileDetails();
+});
+
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
 $("#signin-btn").click(function () {
     let email = $("#sign-in-email").val();

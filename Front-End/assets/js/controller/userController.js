@@ -420,7 +420,41 @@ function setDetailsForProfile(user) {
 
 }
 
+function updateProfileDetails() {
+    let name = $("#update-profile-details-name").val();
+    let address = $("#update-profile-details-address").val();
+    let youtube = $("#update-profile-details-youtube").val();
+    let phone = $("#update-profile-details-phone").val();
+    let country = $("#update-profile-details-country").val();
+    let headline = $("#update-profile-details-headline").val();
+    let gender = $("input[name='gender']:checked").val();
 
+    let data={
+        "user_id":user_id,
+        "address":address,
+        "cover_photo":user_cover_photo,
+        "headline":headline,
+        "name":name,
+        "profile_photo":user_profile_photo,
+        "youtube_channel":youtube,
+        "country":country,
+        "gender":gender,
+        "contact":phone
+    }
+
+    $.ajax({
+        url: base_url + "/user",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (resp) {
+           alert(resp.message);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
 /*=============================================== sign-in ================================================*/
 function searchPassword(email, password) {
     $.ajax({
@@ -486,7 +520,7 @@ let countries = [
 
 function loadAllCountries() {
     for (let i = 0; i < countries.length; i++) {
-        $("#signup-get-details-country").append(`<option value=${countries[i]}>${countries[i]}</option>`);
+        $("#update-profile-details-country,#signup-get-details-country").append(`<option value=${countries[i]}>${countries[i]}</option>`);
     }
 }
 
