@@ -74,7 +74,7 @@
 <body>
 <header id="nav-bar">
     <div class="flex f-wrap f-row">
-        <img src="fevIcon.png" width="40">
+        <img src="fevIcon.png" width="40" style="border-radius: 4px;">
         <div id="search-bar-div" class="flex f-row">
             <i class="fa-solid fa-magnifying-glass" style="color: #000000;"></i>
             <input id="search-bar" placeholder="Search" type="text">
@@ -848,12 +848,12 @@
                         </div>
                     </div>
                 </div>
-                <div id="page-btn" class="flex">
-                    <button class="flex f-col" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <div id="page-btn" class="flex" style="opacity: 0">
+                   <!-- <button class="flex f-col" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <div id="page-btn-img"></div>
                         Create Page
-                    </button>
-                </div>
+                    </button>-->
+                </div><!--Pages can will be created-->
             </div>
             <div id="profile-details" class="flex f-col">
                 <div class="flex f-row">
@@ -974,7 +974,7 @@
                         class="fa-solid fa-arrow-right"></i></button>
             </div>
         </section><!--profile pinned post section-->
-        <section id="profile-positions-section" class="flex f-col">
+        <!--<section id="profile-positions-section" class="flex f-col">
             <div class="flex f-row">
                 <h2 class="topics">Positions</h2>
                 <div id="positions-edit-btn">
@@ -986,7 +986,7 @@
             <section class="flex f-col">
 
             </section>
-        </section><!--profile positions section-->
+        </section>--><!--profile positions section-->
         <section id="profile-activity-section" class="flex f-col">
             <div class="flex f-row">
                 <h2 class="topics">Activity</h2>
@@ -1445,7 +1445,7 @@
     <!--Please create all forms within this forms section-->
     <section>
         <!--==============   Add creat Form (samudi)  =============-->
-        <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
+       <!-- <div class="modal fade form" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-lg form">
                 <div class="modal-content form">
@@ -1506,7 +1506,7 @@
                                 <textarea id="page-description-txt" type="text"
                                           placeholder="Contact number" name="input"
                                           class="input"
-                                          style="padding: 11px 10px;font-size: 16px; border-radius: 5px; border: var(--bs-border-width) solid var(--bs-border-color);"></textarea>
+                                          style="padding: 11px 10px;font-size: 16px; border-radius: 5px; border: var(&#45;&#45;bs-border-width) solid var(&#45;&#45;bs-border-color);"></textarea>
                             </div>
                         </section>
                     </div>
@@ -1515,7 +1515,7 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- Button trigger modal -->
+        </div>--> <!-- Button trigger modal -->
 
         <!--==============   Create post Form (isuru)  =============-->
         <div class="modal fade modal-fullscreen-sm-down" id="create-post-form" tabindex="-1"
