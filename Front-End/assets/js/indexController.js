@@ -16,6 +16,10 @@ $("#update-profile-details-form-btn").click(function () {
     updateProfileDetails();
 });
 
+$("#update-cover-photo-save-btn").click(function () {
+    updateProfileCoverPhoto();
+});
+
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
 $("#signin-btn").click(function () {
     let email = $("#sign-in-email").val();
