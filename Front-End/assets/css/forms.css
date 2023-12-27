@@ -1,0 +1,22 @@
+/*=====================================update profile details form========================================*/
+#update-profile-details-form-btn,
+#update-cover-photo-save-btn,
+#update-profile-photo-save-btn {
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff6800;
+}
+
+#update-profile-details-country {
+    height: 40px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+}
+
+#update-profile-details-headline {
+    height: 100px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+}

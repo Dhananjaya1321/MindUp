@@ -438,7 +438,7 @@ main {
 
 .post-media {
     width: 520px;
-    height: 320px;
+    /*height: 320px;*/
     background-color: #ff6800;
 }
 
@@ -1368,7 +1368,7 @@ main {
     }
 
     .post-media {
-        height: 280px;
+        /*height: 280px;*/
     }
 
     .other-reacted-users > small {

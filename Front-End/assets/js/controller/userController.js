@@ -5,23 +5,38 @@ function setPostsForUserActivitySection() {
     for (let i in user_posts) {
         let reactions = getReactionsOfPost(user_posts[i].post_id);
         let reaction = `<small>No reactions</small>`;
-        if (reactions.length > 0) {
-            reaction = `<div class="first-reacted-user"></div><!--first reacted user-->
+        if (reactions.length === 1) {
+            reaction = `
+                      <div class="first-reacted-user"></div><!--first reacted user-->
+                      <div class="other-reacted-users">
+                          <small>
+                              <span class="first-reacted-user-name">${reactions[0].name}</span>
+                          </small>
+                      </div>`
+        } else if (reactions.length > 1) {
+            let otherCount = ``;
+            if (reactions.length - 2 > 0) {
+                otherCount = `and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>`;
+            }
+            reaction = `
+                      <div class="first-reacted-user"></div><!--first reacted user-->
                       <div class="second-reacted-user"></div><!--second reacted user-->
                       <div class="other-reacted-users">
                           <small>
                               <span class="first-reacted-user-name">${reactions[0].name}</span>
+                              &
                               <span class="second-reacted-user-name">${reactions[1].name}</span>
-                              and others <a href="#"><span class="other-reaction-count">${reactions.length - 2}</span></a>
+                              ${otherCount}
                           </small>
                       </div>`
-            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
-            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
-            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
-            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
         }
 
-        let post = `<div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
+        let media = '<div></div>';
+        if (user_posts[i].media !== null) {
+            media = `<img class="post-media" src=""><!--image or video content of post-->`;
+        }
+        let post = `
+                <div id="${user_posts[i].post_id}" style="border: 1px solid #e5e5e5;" class="post flex f-col">
                     <div class="posted-account-details f-row">
                         <div class="user-or-page-dp"></div><!--user or page DP-->
                         <div class="user-or-page-details">
@@ -33,20 +48,82 @@ function setPostsForUserActivitySection() {
                     <div class="post-content">
                         <p>${user_posts[i].post_text}</p>
                     </div><!--post content-->
-                    <div class="post-media"></div><!--image or video content of post-->
+                    ${media}
                     <div class="post-reaction-bar"></div><!--who are the react this post-->
                     <div class="horizontal-line"></div>
                     <div class="post-reaction-bar">
-                        <button class="heart-react"><i class="fa-regular fa-heart"></i></button>
+                        <button id="btn-${user_posts[i].post_id}" class="heart-react"><i class="fa-regular fa-heart"></i></button>
                     </div><!--heart reaction button here-->
-            </div>`
+                </div>`
 
-        $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
-        $("#user-or-page-dp").css("backgroundPosition", "center");
-        $("#user-or-page-dp").css("backgroundSize", "cover");
-        $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
         $("#profile-activity-section>section").append(post);
+        $(`#${user_posts[i].post_id} > div:nth-child(4)`).empty();
+        $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
+
+        if (reactions.length === 1) {
+            if (reactions[0].profile_photo !== null) {
+                $(`#${user_posts[i].post_id} > div:nth-child(4) > .first-reacted-user`).css({
+                    "background": `url("${images_path}${reactions[0].profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
+            }
+        } else if (reactions.length > 1) {
+            if (reactions[0].profile_photo !== null) {
+                $(`#${user_posts[i].post_id} > div:nth-child(4) > .first-reacted-user`).css({
+                    "background": `url("${images_path}${reactions[0].profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
+            }
+            if (reactions[1].profile_photo !== null) {
+                $(`#${user_posts[i].post_id} > div:nth-child(4) > .second-reacted-user`).css({
+                    "background": `url("${images_path}${reactions[1].profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
+            }
+        }
+        if (user_profile_photo !== null) {
+            $(`#${user_posts[i].post_id} > div:nth-child(1) > .user-or-page-dp`).css({
+                "background": `url("${images_path}${user_profile_photo}")`,
+                "backgroundSize": "cover",
+                "backgroundPosition": "center"
+            });
+        }
+        $(`#${user_posts[i].post_id} > .post-media`).attr("src", `${images_path}${user_posts[i].media}`);
     }
+    checkAndSetUserReactionBtnColorForActivities();
+}
+
+function checkAndSetUserReactionBtnColorForActivities() {
+    for (let i in user_posts) {
+        let reactions = getReactionsOfPost(user_posts[i].post_id);
+        if (reactions.length > 0) {
+            for (let j = 0; j < reactions.length; j++) {
+                if (reactions[j].user_id === user_id) {
+                    $("#btn-" + user_posts[i].post_id).css("color", "red");
+                    break;
+                }
+            }
+        }
+    }
+    saveReaction();
+}
+
+function checkAndSetUserReactionBtnColorForHomePagePosts() {
+    for (let i in posts_home) {
+        let reactions = getReactionsOfPost(posts_home[i].post_id);
+        if (reactions.length > 0) {
+            for (let j = 0; j < reactions.length; j++) {
+                if (reactions[j].user_id === user_id) {
+                    $("#btn-" + posts_home[i].post_id).css("color", "red");
+                    break;
+                }
+            }
+        }
+    }
+    saveReaction();
 }
 
 function getUserPosition() {
@@ -138,7 +215,8 @@ function getNotFollowers() {
                 } else {
                     headline = "---";
                 }
-                let userForFollow = `<div class="user flex f-col">
+                let userForFollow = `
+                                <div class="user flex f-col">
                                         <div id="user-cover-photo-${user.user_id}" class="user-cover-photo"></div><!--cover photo-->
                                         <div class="user-dp flex">
                                             <div class="flex">
@@ -154,18 +232,23 @@ function getNotFollowers() {
                                         <div class="flex user-follow-btn-div">
                                                 <button id="user-${user.user_id}" class="user-follow-btn">Follow</button>
                                         </div><!--follow button-->
-                                 </div><!--user-->`
+                                </div><!--user-->`
                 $("#popular-peoples-section>section").append(userForFollow);
 
                 if (user.cover_photo !== null) {
-                    $(`#user-cover-photo-${user.user_id}`).css("background", `url(${user.cover_photo})`);
+                    $(`#user-cover-photo-${user.user_id}`).css({
+                        "background": `url("${images_path}${user.cover_photo}")`,
+                        "backgroundSize": "cover",
+                        "backgroundPosition": "center"
+                    });
                 }
                 if (user.profile_photo !== null) {
-                    $(`#profile-photo-${user.user_id}`).css("background", `url(${user.profile_photo})`);
+                    $(`#profile-photo-${user.user_id}`).css({
+                        "background": `url("${images_path}${user.profile_photo}")`,
+                        "backgroundSize": "cover",
+                        "backgroundPosition": "center"
+                    });
                 }
-                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundPosition", "center");
-                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundSize", "cover");
-
             }
         },
         error: function (resp) {
@@ -226,7 +309,7 @@ function followUser(other_user_id) {
 
 function unfollowUser(other_user_id) {
     $.ajax({
-        url: base_url + "/user/unfollow?user_id="+user_id+"&other_user_id="+other_user_id,
+        url: base_url + "/user/unfollow?user_id=" + user_id + "&other_user_id=" + other_user_id,
         method: "delete",
         async: false,
         success: function (resp) {
@@ -248,9 +331,9 @@ function getUserDetails() {
             user_profile_photo = resp.data[0].profile_photo;
             user_cover_photo = resp.data[0].cover_photo;
             user_name = resp.data[0].name;
-            if(resp.data[0].headline!==null){
+            if (resp.data[0].headline !== null) {
                 user_headline = truncateParagraph(resp.data[0].headline, 62);
-            }else {
+            } else {
                 user_headline = "---";
             }
             setDetailsForProfile(resp.data[0]);
@@ -263,22 +346,27 @@ function getUserDetails() {
 }
 
 function setDetailsForHomePage(user) {
+    console.log(`${images_path}${user.cover_photo}`);
     if (user.cover_photo !== null) {
-        $("#profile-summary-cover-photo").css("background", `url(${user.cover_photo})`);
-        $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
-        $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
+        $("#profile-summary-cover-photo").css({
+            "background": `url("${images_path}${user.cover_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center"
+        });
     }
 
     if (user.profile_photo !== null) {
-        $("#profile-photo,#profile-photo-of-create-post-section").css("background", `url(${user.profile_photo})`);
-        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundSize", `cover`);
-        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundPosition", `center`);
+        $("#profile-photo,#profile-photo-of-create-post-section").css({
+            "background": `url("${images_path}${user.profile_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center"
+        });
     }
 
     if (user.name !== null) {
         $("#user-name").text(`${user.name}`);
     }
-    console.log(user.headline !== null,user.headline)
+    console.log(user.headline !== null, user.headline)
     if (user.headline !== null) {
         $("#about").text(truncateParagraph(`${user.headline}`, 101));
     } else {
@@ -295,15 +383,20 @@ function truncateParagraph(paragraph, maxLength) {
 
 function setDetailsForProfile(user) {
     if (user.cover_photo !== null) {
-        $("#cover-img").css("background", `url(${user.cover_photo})`);
-        $("#cover-img").css("backgroundSize", `cover`);
-        $("#cover-img").css("backgroundPosition", `center`);
+        $("#cover-img").css({
+            "background": `url("${images_path}${user.cover_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center"
+        });
     }
 
     if (user.profile_photo !== null) {
-        $("#dp-img").css("background", `url(${user.profile_photo})`);
-        $("#dp-img").css("backgroundSize", `cover`);
-        $("#dp-img").css("backgroundPosition", `center`);
+        $("#dp-img").css({
+            "background": `url("${images_path}${user.profile_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center",
+            "borderRadius": "10px"
+        });
     }
 
     /*==================================================================*/
@@ -353,13 +446,101 @@ function setDetailsForProfile(user) {
         $("#headline").text(`${user.headline}`);
     }
     /*==================================================================*/
+    $("#youtube-link").empty();
     if (user.youtube_channel !== null) {
         $("#youtube-link").append(`<a href="${user.youtube_channel}">youtube channel <img src="assets/images/youtube_.png"></a>`);
     }
-
-
 }
 
+function updateProfileDetails() {
+    let name = $("#update-profile-details-name").val();
+    let address = $("#update-profile-details-address").val();
+    let youtube = $("#update-profile-details-youtube").val();
+    let phone = $("#update-profile-details-phone").val();
+    let country = $("#update-profile-details-country").val();
+    let headline = $("#update-profile-details-headline").val();
+    let gender = $("input[name='gender']:checked").val();
+
+    let data = {
+        "user_id": user_id,
+        "address": address,
+        "cover_photo": user_cover_photo,
+        "headline": headline,
+        "name": name,
+        "profile_photo": user_profile_photo,
+        "youtube_channel": youtube,
+        "country": country,
+        "gender": gender,
+        "contact": phone,
+        "login": {
+            "email": user_email,
+        },
+    }
+
+    $.ajax({
+        url: base_url + "/user",
+        method: "put",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function (resp) {
+            getUserDetails();
+            alert(resp.message);
+        },
+        error: function (resp) {
+            alert(resp.JSON.data);
+        }
+    })
+}
+
+function updateProfileCoverPhoto() {
+    let fileInput = $("#update-cover-photo-form-file-chooser")[0];
+
+    if (fileInput.files.length > 0) {
+        let formData = new FormData();
+        formData.append("media", fileInput.files[0]);
+
+        $.ajax({
+            url: base_url + "/user/cover?user_id=" + user_id,
+            method: "put",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (resp) {
+                alert(resp.data);
+            },
+            error: function (resp) {
+
+            }
+        })
+    } else {
+        alert("Please select photo before saving")
+    }
+}
+
+function updateProfilePhoto() {
+    let fileInput = $("#update-profile-photo-form-file-chooser")[0];
+
+    if (fileInput.files.length > 0) {
+        let formData = new FormData();
+        formData.append("media", fileInput.files[0]);
+
+        $.ajax({
+            url: base_url + "/user/profile/photo?user_id=" + user_id,
+            method: "put",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (resp) {
+                alert(resp.data);
+            },
+            error: function (resp) {
+
+            }
+        })
+    } else {
+        alert("Please select photo before saving")
+    }
+}
 
 /*=============================================== sign-in ================================================*/
 function searchPassword(email, password) {
@@ -370,6 +551,12 @@ function searchPassword(email, password) {
             getUserId(email);
             if (resp.data) {
                 getUserDetails();
+                getPostsForHome();
+                $("#create-post-popup-form-user-profile-photo").css({
+                    "background": `url("${images_path}${user_profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
             } else {
@@ -391,6 +578,7 @@ function getUserId(email) {
         success: function (resp) {
             console.log(resp.data);
             user_id = resp.data;
+            user_email = email;
         },
         error: function (resp) {
             alert(resp.JSON.data);
@@ -425,7 +613,7 @@ let countries = [
 
 function loadAllCountries() {
     for (let i = 0; i < countries.length; i++) {
-        $("#signup-get-details-country").append(`<option value=${countries[i]}>${countries[i]}</option>`);
+        $("#update-profile-details-country,#signup-get-details-country").append(`<option value=${countries[i]}>${countries[i]}</option>`);
     }
 }
 

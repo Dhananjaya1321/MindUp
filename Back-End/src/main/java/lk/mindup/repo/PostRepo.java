@@ -14,4 +14,12 @@ public interface PostRepo extends JpaRepository<Post, String> {
 
     @Query(value = "SELECT NEW lk.mindup.entity.CustomEntity(p.post_id, p.dateTime, p.post_text, p.who_can_view, p.media, p.user.user_id, p.page.page_id) FROM Post p WHERE p.user.user_id = ?1 ORDER BY p.dateTime DESC")
     List<CustomEntity> getUserPosts(String user_id, Pageable pageable);
+
+    @Query(value =
+            "SELECT NEW lk.mindup.entity.CustomEntity(" +
+            "p.post_id, p.dateTime, p.post_text, p.who_can_view, p.media, p.user.user_id, p.page.page_id)" +
+            "FROM Post p WHERE p.user.user_id = ?1" +
+            "OR p.user.user_id IN (SELECT f.other_user_id FROM Following f WHERE f.user.user_id = ?1)" +
+            "ORDER BY p.dateTime DESC")
+    List<CustomEntity> getPostsForHome(String user_id, Pageable pageable);
 }

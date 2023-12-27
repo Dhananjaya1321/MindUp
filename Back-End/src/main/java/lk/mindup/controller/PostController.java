@@ -1,6 +1,7 @@
 package lk.mindup.controller;
 
 import lk.mindup.dto.PostDTO;
+import lk.mindup.dto.ReactionsDTO;
 import lk.mindup.service.PostService;
 import lk.mindup.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,34 @@ public class PostController {
     @Autowired
     PostService postService;
 
+    @PostMapping(path = "/reaction")
+    public ResponseUtil saveReaction(@RequestBody ReactionsDTO dto) {
+        System.out.println(dto.toString());
+        postService.saveReaction(dto);
+        return new ResponseUtil("Ok", "Successfully Added...!", dto.getReaction_id());
+    }
+
     @PostMapping
     public ResponseUtil saveUserPost(@RequestPart("media") MultipartFile media, @RequestPart("dto") PostDTO dto) throws IOException {
         dto.setMedia(media);
         postService.saveUserPost(dto);
-        return new ResponseUtil("Ok", "Successfully Added...!",dto.getPost_id());
+        return new ResponseUtil("Ok", "Successfully Added...!", dto.getPost_id());
     }
 
     @PostMapping(path = "/without/media")
     public ResponseUtil saveUserPost(@RequestBody PostDTO dto) throws IOException {
         postService.saveUserPost(dto);
-        return new ResponseUtil("Ok", "Successfully Added...!",dto.getPost_id());
+        return new ResponseUtil("Ok", "Successfully Added...!", dto.getPost_id());
+    }
+    @DeleteMapping(path = "/undo/reaction", params = {"user_id","post_id"})
+    public ResponseUtil undoReaction(String user_id,String post_id){
+        postService.undoReaction(user_id,post_id);
+        return new ResponseUtil("Ok", "Successfully Deleted...!", post_id);
+    }
+
+    @GetMapping(path = "/check/reaction", params = {"user_id","post_id"})
+    public ResponseUtil checkReaction(String user_id,String post_id) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.checkReaction(user_id, post_id));
     }
 
     @GetMapping(path = "/reacted/users", params = {"post_id"})
@@ -34,9 +52,14 @@ public class PostController {
         return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getReactionsOfPost(post_id));
     }
 
-    @GetMapping(path = "/posts", params = {"user_id","post_count"})
-    public ResponseUtil getUserPosts(String user_id,int post_count) {
-        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getUserPosts(user_id,post_count));
+    @GetMapping(path = "/posts", params = {"user_id", "post_count"})
+    public ResponseUtil getUserPosts(String user_id, int post_count) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getUserPosts(user_id, post_count));
+    }
+
+    @GetMapping(path = "/posts/home", params = {"user_id", "post_count"})
+    public ResponseUtil getPostsForHome(String user_id, int post_count) {
+        return new ResponseUtil("Ok", "Successfully Loaded...!", postService.getPostsForHome(user_id, post_count));
     }
 
     @GetMapping(path = "/last/post/id")
