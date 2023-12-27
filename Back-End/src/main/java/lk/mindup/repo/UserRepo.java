@@ -27,6 +27,12 @@ public interface UserRepo extends JpaRepository<User, String> {
             ") AND u.user_id <> ?1")
     List<User> getNotFollowers(String user_id);
 
+    @Query(value = "SELECT NEW lk.mindup.entity.CustomEntity(u.name, u.address, u.country, u.contact, u.gender, u.headline, u.youtube_channel, u.verified_or_not, " +
+            "u.profile_photo, u.cover_photo, l.email, l.password, l.username)" +
+            "FROM Login l JOIN User u ON l.email = u.login.email WHERE u.user_id = ?1")
+    CustomEntity getUserAndLoginDetails(String user_id);
+
+
     @Query(value = "SELECT NEW lk.mindup.entity.CustomEntity(u.name,u.address,u.country,u.contact,u.gender,u.headline,u.youtube_channel,u.verified_or_not,u.profile_photo,u.cover_photo,p.page_id) FROM User u LEFT JOIN Page p ON p.page_id = u.page.page_id  WHERE u.user_id=?1")
     CustomEntity getUserDetails(String user_id);
 

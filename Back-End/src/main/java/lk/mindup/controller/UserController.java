@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/user")
@@ -26,6 +28,12 @@ public class UserController {
     public ResponseUtil saveFollow(@RequestBody FollowingDTO dto, String follower_id) {
         userService.saveFollow(dto, follower_id);
         return new ResponseUtil("Ok", "Successfully Added...!", dto.getFollowing_id());
+    }
+
+    @PutMapping(path = "/cover",params = {"user_id"})
+    public ResponseUtil updateProfileCoverPhoto(@RequestPart("media") MultipartFile media,String user_id) throws IOException {
+        userService.updateProfileCoverPhoto(media,user_id);
+        return new ResponseUtil("Ok", "Successfully Updated...!", user_id);
     }
 
     @PutMapping

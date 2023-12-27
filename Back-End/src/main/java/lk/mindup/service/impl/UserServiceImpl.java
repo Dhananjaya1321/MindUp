@@ -8,8 +8,11 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     PositionsRepo positionsRepo;
 
+    String dir = "C:\\Users\\ACER\\Documents\\WorkZone\\MindUp\\Back-End\\src\\main\\resources\\media";
+
     @Override
     public void saveUser(UserDTO dto) {
         if (loginRepo.existsById(dto.getLogin().getEmail())) {
@@ -44,8 +49,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateProfile(UserDTO dto) {
-        dto.setLogin(modelMapper.map(loginRepo.getById(dto.getLogin().getEmail()),LoginDTO.class));
+        dto.setLogin(modelMapper.map(loginRepo.getById(dto.getLogin().getEmail()), LoginDTO.class));
         userRepo.save(modelMapper.map(dto, User.class));
+    }
+
+    @Override
+    public void updateProfileCoverPhoto(MultipartFile media, String user_id) throws IOException {
+        CustomEntity user = userRepo.getUserAndLoginDetails(user_id);
+        media.transferTo(new File(new File(dir, media.getOriginalFilename()).getAbsolutePath()));
+
+        userRepo.save(
+                new User(
+                        user_id,
+                        user.getName(),
+                        user.getAddress(),
+                        user.getCountry(),
+                        user.getContact(),
+                        user.getGender(),
+                        user.getHeadline(),
+                        user.getYoutube_channel(),
+                        user.getVerified_or_not(),
+                        user.getProfile_photo(),
+                        media.getOriginalFilename()
+                )
+        );
     }
 
     @Override

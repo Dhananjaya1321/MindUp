@@ -4,13 +4,17 @@ import lk.mindup.dto.CustomDTO;
 import lk.mindup.dto.FollowingDTO;
 import lk.mindup.dto.PositionsDTO;
 import lk.mindup.dto.UserDTO;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService {
     void saveUser(UserDTO dto);
 
     void updateProfile(UserDTO dto);
+
+    void updateProfileCoverPhoto(MultipartFile img, String user_id) throws IOException;
 
     void saveFollow(FollowingDTO dto, String follower_id);
 
