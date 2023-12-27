@@ -20,6 +20,10 @@ $("#update-cover-photo-save-btn").click(function () {
     updateProfileCoverPhoto();
 });
 
+$("#update-profile-photo-save-btn").click(function () {
+    updateProfilePhoto();
+});
+
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
 $("#signin-btn").click(function () {
     let email = $("#sign-in-email").val();

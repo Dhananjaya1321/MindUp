@@ -483,6 +483,31 @@ function updateProfileCoverPhoto() {
        alert("Please select photo before saving")
     }
 }
+
+function updateProfilePhoto() {
+    let fileInput = $("#update-profile-photo-form-file-chooser")[0];
+
+    if (fileInput.files.length > 0) {
+        let formData = new FormData();
+        formData.append("media", fileInput.files[0]);
+
+        $.ajax({
+            url: base_url + "/user/profile/photo?user_id="+user_id,
+            method: "put",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (resp) {
+                alert("ok");
+            },
+            error: function (resp) {
+
+            }
+        })
+    } else {
+       alert("Please select photo before saving")
+    }
+}
 /*=============================================== sign-in ================================================*/
 function searchPassword(email, password) {
     $.ajax({
