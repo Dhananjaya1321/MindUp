@@ -133,10 +133,11 @@ PageImageShow();
 
 function PageImageShow() {
     $(document).ready(function () {
-        $("#inputGroupFile,#file-input-in-post-module").on("change", function () {
+        $("#inputGroupFile,#file-input-in-post-module,#update-profile-photo-form-file-chooser").on("change", function () {
             const files = this.files;
             let id = $(this).attr("id");
             let div_id = getDivId(id);
+            console.log(div_id);
             if (files.length > 0) {
                 $("#" + div_id).css("background", `url(${URL.createObjectURL(files[0])})`);
                 $("#" + div_id).css("backgroundPosition", "center");
@@ -152,5 +153,7 @@ function getDivId(id) {
             return "Page_Image_Show";
         case "file-input-in-post-module":
             return "post-media";
+        case "update-profile-photo-form-file-chooser":
+            return "update-profile-photo-show";
     }
 }

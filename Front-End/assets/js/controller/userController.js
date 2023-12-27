@@ -72,7 +72,7 @@ function setPostsForUserActivitySection() {
         }
 
         $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
-        $(`#${user_posts[i].post_id}>.post-media`).attr("src", `${images_path}${user_posts[i].media}`);
+        $(`#${user_posts[i].post_id} > .post-media`).attr("src", `${images_path}${user_posts[i].media}`);
         $(`#user-or-page-dp`).css("backgroundPosition", "center");
         $(`#user-or-page-dp`).css("backgroundSize", "cover");
     }
@@ -413,11 +413,10 @@ function setDetailsForProfile(user) {
         $("#headline").text(`${user.headline}`);
     }
     /*==================================================================*/
+    $("#youtube-link").empty();
     if (user.youtube_channel !== null) {
         $("#youtube-link").append(`<a href="${user.youtube_channel}">youtube channel <img src="assets/images/youtube_.png"></a>`);
     }
-
-
 }
 
 function updateProfileDetails() {
@@ -429,17 +428,17 @@ function updateProfileDetails() {
     let headline = $("#update-profile-details-headline").val();
     let gender = $("input[name='gender']:checked").val();
 
-    let data={
-        "user_id":user_id,
-        "address":address,
-        "cover_photo":user_cover_photo,
-        "headline":headline,
-        "name":name,
-        "profile_photo":user_profile_photo,
-        "youtube_channel":youtube,
-        "country":country,
-        "gender":gender,
-        "contact":phone,
+    let data = {
+        "user_id": user_id,
+        "address": address,
+        "cover_photo": user_cover_photo,
+        "headline": headline,
+        "name": name,
+        "profile_photo": user_profile_photo,
+        "youtube_channel": youtube,
+        "country": country,
+        "gender": gender,
+        "contact": phone,
         "login": {
             "email": user_email,
         },
@@ -451,13 +450,15 @@ function updateProfileDetails() {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (resp) {
-           alert(resp.message);
+            getUserDetails();
+            alert(resp.message);
         },
         error: function (resp) {
             alert(resp.JSON.data);
         }
     })
 }
+
 /*=============================================== sign-in ================================================*/
 function searchPassword(email, password) {
     $.ajax({
