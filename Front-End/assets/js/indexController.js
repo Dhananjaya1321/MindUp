@@ -133,7 +133,7 @@ PageImageShow();
 
 function PageImageShow() {
     $(document).ready(function () {
-        $("#inputGroupFile,#file-input-in-post-module,#update-profile-photo-form-file-chooser").on("change", function () {
+        $("#inputGroupFile,#file-input-in-post-module,#update-cover-photo-form-file-chooser,#update-profile-photo-form-file-chooser").on("change", function () {
             const files = this.files;
             let id = $(this).attr("id");
             let div_id = getDivId(id);
@@ -153,6 +153,8 @@ function getDivId(id) {
             return "Page_Image_Show";
         case "file-input-in-post-module":
             return "post-media";
+        case "update-cover-photo-form-file-chooser":
+            return "update-cover-photo-show";
         case "update-profile-photo-form-file-chooser":
             return "update-profile-photo-show";
     }
