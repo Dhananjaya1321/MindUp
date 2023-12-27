@@ -55,6 +55,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateProfileCoverPhoto(MultipartFile media, String user_id) throws IOException {
+
         CustomEntity user = userRepo.getUserAndLoginDetails(user_id);
         media.transferTo(new File(new File(dir, media.getOriginalFilename()).getAbsolutePath()));
 
@@ -72,6 +73,29 @@ public class UserServiceImpl implements UserService {
                         user.getProfile_photo(),
                         media.getOriginalFilename()
                 )
+        );
+    }
+
+    @Override
+    public void updateProfilePhoto(MultipartFile media, String user_id) throws IOException {
+        System.out.println(user_id);
+        CustomEntity user = userRepo.getUserAndLoginDetails(user_id);
+        System.out.println(user);
+        media.transferTo(new File(new File(dir, media.getOriginalFilename()).getAbsolutePath()));
+
+        userRepo.save(
+                new User(
+                        user_id,
+                        user.getName(),
+                        user.getAddress(),
+                        user.getCountry(),
+                        user.getContact(),
+                        user.getGender(),
+                        user.getHeadline(),
+                        user.getYoutube_channel(),
+                        user.getVerified_or_not(),
+                        media.getOriginalFilename(),
+                        user.getCover_photo())
         );
     }
 

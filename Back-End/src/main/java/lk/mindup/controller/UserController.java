@@ -36,6 +36,13 @@ public class UserController {
         return new ResponseUtil("Ok", "Successfully Updated...!", user_id);
     }
 
+    @PutMapping(path = "/profile/photo",params = {"user_id"})
+    public ResponseUtil updateProfilePhoto(@RequestPart("media") MultipartFile media,String user_id) throws IOException {
+        System.out.println("\n\n\n\n"+media+" "+user_id);
+        userService.updateProfilePhoto(media,user_id);
+        return new ResponseUtil("Ok", "Successfully Updated...!", user_id);
+    }
+
     @PutMapping
     public ResponseUtil updateProfile(@RequestBody UserDTO dto) {
         userService.updateProfile(dto);

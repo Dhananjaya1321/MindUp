@@ -86,7 +86,6 @@ public class CustomEntity {
     public CustomEntity(String name,String address,String country,String contact,String gender,String headline,
                 String youtube_channel,String verified_or_not,String profile_photo,String cover_photo,
                 String email,String password,String username) {
-        this.user_id=user_id;
         this.name=name;
         this.address=address;
         this.country=country;

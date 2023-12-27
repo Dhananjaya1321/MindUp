@@ -16,6 +16,8 @@ public interface UserService {
 
     void updateProfileCoverPhoto(MultipartFile img, String user_id) throws IOException;
 
+    void updateProfilePhoto(MultipartFile media, String user_id) throws IOException;
+
     void saveFollow(FollowingDTO dto, String follower_id);
 
     void unfollow(String user_id, String other_user_id);
