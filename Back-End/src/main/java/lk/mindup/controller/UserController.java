@@ -7,6 +7,9 @@ import lk.mindup.service.UserService;
 import lk.mindup.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @CrossOrigin
@@ -25,6 +28,25 @@ public class UserController {
     public ResponseUtil saveFollow(@RequestBody FollowingDTO dto, String follower_id) {
         userService.saveFollow(dto, follower_id);
         return new ResponseUtil("Ok", "Successfully Added...!", dto.getFollowing_id());
+    }
+
+    @PutMapping(path = "/cover",params = {"user_id"})
+    public ResponseUtil updateProfileCoverPhoto(@RequestPart("media") MultipartFile media,String user_id) throws IOException {
+        userService.updateProfileCoverPhoto(media,user_id);
+        return new ResponseUtil("Ok", "Successfully Updated...!", user_id);
+    }
+
+    @PutMapping(path = "/profile/photo",params = {"user_id"})
+    public ResponseUtil updateProfilePhoto(@RequestPart("media") MultipartFile media,String user_id) throws IOException {
+        System.out.println("\n\n\n\n"+media+" "+user_id);
+        userService.updateProfilePhoto(media,user_id);
+        return new ResponseUtil("Ok", "Successfully Updated...!", user_id);
+    }
+
+    @PutMapping
+    public ResponseUtil updateProfile(@RequestBody UserDTO dto) {
+        userService.updateProfile(dto);
+        return new ResponseUtil("Ok", "Successfully Updated...!", dto.getUser_id());
     }
 
     @DeleteMapping(path = "/unfollow", params = {"user_id", "other_user_id"})

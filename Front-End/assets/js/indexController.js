@@ -1,13 +1,35 @@
 $(window).ready(function () {
     loadAllCountries();
+    saveReaction();
 });
 
 let base_url = "http://localhost:8080";
 let user_id;
+let user_email;
 let user_profile_photo;
 let user_cover_photo;
 let user_name;
 let user_headline;
+
+/*========================================= profile =================================*/
+$("#edit-details-btn").click(function () {
+    $("#update-profile-details-name").val(user_name);
+    $("#update-profile-details-address").val($("#location").text());
+    $("#update-profile-details-youtube").val($("#youtube-link").text());
+    $("#update-profile-details-headline").val($("#headline").text());
+});
+
+$("#update-profile-details-form-btn").click(function () {
+    updateProfileDetails();
+});
+
+$("#update-cover-photo-save-btn").click(function () {
+    updateProfileCoverPhoto();
+});
+
+$("#update-profile-photo-save-btn").click(function () {
+    updateProfilePhoto();
+});
 
 /*=========================================signIn, signUp, getDetails form navigation=================================*/
 $("#signin-btn").click(function () {
@@ -126,10 +148,11 @@ PageImageShow();
 
 function PageImageShow() {
     $(document).ready(function () {
-        $("#inputGroupFile,#file-input-in-post-module").on("change", function () {
+        $("#inputGroupFile,#file-input-in-post-module,#update-cover-photo-form-file-chooser,#update-profile-photo-form-file-chooser").on("change", function () {
             const files = this.files;
             let id = $(this).attr("id");
             let div_id = getDivId(id);
+            console.log(div_id);
             if (files.length > 0) {
                 $("#" + div_id).css("background", `url(${URL.createObjectURL(files[0])})`);
                 $("#" + div_id).css("backgroundPosition", "center");
@@ -145,5 +168,9 @@ function getDivId(id) {
             return "Page_Image_Show";
         case "file-input-in-post-module":
             return "post-media";
+        case "update-cover-photo-form-file-chooser":
+            return "update-cover-photo-show";
+        case "update-profile-photo-form-file-chooser":
+            return "update-profile-photo-show";
     }
 }
