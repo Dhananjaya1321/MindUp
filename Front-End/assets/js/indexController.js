@@ -12,6 +12,13 @@ let user_name;
 let user_headline;
 
 /*========================================= profile =================================*/
+$("#edit-details-btn").click(function () {
+    $("#update-profile-details-name").val(user_name);
+    $("#update-profile-details-address").val($("#location").text());
+    $("#update-profile-details-youtube").val($("#youtube-link").text());
+    $("#update-profile-details-headline").val($("#headline").text());
+});
+
 $("#update-profile-details-form-btn").click(function () {
     updateProfileDetails();
 });

@@ -215,7 +215,8 @@ function getNotFollowers() {
                 } else {
                     headline = "---";
                 }
-                let userForFollow = `<div class="user flex f-col">
+                let userForFollow = `
+                                <div class="user flex f-col">
                                         <div id="user-cover-photo-${user.user_id}" class="user-cover-photo"></div><!--cover photo-->
                                         <div class="user-dp flex">
                                             <div class="flex">
@@ -231,18 +232,23 @@ function getNotFollowers() {
                                         <div class="flex user-follow-btn-div">
                                                 <button id="user-${user.user_id}" class="user-follow-btn">Follow</button>
                                         </div><!--follow button-->
-                                 </div><!--user-->`
+                                </div><!--user-->`
                 $("#popular-peoples-section>section").append(userForFollow);
 
                 if (user.cover_photo !== null) {
-                    $(`#user-cover-photo-${user.user_id}`).css("background", `url(${user.cover_photo})`);
+                    $(`#user-cover-photo-${user.user_id}`).css({
+                        "background": `url("${images_path}${user.cover_photo}")`,
+                        "backgroundSize": "cover",
+                        "backgroundPosition": "center"
+                    });
                 }
                 if (user.profile_photo !== null) {
-                    $(`#profile-photo-${user.user_id}`).css("background", `url(${user.profile_photo})`);
+                    $(`#profile-photo-${user.user_id}`).css({
+                        "background": `url("${images_path}${user.profile_photo}")`,
+                        "backgroundSize": "cover",
+                        "backgroundPosition": "center"
+                    });
                 }
-                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundPosition", "center");
-                $(`#user-cover-photo-${user.user_id}, #profile-photo-${user.user_id}`).css("backgroundSize", "cover");
-
             }
         },
         error: function (resp) {
@@ -500,7 +506,7 @@ function updateProfileCoverPhoto() {
             contentType: false,
             processData: false,
             success: function (resp) {
-                alert("ok");
+                alert(resp.data);
             },
             error: function (resp) {
 
@@ -525,7 +531,7 @@ function updateProfilePhoto() {
             contentType: false,
             processData: false,
             success: function (resp) {
-                alert("ok");
+                alert(resp.data);
             },
             error: function (resp) {
 
@@ -546,6 +552,11 @@ function searchPassword(email, password) {
             if (resp.data) {
                 getUserDetails();
                 getPostsForHome();
+                $("#create-post-popup-form-user-profile-photo").css({
+                    "background": `url("${images_path}${user_profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
                 $("#login-main").css("display", "none");
                 $("#nav-bar, #home-main").css("display", "flex");
             } else {
