@@ -3,7 +3,7 @@ $("#post-post-btn").click(function () {
 })
 let user_posts = [];
 let posts_home = [];
-let images_path="../Back-End/src/main/resources/media/";
+let images_path = "../Back-End/src/main/resources/media/";
 
 function getUserPosts() {
     $.ajax({
@@ -103,26 +103,44 @@ function setPostsForHomePage() {
         $(`#${posts_home[i].post_id} > div:nth-child(4)`).append(reaction);
 
         if (reactions.length === 1) {
-            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
-            $("#first-reacted-user").css("backgroundPosition", "center");
-            $("#first-reacted-user").css("backgroundSize", "cover");
+             if (reactions[0].profile_photo !== null) {
+                 $(`#${posts_home[i].post_id} > div:nth-child(4) > .first-reacted-user`).css({
+                     "background": `url("${images_path}${reactions[0].profile_photo}")`,
+                     "backgroundSize": "cover",
+                     "backgroundPosition": "center"
+                 });
+             }
         } else if (reactions.length > 1) {
-            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
-            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
-            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
-            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
+             if (reactions[0].profile_photo !== null) {
+                 $(`#${posts_home[i].post_id} > div:nth-child(4) > .first-reacted-user`).css({
+                     "background": `url("${images_path}${reactions[0].profile_photo}")`,
+                     "backgroundSize": "cover",
+                     "backgroundPosition": "center"
+                 });
+             }
+             if (reactions[1].profile_photo !== null) {
+                 $(`#${posts_home[i].post_id} > div:nth-child(4) > .second-reacted-user`).css({
+                     "background": `url("${images_path}${reactions[1].profile_photo}")`,
+                     "backgroundSize": "cover",
+                     "backgroundPosition": "center"
+                 });
+             }
+        }
+        $(`#${posts_home[i].post_id} > .post-media`).attr("src", `${images_path}${posts_home[i].media}`);
+        if (userDetailsForPost.profile_photo!==null){
+            $(`#${posts_home[i].post_id} > div:nth-child(1) > .user-or-page-dp`).css({
+                "background": `url("${images_path}${userDetailsForPost.profile_photo}")`,
+                "backgroundSize": "cover",
+                "backgroundPosition": "center"
+            })
         }
 
-        $("#user-or-page-dp").css("background", `url(${userDetailsForPost.profile_photo})`);
-        $(`#${posts_home[i].post_id}>.post-media`).attr("src",`${images_path}${posts_home[i].media}`);
-        $(`#user-or-page-dp`).css("backgroundPosition", "center");
-        $(`#user-or-page-dp`).css("backgroundSize", "cover");
     }
     checkAndSetUserReactionBtnColorForHomePagePosts();
 }
 
 function getUserDetailsForPost(user_id) {
-    let user_details=null;
+    let user_details = null;
     $.ajax({
         url: base_url + "/user/details?user_id=" + user_id,
         method: "get",
@@ -134,7 +152,7 @@ function getUserDetailsForPost(user_id) {
             } else {
                 resp.data[0].headline = "---";
             }
-          user_details=resp.data[0];
+            user_details = resp.data[0];
         },
         error: function (resp) {
             alert(resp.JSON.data);

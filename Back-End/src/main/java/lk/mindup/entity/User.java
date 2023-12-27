@@ -64,7 +64,7 @@ public class User {
 
     public User(String user_id, String name,String address,String country,String contact, String gender,
                 String headline,String youtube_channel, String verified_or_not, String profile_photo,
-                String cover_photo) {
+                String cover_photo,Login login) {
         this.user_id = user_id;
         this.name = name;
         this.address = address;
@@ -76,5 +76,6 @@ public class User {
         this.verified_or_not = verified_or_not;
         this.profile_photo = profile_photo;
         this.cover_photo = cover_photo;
+        this.login = login;
     }
 }

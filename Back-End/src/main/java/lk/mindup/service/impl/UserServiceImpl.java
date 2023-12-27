@@ -71,7 +71,13 @@ public class UserServiceImpl implements UserService {
                         user.getYoutube_channel(),
                         user.getVerified_or_not(),
                         user.getProfile_photo(),
-                        media.getOriginalFilename()
+                        media.getOriginalFilename(),
+                        new Login(
+                                user.getEmail(),
+                                user.getUsername(),
+                                user.getPassword()
+                        )
+
                 )
         );
     }
@@ -95,7 +101,13 @@ public class UserServiceImpl implements UserService {
                         user.getYoutube_channel(),
                         user.getVerified_or_not(),
                         media.getOriginalFilename(),
-                        user.getCover_photo())
+                        user.getCover_photo(),
+                        new Login(
+                                user.getEmail(),
+                                user.getUsername(),
+                                user.getPassword()
+                        )
+                )
         );
     }
 

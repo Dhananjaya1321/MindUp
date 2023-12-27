@@ -61,20 +61,37 @@ function setPostsForUserActivitySection() {
         $(`#${user_posts[i].post_id} > div:nth-child(4)`).append(reaction);
 
         if (reactions.length === 1) {
-            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
-            $("#first-reacted-user").css("backgroundPosition", "center");
-            $("#first-reacted-user").css("backgroundSize", "cover");
+            if (reactions[0].profile_photo !== null) {
+                $(`#${user_posts[i].post_id} > div:nth-child(4) > .first-reacted-user`).css({
+                    "background": `url("${images_path}${reactions[0].profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
+            }
         } else if (reactions.length > 1) {
-            $("#first-reacted-user").css("background", `url(${reactions[0].profile_photo})`);
-            $("#second-reacted-user").css("background", `url(${reactions[1].profile_photo})`);
-            $("#first-reacted-user,#second-reacted-user").css("backgroundPosition", "center");
-            $("#first-reacted-user,#second-reacted-user").css("backgroundSize", "cover");
+            if (reactions[0].profile_photo !== null) {
+                $(`#${user_posts[i].post_id} > div:nth-child(4) > .first-reacted-user`).css({
+                    "background": `url("${images_path}${reactions[0].profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
+            }
+            if (reactions[1].profile_photo !== null) {
+                $(`#${user_posts[i].post_id} > div:nth-child(4) > .second-reacted-user`).css({
+                    "background": `url("${images_path}${reactions[1].profile_photo}")`,
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center"
+                });
+            }
         }
-
-        $("#user-or-page-dp").css("background", `url(${user_profile_photo})`);
+        if (user_profile_photo !== null) {
+            $(`#${user_posts[i].post_id} > div:nth-child(1) > .user-or-page-dp`).css({
+                "background": `url("${images_path}${user_profile_photo}")`,
+                "backgroundSize": "cover",
+                "backgroundPosition": "center"
+            });
+        }
         $(`#${user_posts[i].post_id} > .post-media`).attr("src", `${images_path}${user_posts[i].media}`);
-        $(`#user-or-page-dp`).css("backgroundPosition", "center");
-        $(`#user-or-page-dp`).css("backgroundSize", "cover");
     }
     checkAndSetUserReactionBtnColorForActivities();
 }
@@ -323,16 +340,21 @@ function getUserDetails() {
 }
 
 function setDetailsForHomePage(user) {
+    console.log(`${images_path}${user.cover_photo}`);
     if (user.cover_photo !== null) {
-        $("#profile-summary-cover-photo").css("background", `url(${user.cover_photo})`);
-        $("#profile-summary-cover-photo").css("backgroundSize", `cover`);
-        $("#profile-summary-cover-photo").css("backgroundPosition", `center`);
+        $("#profile-summary-cover-photo").css({
+            "background": `url("${images_path}${user.cover_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center"
+        });
     }
 
     if (user.profile_photo !== null) {
-        $("#profile-photo,#profile-photo-of-create-post-section").css("background", `url(${user.profile_photo})`);
-        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundSize", `cover`);
-        $("#profile-photo,#profile-photo-of-create-post-section").css("backgroundPosition", `center`);
+        $("#profile-photo,#profile-photo-of-create-post-section").css({
+            "background": `url("${images_path}${user.profile_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center"
+        });
     }
 
     if (user.name !== null) {
@@ -355,15 +377,20 @@ function truncateParagraph(paragraph, maxLength) {
 
 function setDetailsForProfile(user) {
     if (user.cover_photo !== null) {
-        $("#cover-img").css("background", `url(${user.cover_photo})`);
-        $("#cover-img").css("backgroundSize", `cover`);
-        $("#cover-img").css("backgroundPosition", `center`);
+        $("#cover-img").css({
+            "background": `url("${images_path}${user.cover_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center"
+        });
     }
 
     if (user.profile_photo !== null) {
-        $("#dp-img").css("background", `url(${user.profile_photo})`);
-        $("#dp-img").css("backgroundSize", `cover`);
-        $("#dp-img").css("backgroundPosition", `center`);
+        $("#dp-img").css({
+            "background": `url("${images_path}${user.profile_photo}")`,
+            "backgroundSize": "cover",
+            "backgroundPosition": "center",
+            "borderRadius": "10px"
+        });
     }
 
     /*==================================================================*/
@@ -467,7 +494,7 @@ function updateProfileCoverPhoto() {
         formData.append("media", fileInput.files[0]);
 
         $.ajax({
-            url: base_url + "/user/cover?user_id="+user_id,
+            url: base_url + "/user/cover?user_id=" + user_id,
             method: "put",
             data: formData,
             contentType: false,
@@ -480,7 +507,7 @@ function updateProfileCoverPhoto() {
             }
         })
     } else {
-       alert("Please select photo before saving")
+        alert("Please select photo before saving")
     }
 }
 
@@ -492,7 +519,7 @@ function updateProfilePhoto() {
         formData.append("media", fileInput.files[0]);
 
         $.ajax({
-            url: base_url + "/user/profile/photo?user_id="+user_id,
+            url: base_url + "/user/profile/photo?user_id=" + user_id,
             method: "put",
             data: formData,
             contentType: false,
@@ -505,9 +532,10 @@ function updateProfilePhoto() {
             }
         })
     } else {
-       alert("Please select photo before saving")
+        alert("Please select photo before saving")
     }
 }
+
 /*=============================================== sign-in ================================================*/
 function searchPassword(email, password) {
     $.ajax({
