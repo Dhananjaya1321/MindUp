@@ -84,7 +84,7 @@ function setPostsForHomePage() {
                         <div class="user-or-page-details">
                             <h3>${userDetailsForPost.name}</h3>
                             <p>${userDetailsForPost.headline}</p>
-                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                            <small class="posted-time">${setTimeOrDateForPost(posts_home[i].dateTime)}<i class="fa-solid fa-earth-americas"></i></small>
                         </div><!--user or page details-->
                     </div><!--posted account or page details-->
                     <div class="post-content">
@@ -264,6 +264,7 @@ function saveUserPost() {
             processData: false,
             success: function (resp) {
                 clearPostForm();
+                getPostsForHome();
             },
             error: function (resp) {
                 clearPostForm();
@@ -278,6 +279,7 @@ function saveUserPost() {
                 contentType: "application/json",
                 success: function (resp) {
                     clearPostForm();
+                    getPostsForHome();
                 },
                 error: function (resp) {
                     clearPostForm();
@@ -285,7 +287,6 @@ function saveUserPost() {
             })
         }
     }
-
 }
 
 function clearPostForm() {
@@ -295,6 +296,36 @@ function clearPostForm() {
     $("#post-media").css("display", "none");
 }
 
+function setTimeOrDateForPost(date) {
+    const currentDate = new Date();
+    const postedDate = new Date(date);
+
+    const timeDifference = currentDate - postedDate;
+
+    const seconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    // console.log(date,timeDifference,`Time difference: ${days} days, ${hours % 24} hours, ${minutes % 60} minutes, ${seconds % 60} seconds`);
+   if (days>=1){
+       return days+" d";
+   }else {
+       if (hours>=1){
+           return hours+" h";
+       }else {
+           if (minutes>=1){
+               return hours+" m";
+           }else {
+               if (seconds>=1){
+                   return hours+" s";
+               }else {
+                   return "Just now";
+               }
+           }
+       }
+   }
+}
 function getLastReactionId() {
     let last_reaction_id;
     $.ajax({

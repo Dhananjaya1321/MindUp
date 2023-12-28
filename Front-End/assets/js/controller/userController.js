@@ -42,7 +42,7 @@ function setPostsForUserActivitySection() {
                         <div class="user-or-page-details">
                             <h3>${user_name}</h3>
                             <p>${user_headline}</p>
-                            <small class="posted-time">Just Now <i class="fa-solid fa-earth-americas"></i></small>
+                            <small class="posted-time">${setTimeOrDateForPost(user_posts[i].dateTime)}<i class="fa-solid fa-earth-americas"></i></small>
                         </div><!--user or page details-->
                     </div><!--posted account or page details-->
                     <div class="post-content">
